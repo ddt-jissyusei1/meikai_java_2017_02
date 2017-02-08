@@ -10,7 +10,7 @@ public class En2_7 {
 		 * ・2桁の正の整数値（すなわち10以上99以下の値）をランダム生成して表示。
 		 */
 
-		Random rand = new Random();
+		Random rand = new Random();		//ランダム生成の宣言
 
 		int sei = rand.nextInt(9)+1;			//正の整数のランダム値を生成して変数seiに代入
 		int fu = rand.nextInt(10)-10;				//負の整数のランダム値を生成して変数fuに代入

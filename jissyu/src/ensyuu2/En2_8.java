@@ -6,8 +6,8 @@ import java.util.Scanner;
 public class En2_8 {
 
 	public static void main(String[] args) {
-		Scanner std = new Scanner(System.in);
-		Random rand = new Random();
+		Scanner std = new Scanner(System.in);		//入力された値をコマンドラインに反映させる
+		Random rand = new Random();				//乱数を生成するためのコマンド
 
 		System.out.print("整数値：");		//整数値の入力を促す
 		int x = std.nextInt();				//入力された値を変数xに代入

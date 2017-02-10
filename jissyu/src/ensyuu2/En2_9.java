@@ -13,7 +13,7 @@ public class En2_9 {
 
 		double x = dubll.nextDouble();			//0.0以上1.0未満の実数値の乱数を生成して変数xに代入
 		double y = dubll.nextDouble()*10;			//0.0以上10.0未満の実数値の乱数を生成して変数yに代入
-		double z = dubll.nextDouble()-x;			//-1.0以上1.0未満の実数値の乱数を生成して変数yに代入
+		double z = dubll.nextDouble()*2-1;			//-1.0以上1.0未満の実数値の乱数を生成して変数yに代入
 
 
 

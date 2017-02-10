@@ -13,7 +13,7 @@ public class En2_7 {
 		Random rand = new Random();		//ランダム生成の宣言
 
 		int sei = rand.nextInt(9)+1;			//正の整数のランダム値を生成して変数seiに代入
-		int fu = rand.nextInt(9)-10;				//負の整数のランダム値を生成して変数fuに代入
+		int fu = rand.nextInt(9)-9;				//負の整数のランダム値を生成して変数fuに代入
 		int futaketa = rand.nextInt(90)+10;	//二桁の整数のランダム値を生成して変数futaketaに代入
 
 		System.out.println("正の整数のランダム値は"+ sei +"です。");		//変数seiの値を表示

@@ -10,21 +10,34 @@ import java.util.Scanner;
 public class En3_6 {
 
 	public static void main(String[] args) {
-		Scanner std = new Scanner(System.in);					//キーボードからの読み込みを行うプログラム
+		//キーボードからの読み込みを行うプログラム
+		Scanner std = new Scanner(System.in);
 
-		System.out.print("正の整数値：");					//正の整数値の入力を促す
-		int n = std.nextInt();								//入力された値を変数nに代入
+		//10の倍数か検証するための正の数値の入力を促す
+		System.out.print("正の整数値を入力してください：");
+		//入力された値を変数number1に代入し、保持
+		int number1 = std.nextInt();
 
-		if(n > 0){														//条件式：nが0以上の場合中のif文を実行
-			if(n%10 == 0){												//nを10で割った余りが0ならば
-				System.out.println("その値は10の倍数です。");			//その場合に出力する文
+		//条件式：number1の値がが0以上の場合、次のif文を実行
+		if(number1 > 0){
 
-			}else {														//nを10で割った余りが0以外ならば
-				System.out.println("その値は10の倍数ではありません。");	//その場合に出力する文
+			//number1の値が1以上であり、number1の値を10で割った余りがゼロと等しい場合の条件式
+			if(number1%10 == 0){
+				//number1の値を10で割った余りがゼロと等しい場合、number1の値は10の倍数であると言えるので、
+				//number1の値は10の倍数であるという判定文を出力する。
+				System.out.println("その値は10の倍数です。");
+
+				//number1を10で割った余りが0以外の条件式
+			}else {
+				//number1の値を10で割った余りがゼロではない場合、number1の値は10の倍数ではないので、
+				//number1の値は10の倍数ではないという判定文を出力する。
+				System.out.println("その値は10の倍数ではありません。");
 			}
 
-		}else {															//条件式以外の場合
-			System.out.println("正ではない値が入力されました。");		//その場合に出力する文
+			//number1の値がゼロ以下だった場合の条件式
+		}else {
+			//number1の値がゼロ以下の場合、それは正の値ではないという判定文を出力する。
+			System.out.println("正ではない値が入力されました。");
 		}
 
 	}

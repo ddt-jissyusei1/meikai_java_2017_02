@@ -6,16 +6,24 @@ import java.util.Scanner;
 public class En3_9 {
 
 	public static void main(String[] args) {
-		Scanner std = new Scanner(System.in);						//キーボードからの読み込みを行うプログラム
+		//キーボードからの読み込みを行うプログラム
+		Scanner std = new Scanner(System.in);
 
-		System.out.print("実数値a：");								//実数値aの入力を促す
-		double n = std.nextDouble();								//入力された実数値を変数nに代入
+		//実数値の大小比較用の一つ目の値の入力を促す文を出力する。
+		System.out.print("一つ目の実数値を入力してください：");
+		//入力されたひとつめの実数値を変数number1に代入し、保持する。
+		double number1 = std.nextDouble();
 
-		System.out.print("実数値b：");								//実数値bの入力を促す
-		double d = std.nextDouble();								//入力された実数値を変数dに代入
+		//二つ目の実数値の入力を促す文を出力する。
+		System.out.print("二つ目の実数値を入力してください：");
+		//入力された二つ目の実数値を変数number2に代入し、保持する。
+		double number2 = std.nextDouble();
 
-		System.out.println("大きいほうの値は" + (n > d ? n : d ) + "です。");
-		//条件演算子：ｎの値がｄより大きければnを、そうでなければdを表示する。
+		//大きい方の値であるという判定文の中の条件演算子で、入力された二つの値のどちらが大きいかを判定する
+		//number1の値がnumber2の値より大きいということが真であるならば、number1を、偽であるならばnumber2の値を
+		//出力する判定文に返し、表示する。
+		System.out.println("大きいほうの値は" + (number1 > number2 ? number1 : number2 ) + "です。");
+
 	}
 
 }

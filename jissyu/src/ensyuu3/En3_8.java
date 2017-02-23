@@ -9,22 +9,33 @@ import java.util.Scanner;
 public class En3_8 {
 
 	public static void main(String[] args) {
-		Scanner std = new Scanner(System.in);							//キーボードからの読み込みを行うプログラム
+		//キーボードからの読み込みを行うプログラム
+		Scanner std = new Scanner(System.in);
 
-		System.out.print("点数を入力：");								//点数の入力を促す
-		int score = std.nextInt();										//入力された値を変数scoreに代入
+		//成績判定用の点数の入力を促す文を出力する。
+		System.out.print("点数を入力してください：");
+		//入力された値を変数scoreに代入し、保持
+		int score = std.nextInt();
 
-		if(score <= 100 && score >= 80){									//条件式：scoreの値が80以上100以下
-			System.out.println("優");									//『優』と出力
+		//条件式：scoreの値が80以上100以下である場合
+		if(score <= 100 && score >= 80){
+			//scoreの値が80以上100以下の条件に当てはまる場合、『優』とする判定文を出力する。
+			System.out.println("優");
 
-		}else if(score <= 79 && score >= 70){							//条件式：scoreの値が70以上79以下
-			 System.out.println("良");									//『良』と出力
+		//条件式：scoreの値が70以上79以下である場合
+		}else if(score <= 79 && score >= 70){
+			//scoreの値が70以上79以下の条件に当てはまる場合、『良』とする判定文を出力する。
+			 System.out.println("良");
 
-		}else if(score <= 69 && score >= 60){							//条件式：scoreの値が60以上69以下
-			System.out.println("可");									//『可』と出力
+		//条件式：scoreの値が60以上69以下である場合
+		}else if(score <= 69 && score >= 60){
+			//scoreの値が60以上69以下の条件に当てはまる場合、『可』とする判定文を出力する。
+			System.out.println("可");
 
-		}else if(score <= 59 && score >= 0){							//条件式：scoreの値が0以上59以下
-			System.out.println("不可");									//『不可』と出力
+		//条件式：scoreの値が0以上59以下である場合
+		}else if(score <= 59 && score >= 0){
+			//scoreの値が0以上59以下の条件に当てはまる場合、『不可』とする判定文を出力する。
+			System.out.println("不可");
 
 		}
 

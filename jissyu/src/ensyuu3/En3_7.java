@@ -10,25 +10,37 @@ import java.util.Scanner;
 public class En3_7 {
 
 	public static void main(String[] args) {
-		Scanner std = new Scanner(System.in);				//キーボードからの入力を読み込むプログラム
+		//キーボードからの入力を読み込むプログラム
+		Scanner std = new Scanner(System.in);
 
-		System.out.print("正の整数値：");							//正の整数値の値の入力を促す
-		int n = std.nextInt();										//入力された値を変数nに代入
+		//検証用に3で割るための正の値の入力を促す
+		System.out.print("正の整数値を入力してください：");
+		//入力された値を変数number1に代入し、保持
+		int number1 = std.nextInt();
 
-		if(n > 0){															//条件式：nの値が0以上の場合、中のif文を実行
-			if(n%3 == 0){													//nを3で割った余りが0ならば
-				System.out.println("その値は3で割り切れます。");			//3で割り切れた場合に出力する文
+		//条件式：number1の値が0以上の場合、中のif文を実行
+		if(number1 > 0){
+			//number1を3で割った余りが0である場合の条件式
+			if(number1%3 == 0){
+				//number1の値を3で割った余りが0である場合、number1の値は3で割り切れるという判定文を出力する
+				System.out.println("その値は3で割り切れます。");
 
-			}else if(n%3 == 1){											//nを3で割った余りが1ならば
-				System.out.println("その値を3で割った余りは1です。");		//余りが1の場合に出力する文
+			//number1を3で割った余りが1である場合の条件式
+			}else if(number1%3 == 1){
+				//number1を3で割った余りが1である場合、number1を3で割った余りは1であるという判定文を出力する。
+				System.out.println("その値を3で割った余りは1です。");
 
-			}else if(n%3 == 2){											//nを3で割った余りが2ならば
-				System.out.println("その値を3で割った余りは2です。");		//余りが2の場合に出力する文
+			//number1を3で割った余りが2である場合の条件式
+			}else if(number1%3 == 2){
+				//number1を3で割った余りが2である場合、number1を3で割った余りは2であるという判定文を出力する。
+				System.out.println("その値を3で割った余りは2です。");
 
 			}
 
-		}else {																//正ではない値が入力された場合
-			System.out.println("正でない値が入力されました。");				//その場合に出力する文
+		//もし正ではない値が入力された場合の条件式
+		}else {
+			//入力された値が正ではないという判定文を出力する。
+			System.out.println("正でない値が入力されました。");
 		}
 
 	}

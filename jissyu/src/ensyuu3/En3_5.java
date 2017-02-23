@@ -10,22 +10,35 @@ import java.util.Scanner;
 public class En3_5 {
 
 	public static void main(String[] args) {
-		Scanner std = new Scanner(System.in);					//キーボードからの読み込みを行うプログラム
+		//キーボードからの読み込みを行うプログラム
+		Scanner std = new Scanner(System.in);
 
-		System.out.print("正の整数値：");							//整数値の入力を促す
-		int n = std.nextInt();									//入力された値を変数nに代入
+		//5で割り切れるか検証するための数値の入力を促す
+		System.out.print("正の整数値を入力してください：");
+		//入力された値を変数number1に代入し、保持
+		int number1 = std.nextInt();
 
-		if(n > 0){												//nの値が0以上であれば中のif文を実行
+		//number1の値が1以上であれば次の条件式に移行
+		if(number1 > 0){
 
-			if(n%5 == 0){											//nの値を5で割った余りが0ならば
-				System.out.println("その値は5で割り切れます。");	//余りがゼロの場合の文を出力
+			//1以上と判定されたnumber1の値を5で割り、その余りが0ならばという条件
+			if(number1%5 == 0){
+				//number1を5で割った余りがゼロということは、number1は5で割り切れるということなので、
+				//number1は5で割り切れるという判定文を出力する。
+				System.out.println("その値は5で割り切れます。");
 
-			}else {													//余りがゼロ以外ならば
-				System.out.println("その値は5で割り切れません。");	//ゼロ以外の場合の文を出力
+			//number1を5で割った余りがゼロ以外ならばという条件
+			}else {
+				//number1を5で割った余りがゼロ以外ということは、number1は5で割り切れないということなので、
+				//number1は5で割り切れないという判定文を出力する。
+				System.out.println("その値は5で割り切れません。");
 			}
 
-		}else {														//入力された値が正ではなかった
-			System.out.println("正でない値が入力されました。");		//その場合に出力する文
+		//number1の値が1以上ではなかった場合の条件
+		}else {
+			//number1の値が1以上ではなかった場合（つまり０以下）、number1の値は正の整数ではないので、
+			//number1の値は正の整数ではないという判定文を出力する。
+			System.out.println("正でない値が入力されました。");
 		}
 
 

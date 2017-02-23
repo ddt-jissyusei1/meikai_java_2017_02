@@ -12,15 +12,17 @@ public class En3_3 {
 	public static void main(String[] args) {
 		Scanner std = new Scanner(System.in);			//キーボードからの読み込みを行うプログラム
 
-		System.out.print("整数値：");					//整数値の入力を促す
-		int n = std.nextInt();							//入力された値を変数nに代入
+		System.out.print("値を入力してください：");					//符号判定用の数値の入力を促す
+		int number = std.nextInt();							//入力された値を変数numberに代入し、保持する
 
-		if(n > 0){										//もしnの値が1以上ならば
-			System.out.println("その値は正です。");		//1以上の場合の文を出力
-		}else if (n < 0){								//もしnの値が0未満ならば
-			System.out.println("その値は負です。");		//0未満の場合の文を出力
-		}else if(n == 0){											//上記2条件以外ならば
-			System.out.println("その値は0です。");		//2条件以外の場合の文を出力
+		if(number > 0){										//もしnumberの値が1以上ならば
+			System.out.println("その値は正です。");		//1以上は正の値なので正であるという判定文を出力
+
+		}else if (number < 0){								//もしnumberの値が0未満ならば
+			System.out.println("その値は負です。");		//0未満の値は負なので、負であるという判定を出力
+
+		}else if(number == 0){							//numberの値がゼロと等しいならばという条件
+			System.out.println("その値は0です。");		//numberの値はゼロであるという判定文を出力
 		}
 
 

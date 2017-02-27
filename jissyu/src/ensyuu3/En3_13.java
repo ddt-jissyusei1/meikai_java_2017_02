@@ -41,17 +41,29 @@ public class En3_13 {
 			mid = num4;
 		}
 
-		/*次にmidとmaxの値を比べる
-		 * もし、maxの値がmid以下だった場合、if文の中を実行する。
+		/*次にminとmaxの値を比べる
+		 * もし、maxの値がmin以下だった場合、if文の中を実行する。
+		 */
+		if(max <= min){
+			//minの値をnum4に移す。
+			num4 = min;
+			//minの値をmaxに移す。
+			min = max;
+			//num4の値（移す前のmaxの値）をmaxに移す。
+			max = num4;
+
+		}
+
+		/*最後にmidとmaxの値を比べる
+		 * もし、maxの値がmid以下だった場合、if文の中に実行する。
 		 */
 		if(max <= mid){
-			//maxの値をnum4に移す
-			num4 = max;
-			//midの値をmaxに移す
-			max = mid;
-			//num4の値（移す前のmaxの値）をmidに移す。
-			mid = num4;
-
+			//midの値をnum4に移す。
+			num4 = mid;
+			//maxの値をmidに移す。
+			mid = max;
+			//num4の値をmaxに移す。
+			max = num4;
 		}
 
 		//三つの値を昇順に並べなおした結果、中央の値を判定分とともに出力する。

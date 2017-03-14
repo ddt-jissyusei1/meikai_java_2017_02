@@ -32,6 +32,15 @@ public class En3_16 {
 		//三値が等しくなかった場合、入れ替えるため次のif文を実行
 		//(num1とnum2が等しくないもしくはnum2とnum3が等しくない場合)
 		if(num1 != num2 || num2 != num3){
+			//num1の値がnum3より大きかった場合、次のif文で二値を入れ替える
+			if(num1 > num3){
+				//予備の変数subにnum1の値を代入
+				sub = num1;
+				//num1にnum3の値を代入
+				num1 = num3;
+				//num3にsubの値を代入
+				num3 = sub;
+			}
 			//num1がnum2より大きい場合、次のif文で二値を入れ替える
 			if(num1 > num2){
 				//予備の変数subにnum1の値を代入
@@ -50,15 +59,7 @@ public class En3_16 {
 				//num3にsubの値を代入
 				num3 = sub;
 			}
-			//num1の値がnum3より大きかった場合、次のif文で二値を入れ替える
-			if(num1 > num3){
-				//予備の変数subにnum1の値を代入
-				sub = num1;
-				//num1にnum3の値を代入
-				num1 = num3;
-				//num3にsubの値を代入
-				num3 = sub;
-			}
+
 
 			//昇順にソートした結果を出力する
 			System.out.println("三つの値を昇順にソートしました\n" + num1 + "\n" + num2 + "\n" + num3);

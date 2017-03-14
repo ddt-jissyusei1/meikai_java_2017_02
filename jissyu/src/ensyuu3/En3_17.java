@@ -17,15 +17,15 @@ public class En3_17 {
 		//handの値でプログラムを分岐させる
 		switch(hand){
 			//handの値が0だった場合、"グー"と出力する
-			case 0 : System.out.println("グー");
+			case 0 : System.out.println(hand+":グー");
 			//分岐処理の実行を終了しプログラムの流れを抜ける
 			break;
 			//handの値が1だった場合、"チョキ"と出力する
-			case 1 : System.out.println("チョキ");
+			case 1 : System.out.println(hand+":チョキ");
 			//分岐処理の実行を終了しプログラムの流れを抜ける
 			break;
 			//handの値が2だった場合、"パー"と出力する
-			case 2 : System.out.println("パー");
+			case 2 : System.out.println(hand+":パー");
 			//分岐処理の実行を終了しプログラムの流れを抜ける
 
 		}

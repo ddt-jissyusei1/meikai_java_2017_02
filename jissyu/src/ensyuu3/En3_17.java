@@ -27,7 +27,7 @@ public class En3_17 {
 			//handの値が2だった場合、"パー"と出力する
 			case 2 : System.out.println(hand+":パー");
 			//分岐処理の実行を終了しプログラムの流れを抜ける
-
+			break;
 		}
 
 	}

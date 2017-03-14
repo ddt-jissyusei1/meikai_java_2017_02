@@ -39,7 +39,12 @@ public class En3_18 {
 			case 9 :
 			case 10 :
 			case 11 :	System.out.println(month + "月の季節は秋です。");
-
+						//分岐処理の流れをbreakで抜ける
+						break;
+			//1～12以外の数値が入力された場合、月ではありませんと出力する
+			default : System.out.println(month + "は月ではありません");
+						//分岐処理の流れをbreakで抜ける
+						break;
 		}
 	}
 

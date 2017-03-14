@@ -18,8 +18,8 @@ public class En3_18 {
 		//変数monthの値を分岐のための制御式とし、それを評価して分岐の処理を実行する。
 		switch(month){
 			//monthの値が1,2,12のどれかの場合、対応季節は冬と出力する。
-			case 1 :
-			case 2 :
+			case 1	:
+			case 2	:
 			case 12 :	System.out.println(month + "月の季節は冬です。");
 						//分岐処理の流れをbreakで抜ける
 						break;
@@ -42,7 +42,7 @@ public class En3_18 {
 						//分岐処理の流れをbreakで抜ける
 						break;
 			//1～12以外の数値が入力された場合、月ではありませんと出力する
-			default : System.out.println(month + "は月ではありません");
+			default :	System.out.println(month + "は月ではありません");
 						//分岐処理の流れをbreakで抜ける
 						break;
 		}

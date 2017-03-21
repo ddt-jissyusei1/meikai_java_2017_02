@@ -21,22 +21,22 @@ public class En4_7 {
 		outPutNumber = inputStream.nextInt();
 
 
-		int count = 0;				//繰り返し処理の制御のための変数countを用意し、0で初期化する
+		int count = 1;				//繰り返し処理の制御のための変数countを用意し、0で初期化する
 
 
 		//countの値がoutPutNumber以下の間、記号の出力を繰り返す
-		while(count < outPutNumber){
+		while(count <= outPutNumber){
 
 			//記号を交互に出力するために、countの剰余判定でif文の出力分岐処理を行う
 			//countの剰余が0だった場合の処理
 			if(count%2 == 0){
 				//剰余が0は偶数なので、偶数番目は+の記号を出力する
-				System.out.print(ASTERISK_CHAR);
+				System.out.print(PLUS_CHAR);
 
 			//countの剰余が1だった場合の処理
 			}else if(count%2 == 1){
 				//剰余が1は奇数なので、奇数番目は*の記号を出力する
-				System.out.print(PLUS_CHAR);
+				System.out.print(ASTERISK_CHAR);
 
 			}
 

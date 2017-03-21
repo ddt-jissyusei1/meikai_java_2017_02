@@ -42,13 +42,10 @@ public class En4_3 {
 			//minの値を出力するためのコード
 			System.out.print(min + " ");
 			//minの値から昇順に+1した数値を出力していくので、minの値に1加算するコード
-			min += 2;
+			min += 1;
 
-		//minの値がmaxと等しくない間（minの値がmaxと等しくなるまで）、minに1を加算しながら出力を繰り返す
+		//minの値がmaxと等しくなるまで、minに1を加算しながら出力を繰り返す
 		}while(min <= max);
-
-		//minの値がmaxと等しくなったとき最後にmaxの値を出力する
-		System.out.println(max);
 
 
 	}

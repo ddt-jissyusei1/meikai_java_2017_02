@@ -34,7 +34,7 @@ public class En4_3 {
 			//変数minにmaxの値を代入する
 			min = max;
 			//変数maxに変数subの値を代入する
-			max = min;
+			max = sub;
 		}
 
 		//二値の間の全整数をdo文で繰り返しながら昇順に出力する
@@ -42,10 +42,10 @@ public class En4_3 {
 			//minの値を出力するためのコード
 			System.out.print(min + " ");
 			//minの値から昇順に+1した数値を出力していくので、minの値に1加算するコード
-			min += 1;
+			min += 2;
 
 		//minの値がmaxと等しくない間（minの値がmaxと等しくなるまで）、minに1を加算しながら出力を繰り返す
-		}while(min != max);
+		}while(min <= max);
 
 		//minの値がmaxと等しくなったとき最後にmaxの値を出力する
 		System.out.println(max);

@@ -33,15 +33,16 @@ public class En4_5 {
 		//カウントを開始するcountDownの値が0より大きい間、ここのコードを繰り返す
 		while(countDown >= 0){
 
-			//countDownの値を出力する
-			System.out.println(countDown);
-			//countDownの値を出力したあとで、そこから1引いた値をcountDownに代入しなおす
+			//先にcountDownの値を出力してから、そこから1引いた値をcountDownに代入しなおす
 			//代入しなおした値が0未満であれば、countDown>= 0の制御式がfalseとなるため、繰り返しの処理を抜ける
-			countDown--;
+			System.out.println(countDown--);
+
+
 		}
 
 		//最終的にcountDownに入ってる値がいくつであるかを確認するためコンソールに出力する
-		System.out.println("変数countDownの最後の値は" + countDown + "です。\n");
+		//コメントアウトしました
+		//System.out.println("変数countDownの最後の値は" + countDown + "です。\n");
 
 
 
@@ -65,15 +66,16 @@ public class En4_5 {
 		//カウントを開始するcountDownの値が0より大きい間、ここのコードを繰り返す
 		while(countDown >= 0){
 
-			//countDownの値を出力する
-			System.out.println(countDown);
-			//countDownの値を出力したあとで、そこから1引いた値をcountDownに代入しなおす
+			//先にcountDownの値から１引いてから値を代入しなおして出力する
 			//代入しなおした値が0未満であれば、countDown>= 0の制御式がfalseとなるため、繰り返しの処理を抜ける
-			--countDown;
+			System.out.println(--countDown);
+
+
 		}
 
 		//最終的にcountDownに入ってる値がいくつであるかを確認するためコンソールに出力する
-		System.out.println("変数countDownの最後の値は" + countDown + "です。");
+		//コメントアウトしました
+		//System.out.println("変数countDownの最後の値は" + countDown + "です。");
 
 
 	}

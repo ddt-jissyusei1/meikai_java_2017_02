@@ -24,7 +24,8 @@ public class En4_6 {
 		int count = 0;						//繰り返し処理の制御のためのカウント変数を用意する
 
 		//入力された値が1未満の場合改行文字を出力しないための、柴田さんごり押し指示コード
-		if(numberOfAsterisk > 1){
+		//numberOfAsteriskの値が1以上の場合、if文ない処理を実行する
+		if(numberOfAsterisk >= 1){
 
 			//変数countの値が、numberOfAsteriskの値未満である間、*の出力を繰り返す
 			while(count < numberOfAsterisk){

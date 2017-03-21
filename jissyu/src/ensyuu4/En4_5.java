@@ -6,6 +6,7 @@ import java.util.Scanner;
  */
 
 public class En4_5 {
+	//後々変更しやすいよう、全体で使用する変数をここで宣言する
 	private static final String COUNT_DOWN_MESSAGE = "カウントダウンを開始します。\n好きな正数を入力してください:",
 			TEST_DECREMENT_AFTER = "※検証１：countDown--の場合\n",
 			TEST_DECREMENT_BEFORE = "※検証２：--countDownの場合\n";

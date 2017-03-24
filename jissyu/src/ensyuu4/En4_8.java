@@ -34,14 +34,16 @@ public class En4_8 {
 		//桁数を数えるために変数countを用意し、0で初期化する。
 		int count = 0;
 
-		//numberOfDigitsを10で割ったあまりが0以上の間、桁数を数える処理を繰り返す
-		while(numberOfDigits%10 > 0){
+		//桁数を数えるための繰り返し処理を必ず1回は実行するためにdo文で実行
+		do{
 			//10で割ることができた回数で桁数が判明するので、
 			//numberOfDigitsを10で割った値をnumberOfDigitsに代入しなおす
 			numberOfDigits = numberOfDigits/10;
 			//変数カウントの値を1増やす
 			count++;
-		}
+
+		//numberOfDigitsを10で割ったあまりが0以上の間、桁数を数える処理を繰り返す
+		}while(numberOfDigits%10 > 0);
 
 		//while文の処理を繰り返した回数が入力された値の桁数になるので、結果判定文として出力する
 		System.out.println("その値は" + count + "桁です。");

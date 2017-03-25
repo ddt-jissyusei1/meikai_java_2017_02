@@ -6,7 +6,7 @@ import java.util.Scanner;
  */
 
 public class En4_9 {
-	//後々変更しやすいよう、プリグラム全体で使用する変数を定数としてここで宣言する
+	//後々変更しやすいよう、プログラム全体で使用する変数を定数としてここで宣言する
 	private static final String INPUT_MESSAGE = "1からどこまでの積を求めますか？:";
 
 	public static void main(String[] args){
@@ -17,10 +17,10 @@ public class En4_9 {
 
 		//0以下の値が入力された場合、プログラムが止まらないよう整数値が入力されるまで繰り返し処理を使用
 		do{
-		//1から入力された値までの積を求めるために、整数値を入力してもらう
-		System.out.print(INPUT_MESSAGE);
-		//入力された値を変数multipyに代入する
-		maxNumber = inputStream.nextInt();
+			//1から入力された値までの積を求めるために、整数値を入力してもらう
+			System.out.print(INPUT_MESSAGE);
+			//入力された値を変数multipyに代入する
+			maxNumber = inputStream.nextInt();
 
 		//multipyの値が0以下の間、入力を促す文を出力する処理を繰り返す
 		}while(maxNumber <= 0);
@@ -39,7 +39,7 @@ public class En4_9 {
 			count++;
 		}
 
-		//countの値が入力された値と同じになったとき、繰り返し処理を抜け、1から入力された値までの積の結果を教える
+		//countの値が入力された値と同じになったとき、繰り返し処理を抜け、1から入力された値までの積の結果を出力する
 		System.out.println("1から" + maxNumber + "までの積は" + multipy);
 	}
 

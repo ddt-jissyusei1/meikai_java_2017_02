@@ -6,7 +6,7 @@ import java.util.Scanner;
  */
 
 public class En4_10 {
-	//後々変更しやすいよう、プログラム全体で使用する変数を定数としてここで宣言する
+	//*を表示する数を入力してもらうための質問文の定数
 	private static final String ASTERISK_AMOUNT_QUESTION = "何個*を表示しますか？：";
 
 	public static void main(String[] args) {
@@ -17,7 +17,8 @@ public class En4_10 {
 		System.out.print(ASTERISK_AMOUNT_QUESTION);
 		//入力された値を変数numberOfAsteriskに代入する
 		int numberOfAsterisk = inputStream.nextInt();
-
+		//*を表示するための個数の入力が終わったのでリソースを解放する
+		inputStream.close();
 
 		/*入力された値の数だけ*を表示するためにfor文で繰り返しコード
 		 *制御式で、カウント用の変数countを用意し0で初期化、countがnumberOfAsterisk未満の間for文を繰り返し、
@@ -26,7 +27,6 @@ public class En4_10 {
 		for(int count = 0; count < numberOfAsterisk; count++){
 			//countの値がnumberOfAsterisk未満の間、*を出力する
 			System.out.print('*');
-
 		}
 
 		/*numberOfAsteriskの値が1以上の場合のみ、改行文字を出力するようif条件式で囲む

@@ -6,8 +6,10 @@ import java.util.Scanner;
  */
 
 public class En4_6 {
-	//後々変更しやすいよう、プログラムの全体で使用する可能性のある変数をここで宣言する
-	private static final String ASTERISK = "*",QUESTION = "何個*を表示しますか？：";
+	//1以上の時に出力するための定数
+	private static final String ASTERISK = "*";
+	//表示する個数を入力してもらうための質問文の定数
+	private static final String QUESTION = "何個*を表示しますか？：";
 
 	//List4-7のプログラムを書き換える
 	public static void main(String[] args) {
@@ -20,20 +22,20 @@ public class En4_6 {
 		System.out.print(QUESTION);
 		//入力された値を変数numberOfAsteriskに代入する
 		numberOfAsterisk = inputStream.nextInt();
+		//表示する*の個数の入力が終わったので、開いてたリソースを解放する
+		inputStream.close();
 
 		int count = 0;						//繰り返し処理の制御のためのカウント変数を用意する
 
 		//入力された値が1未満の場合改行文字を出力しないための、柴田さんごり押し指示コード
-		//numberOfAsteriskの値が1以上の場合、if文ない処理を実行する
+		//numberOfAsteriskの値が1以上の場合、if文の処理を実行する
 		if(numberOfAsterisk >= 1){
-
 			//変数countの値が、numberOfAsteriskの値未満である間、*の出力を繰り返す
 			while(count < numberOfAsterisk){
 				//*をnumberOfAsteriskの値と同じになるまで出力される
 				System.out.print(ASTERISK);
 				//変数countの値を1増やし、もしnumberOfAsteriskと等しくなったときは、繰り返しコードを抜ける
 				count++;
-
 			}
 			//numberOfAsteriskが1以上の場合、改行が出力される
 			System.out.println();

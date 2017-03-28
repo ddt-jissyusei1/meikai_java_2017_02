@@ -6,9 +6,10 @@ import java.util.Scanner;
  */
 
 public class En4_8 {
-	//後々変更しやすいよう、プログラム全体で使用する変数を定数として宣言をしておく。
-	private static final String WHAT_TO_DO = "桁数を表示します。",
-			INPUT_MESSAGE = "1桁以上の整数値を入力してください。:";
+	//プログラムの説明をするための文
+	private static final String WHAT_TO_DO = "桁数を表示します。";
+	//桁数を出力のための整数値を入力してもらうための文
+	private static final String INPUT_MESSAGE = "1桁以上の整数値を入力してください。:";
 
 
 	public static void main(String[] args) {
@@ -27,9 +28,10 @@ public class En4_8 {
 			System.out.print(INPUT_MESSAGE);
 			//入力された値を変数numberOfDigitsに代入する
 			 numberOfDigits = inputStream.nextInt();
-
 		//numberOfDigitsの値が0以下の間繰り返されるという制御式
 		}while(numberOfDigits <= 0);
+		//桁数を表示するための整数値の入力が終わったので、リソースを解放する
+		inputStream.close();
 
 		//桁数を数えるために変数countを用意し、0で初期化する。
 		int count = 0;
@@ -42,7 +44,7 @@ public class En4_8 {
 			//変数カウントの値を1増やす
 			count++;
 
-		//numberOfDigitsの値が0以上の間、桁数を数える処理を繰り返す
+		//numberOfDigitsの値が1以上の間、桁数を数える処理を繰り返す
 		}while(numberOfDigits > 0);
 
 		//while文の処理を繰り返した回数が入力された値の桁数になるので、結果判定文として出力する

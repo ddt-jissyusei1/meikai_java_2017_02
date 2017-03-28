@@ -6,14 +6,14 @@ import java.util.Scanner;
  */
 
 public class En4_9 {
-	//後々変更しやすいよう、プログラム全体で使用する変数を定数としてここで宣言する
+	//1から階乗するための値を入力してもらうための文の定数
 	private static final String INPUT_MESSAGE = "1からどこまでの積を求めますか？:";
 
 	public static void main(String[] args){
 		//キーボードからの読み込みを行うためのプログラム
 		Scanner inputStream = new Scanner(System.in);
 
-		int maxNumber;			//入力された値を代入するための変数maxNumberを用意
+		int maxNumber;			//1から階乗するために入力された値を代入する変数maxNumberを用意
 
 		//0以下の値が入力された場合、プログラムが止まらないよう整数値が入力されるまで繰り返し処理を使用
 		do{
@@ -24,6 +24,8 @@ public class En4_9 {
 
 		//multipyの値が0以下の間、入力を促す文を出力する処理を繰り返す
 		}while(maxNumber <= 0);
+		//階乗のための値の入力が終わったのでリソースを解放する
+		inputStream.close();
 
 		int multipy = 1;			//順に積をした値を入れるための変数multipyを用意し1で初期化する
 		int count = 1;				//繰り返し処理を制御するための変数countを用意し、1から繰り返しを始めるため1で初期化
@@ -34,7 +36,6 @@ public class En4_9 {
 		while(count <= maxNumber){
 			//multipyにcountをかけた値をmultipyに代入する
 			multipy *= count;
-
 			//countの値を1増やす
 			count++;
 		}

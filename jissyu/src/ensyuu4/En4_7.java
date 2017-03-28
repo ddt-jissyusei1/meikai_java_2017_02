@@ -6,8 +6,8 @@ import java.util.Scanner;
  */
 
 public class En4_7 {
-	//後々変更しやすいよう、プログラム全体で使う変数をここで宣言
-	private static final char ASTERISK_CHAR = '*',PLUS_CHAR ='+';
+	private static final char ASTERISK_CHAR = '*';				//交互に出力するための一つ目の文字の定数
+	private static final char PLUS_CHAR ='+';					//交互に出力するための二つ目の文字の定数
 
 	public static void main(String[] args) {
 		//キーボードからの読み込みを行うためのプログラム
@@ -19,30 +19,25 @@ public class En4_7 {
 		System.out.print("記号をいくつ表示しますか？：");
 		//入力された値を変数outPutNumberに代入する
 		outPutNumber = inputStream.nextInt();
+		//表示する記号の数の入力が終わったので、開いていたリソースを解放する
+		inputStream.close();
 
+		int count = 0;				//繰り返し処理の制御のための変数countを用意し、0で初期化する
 
-		int count = 1;				//繰り返し処理の制御のための変数countを用意し、0で初期化する
-
-
-		//countの値がoutPutNumber以下の間、記号の出力を繰り返す
-		while(count <= outPutNumber){
-
+		//countの値がoutPutNumber未満の間、記号の出力を繰り返す
+		while(count < outPutNumber){
 			//記号を交互に出力するために、countの剰余判定でif文の出力分岐処理を行う
 			//countの剰余が0だった場合の処理
 			if(count%2 == 0){
-				//剰余が0は偶数なので、偶数番目は+の記号を出力する
-				System.out.print(PLUS_CHAR);
-
+				//剰余が0の時は*の記号を出力する
+				System.out.print(ASTERISK_CHAR);
 			//countの剰余が1だった場合の処理
 			}else if(count%2 == 1){
-				//剰余が1は奇数なので、奇数番目は*の記号を出力する
-				System.out.print(ASTERISK_CHAR);
-
+				//剰余が1の時は+の記号を出力する
+				System.out.print(PLUS_CHAR);
 			}
-
 			//countの値に1足して、もしoutPutNumberと同じ値であれば、繰り返し処理を抜ける
 			count++;
-
 		}
 
 	}

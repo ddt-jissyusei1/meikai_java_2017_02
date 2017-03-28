@@ -13,24 +13,26 @@ public class En4_10 {
 		//キーボードからの読み込みを行うためのプログラム
 		Scanner inputStream = new Scanner(System.in);
 
-		//繰り返し処理でいくで*を表示するか質問し、個数を入力してもらう
+		//繰り返し処理でいくつ*を表示するか質問し、個数を入力してもらう
 		System.out.print(ASTERISK_AMOUNT_QUESTION);
 		//入力された値を変数numberOfAsteriskに代入する
 		int numberOfAsterisk = inputStream.nextInt();
 
-		/*numberOfAsteriskの値が1未満であった場合、最後の改行文字を出力しないよう繰り返し文をif条件式で囲んで、1以上の時のみ繰り返し処理を実行する
-		*/
-		if(numberOfAsterisk >= 1){
-			//入力された値の数だけ*を表示するためにfor文で繰り返しコード
-			/*制御式で、カウント用の変数countを用意し0で初期化、countがnumberOfAsterisk未満の間for文を繰り返し、
-			 * ループを繰り返すごとにcountの値を1増やす
-			 */
-			for(int count = 0; count < numberOfAsterisk; count++){
-				//countの値がnumberOfAsterisk未満の間、*を出力する
-				System.out.print('*');
 
-			}
-			//numberOfAsteriskの値が1未満の場合ここの改行が出力されない
+		/*入力された値の数だけ*を表示するためにfor文で繰り返しコード
+		 *制御式で、カウント用の変数countを用意し0で初期化、countがnumberOfAsterisk未満の間for文を繰り返し、
+		 * ループを繰り返すごとにcountの値を1増やす
+		 */
+		for(int count = 0; count < numberOfAsterisk; count++){
+			//countの値がnumberOfAsterisk未満の間、*を出力する
+			System.out.print('*');
+
+		}
+
+		/*numberOfAsteriskの値が1以上の場合のみ、改行文字を出力するようif条件式で囲む
+		 */
+		if(numberOfAsterisk >= 1){
+			//numberOfAsteriskの値が1以上の場合ここの改行が出力される
 			System.out.println();
 		}
 	}

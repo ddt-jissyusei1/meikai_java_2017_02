@@ -7,7 +7,7 @@ import java.util.Scanner;
 
 public class En4_11 {
 	//カウントダウン開始を知らせるための定数
-	private static final String COUNT_DOWN = "カウントダウンします。";
+	private static final String COUNT_DOWN_MESSAGE = "カウントダウンします。";
 	//カウント開始する整数値を入力してもらうための定数
 	private static final String STARTING_NUMBER = "カウントを開始する正の整数値を入力してください：";
 
@@ -16,7 +16,7 @@ public class En4_11 {
 		Scanner inputStream = new Scanner(System.in);
 
 		//カウント開始を知らせる文を出力する
-		System.out.println(COUNT_DOWN);
+		System.out.println(COUNT_DOWN_MESSAGE);
 
 		int countStart;			//入力された値を代入するための変数countStartを用意する
 
@@ -44,7 +44,7 @@ public class En4_11 {
 		 * countStartの値が0以上の間、countStartの値の出力を繰り返し、繰り返し毎にcountStartの値を1引いていく制御式
 		 */
 		for(;countStart >= 0; countStart--){
-			//countStartの値を表示する
+			//繰り返し毎にデクリメントされたcountStartの値を表示する
 			System.out.println(countStart);
 		}
 	}

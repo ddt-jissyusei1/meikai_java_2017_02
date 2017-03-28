@@ -6,7 +6,7 @@ import java.util.Scanner;
  */
 public class En4_12 {
 	//カウントアップ開始を知らせるための定数
-	private static final String COUNT_UP = "カウントアップを開始します。";
+	private static final String COUNT_UP_MESSAGE = "カウントアップを開始します。";
 	//カウントアップを終了する値の入力を促す文の定数
 	private static final String COUNT_END ="0からカウントする正の整数値を入力してください：";
 
@@ -15,7 +15,7 @@ public class En4_12 {
 		Scanner inputStream = new Scanner(System.in);
 
 		//カウントアップ開始を知らせる文を出力する
-		System.out.println(COUNT_UP);
+		System.out.println(COUNT_UP_MESSAGE);
 
 		int countEndNumber;				//0からカウントアップする値を代入するための変数countEndNumberを用意する
 

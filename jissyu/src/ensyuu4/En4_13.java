@@ -1,14 +1,12 @@
 package ensyuu4;
 import java.util.Scanner;
 
-/*
- * 1から入力された値までの和を求めるList4-10(p.112)をfor文で実現せよ
- */
+// 1から入力された値までの和を求めるList4-10(p.112)をfor文で実現せよ
 
 public class En4_13 {
-	//積を求めるというプログラム説明文の定数
+	//和を求めるというプログラム説明文の定数
 	private static final String SUM_PROGRAM_MESSAGE = "1から入力された値までの和を求めます。";
-	//1からの積を求める整数の入力を促す文の定数
+	//1からの和を求める整数の入力を促す文の定数
 	private static final String INPUT_NUMBER_MESSAGE = "1からの積を求める正の整数値を入力してください:";
 
 	public static void main(String[] args) {
@@ -31,13 +29,10 @@ public class En4_13 {
 		//値の入力が終了したので開いていたリソースを閉じる
 		inputStream.close();
 
-		int sum = 0;					//1からの積の合計値を入れるための変数sumを用意し、0で初期化する
+		int sum = 0;					//1からの和の合計値を入れるための変数sumを用意し、0で初期化する
 		int count;						//1から入力された値までの和をカウントするための変数を用意する
 
-		/*ここから1から入力された値までの積を求める繰り返し処理
-		 * for文の初期化部でcountを0で初期化し、countの値がsumEndNumber以下の間処理を繰り返す
-		 * 繰り返し毎に積の処理後にcountの値を1インクリメントする
-		 */
+		//ここから1から入力された値までの和を求める繰り返し処理
 		for(count = 0; count <= sumEndNumber; count++){
 			//変数sumにcountの値を足して代入する
 			sum += count;

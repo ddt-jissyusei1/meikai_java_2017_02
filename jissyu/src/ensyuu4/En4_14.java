@@ -2,14 +2,14 @@ package ensyuu4;
 import java.util.Scanner;
 
 /*
- * 1から入力された値までの和を求めるプログラムで、積の式を表示するプログラムを作成せよ
+ * 1から入力された値までの和を求めるプログラムで、和の式を表示するプログラムを作成せよ
  */
 
 public class En4_14 {
 		//和を求めるというプログラム説明文の定数
 		private static final String SUM_PROGRAM_MESSAGE = "1から入力された値までの和を求めます。";
 		//1からの和を求める整数の入力を促す文の定数
-		private static final String INPUT_NUMBER_MESSAGE = "1からの積を求める正の整数値を入力してください:";
+		private static final String INPUT_NUMBER_MESSAGE = "1からの和を求める正の整数値を入力してください:";
 
 		public static void main(String[] args) {
 			//キーボードからの読み込みを行うためのプログラム

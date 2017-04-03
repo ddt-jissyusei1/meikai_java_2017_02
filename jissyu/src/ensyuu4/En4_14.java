@@ -44,11 +44,11 @@ public class En4_14 {
 				//もしcountの値がsumEndNumberと等しければ実行する
 				if(count == sumEndNumber){
 					//式の終わりとして=と合計値を出力する
-					System.out.print("=" + sum);
+					System.out.print(" = " + sum);
 				//上の条件式以外の場合elseを実行する
 				}else{
 					//+を出力する
-					System.out.print('+');
+					System.out.print(" + ");
 				}
 			}
 			//1から入力された値までの和が入っているsumの値を出力する

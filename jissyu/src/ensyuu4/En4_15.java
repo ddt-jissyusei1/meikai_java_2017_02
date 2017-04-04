@@ -15,6 +15,8 @@ public class En4_15 {
 	private static final String ENDING_HEIGHT_MESSAGE = "身長何cmまで表示しますか？：";
 	//増分を入力してもらうための文の定数
 	private static final String INCREMENT_HEIGHT_MESSAGE = "何cmごとに表示しますか？：";
+	//結果出力時の項目名のための定数
+	private static final String COLUMN_MESSAGE = "身長　標準体重";
 
 	public static void main(String[] args) {
 		//キーボードからの読み込みを行うためのプログラム
@@ -24,7 +26,7 @@ public class En4_15 {
 		System.out.println(PROGRAM_MESSAGE);
 
 		int startHeight = 0;					//開始する身長の値を代入するための変数startHeightを用意し、0で初期化する
-		int endHeight = 0;					//終了する身長の値を代入するための変数endHeightを用意し、0で初期化する
+		int endHeight = 0;						//終了する身長の値を代入するための変数endHeightを用意し、0で初期化する
 		int incrementHeight = 0;				//増分する間隔の値を代入するための変数incrementHeightを用意し、0で初期化する
 
 		//開始する身長の入力をしてもらう
@@ -62,19 +64,18 @@ public class En4_15 {
 		double standardWeight = 0;			//身長から計算した標準体重の値を代入するための変数standardWeightを用意し、0で初期化する
 
 		//身長と体重の項目名を出力する
-		System.out.println("身長　体重");
+		System.out.println(COLUMN_MESSAGE);
 
-		//ここから入力された値をもとに、身長と標準体重の対応表を出力していく
-		//繰り返し処理のためにcounter変数を初期化部で用意し0で初期化
-		//startHeightがendHeight以下の間処理を繰り返し、繰り返し毎にcounterを1インクリメントする
-		for(int counter = 0; startHeight <= endHeight; counter++){
+		//ここから入力された値をもとに、身長と標準体重の対応表をdo文で繰り返し出力していく
+		do{
 			//身長から標準体重の計算をして、standardWeightに代入する
 			standardWeight = (startHeight - 100) * 0.9;
 			//身長と計算結果の標準体重を出力する
-			System.out.println(startHeight + "   " + standardWeight);
+			System.out.println(startHeight + "     " + standardWeight);
 			//startHeightに増分の値であるincrementheightをプラスする
 			startHeight += incrementHeight;
-		}
+		//startHeightがendHeight以下の間処理を繰り返す
+		}while(startHeight <= endHeight);
 
 	}
 

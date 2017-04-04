@@ -11,7 +11,7 @@ public class En4_19 {
 	//求める季節の月の入力を促す文のための定数
 	private static final String INPUT_MONTH_MESSAGE = "求める季節の月を入力してください：";
 	//繰り返すをするかどうかの質問文のための定数
-	private static final String REPEAT_PROGRAM_MESSAGE ="もう一度やりますか？\n『はい』・・・１/『いいえ』・・・２：";
+	private static final String REPEAT_PROGRAM_MESSAGE ="もう一度実行する場合は1を、終了する場合は1以外を入力してください：";
 	//春という判定文を出力するための定数
 	private static final String IS_SPRING_MESSAGE = "その月は春です。";
 	//夏という判定文を出力するための定数

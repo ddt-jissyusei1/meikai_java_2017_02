@@ -12,6 +12,8 @@ public class En4_22 {
 	private static final String INPUT_ROWNUMBER_MESSAGE = "段数を入力してください：";
 	//出力する文字のための定数
 	private static final char OUTPUT_ASTERISK = '*';
+	//出力する空白のための定数
+	private static final char OUTPUT_SPACE = ' ';
 
 
 	public static void main(String[] args) {
@@ -45,11 +47,11 @@ public class En4_22 {
 			//row段目の列の空白を出力するためのループ
 			for(int line = 1;line < lineNumber; line++){
 				//ピラミッドの形にするため、先に空白を出力する
-				System.out.print(" ");
+				System.out.print(OUTPUT_SPACE);
 			}
 
 			//row段目の列の*を出力するためのループ
-			for(int i = 1;i <= outputAsteriskNumber; i++){
+			for(int numberOfAsterisk = 1;numberOfAsterisk <= outputAsteriskNumber; numberOfAsterisk++){
 				//(row - 1) * 2 +1個目の*を出力する
 				System.out.print(OUTPUT_ASTERISK);
 			}

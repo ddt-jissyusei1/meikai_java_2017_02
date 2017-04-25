@@ -61,7 +61,7 @@ public class En4_26 {
 		inputStream.close();
 
 		//加算数の平均を計算して出力する
-		System.out.println("\n入力された整数の平均は" + sumTotal/(loop - minusCount) + "です。");
+		System.out.println("\n入力された整数の平均は" + sumTotal/(sumNumber - minusCount) + "です。");
 
 
 	}

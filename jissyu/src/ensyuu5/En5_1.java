@@ -27,6 +27,8 @@ public class En5_1 {
 			inputNumber = inputStream.nextInt();
 		//inputNumberの値が0以下の間繰り返す
 		}while(inputNumber <= 0);
+		//値の入力が終わったので開いていたリソースを開放する
+		inputStream.close();
 
 		//入力された値の10進数と8進数を表示する
 		System.out.printf("8進数では%oです。\n16進数では%xです。", inputNumber,inputNumber);

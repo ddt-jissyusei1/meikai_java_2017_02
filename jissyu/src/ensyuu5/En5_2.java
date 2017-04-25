@@ -28,6 +28,9 @@ public class En5_2 {
 		//入力された同じ値を使用するため、numberFloatの値ををnumberDoubleに代入する
 		numberDouble = numberFloat;
 
+		//値の入力が終わったので開いていたリソースを開放する
+		inputStream.close();
+
 		//それぞれの浮動小数点型を表示する
 		System.out.println("float型は" + numberFloat + ",\ndouble型は" + numberDouble + "です。");
 	}

@@ -11,9 +11,9 @@ public class En6_1 {
 		//プログラムの説明文を出力する
 		System.out.println(PROGRAM_MESSAGE);
 
-		double[] arrayDouble = new double[5];				//double型で要素数5の配列を宣言する
+		double[] arrayDouble = new double[5];				//問題文に伴い、double型で要素数5の配列を宣言する
 
-		//繰り返し処理で、配列の長さだけ配列に値を代入する
+		//配列の要素を順に表示するために、繰り返し処理で配列の長さだけ値を代入し出力する
 		for(int loop = 0; loop < arrayDouble.length; loop++){
 			//配列に,loopに+1した値を代入する
 			arrayDouble[loop] = loop + 1;

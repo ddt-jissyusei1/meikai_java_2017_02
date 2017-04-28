@@ -56,7 +56,7 @@ public class En4_27 {
 				//正解判定文を出力する
 				System.out.println(CORRECT_MESSAGE);
 				//正解したのでループを抜けるためにプログラムを終了する
-				System.exit(0);
+				return;
 			}
 		//lifeNumberが0より大きい間繰り返す
 		}while(lifeNumber > 0);

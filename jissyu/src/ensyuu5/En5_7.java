@@ -7,14 +7,14 @@ public class En5_7 {
 	//プログラムの説明文のための定数
 	private static final String PROGRAM_MESSAGE = "0.0から1.0まで0.001おきに、その値と、その値の2乗を表示します。";
 	//ヘッダーを出力するための定数
-	private static final String HEADER_OUTPRINT = "  通常値        2乗値   \n-----------------------";
+	private static final String HEADER_OUT_PRINT = "  通常値        2乗値   \n-----------------------";
 
 	public static void main(String[] args) {
 		//プログラムの説明文を出力する
 		System.out.println(PROGRAM_MESSAGE);
 
 		//出力結果を見やすくするため、ヘッダーを出力する
-		System.out.println(HEADER_OUTPRINT);
+		System.out.println(HEADER_OUT_PRINT);
 
 		float doubleFloat = 0.0F;		//2乗した値を代入するための変数を用意し、0.0で初期化する
 

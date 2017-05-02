@@ -55,11 +55,11 @@ public class En6_4 {
 			for(int line = 0; line < arrayNumber; line++){
 				//縦向きの棒グラフを出力するための分岐処理
 				if(randomArrays[line] >= outputGraphicControlNumber){
-					//要素の値がmaxRandomNumber以上の場合、棒グラフの表示にするためにアスタリスクを出力する
+					//棒グラフの棒として表示するためのアスタリスクを出力する
 					System.out.print(OUTPUT_GRAPHIC_CHART_ASTERISK + " ");
 				//要素の値がmaxRandomNumber未満の場合
 				}else {
-					//棒グラフの表示にするために空白を出力する
+					//下段から伸びる棒グラフの形状のため、各行の段数未満の要素のところは空白を出力する
 					System.out.print(OUTPUT_GRAPHIC_CHART_SPACE + " ");
 				}
 			}
@@ -69,8 +69,11 @@ public class En6_4 {
 			outputGraphicControlNumber--;
 		}
 
+		//繰り返し処理で使用するために、配列の長さを別変数に代入する
+		int arrayLength = randomArrays.length;
+
 		//グラフの罫線を要素数の長さだけ出力するためのコード
-		for(int lineLoop = 0; lineLoop < randomArrays.length; lineLoop++){
+		for(int lineLoop = 0; lineLoop < arrayLength; lineLoop++){
 			//罫線を表示するための文字を出力する
 			System.out.print(OUTPUT_GRAPHIC_CHART_LINE);
 		}
@@ -79,7 +82,7 @@ public class En6_4 {
 		System.out.println();
 
 		//グラフの最下段を表示するためのコード
-		for(int indexLoop = 0; indexLoop < randomArrays.length; indexLoop++){
+		for(int indexLoop = 0; indexLoop < arrayLength; indexLoop++){
 			//インデックスを表示するための出力
 			System.out.print(indexLoop%10 + " ");
 		}

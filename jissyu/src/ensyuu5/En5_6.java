@@ -32,7 +32,6 @@ public class En5_6 {
 			sumInt++;
 		}
 
-
 	}
 
 }

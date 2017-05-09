@@ -43,13 +43,15 @@ public class En6_6 {
 		//値の入力が終わったので開いていたリソースを開放する
 		inputStream.close();
 
-		averageTestScore = (sumTestScore/peopleNumbersTest);//人数と合計点が判明しているので、平均点を計算してavarageTestScoreに代入する
+		//人数と合計点が判明しているので、平均点を計算してavarageTestScoreに代入する
+		averageTestScore = (sumTestScore/peopleNumbersTest);
 
+		int arrayLength = testScores.length;				//配列の長さを繰り返し処理で使用するため、別変数に代入する
 		int maxTestScore = testScores[0];					//最高点を代入するための変数を用意し、testScores[0]の要素で初期化する
 		int minTestScore = testScores[0];					//最低点を代入するための変数を用意し、testScores[0]の要素で初期化する
 
 		//配列要素の最大値を求めるための繰り返し処理
-		for(int maxScoreLoop = 1; maxScoreLoop < testScores.length; maxScoreLoop++){
+		for(int maxScoreLoop = 0; maxScoreLoop < arrayLength; maxScoreLoop++){
 			//最大値を求めるために、配列の要素とmaxTestScoreの値を比較する
 			if(testScores[maxScoreLoop] > maxTestScore){
 				//testScores[maxScoreLoop]の値のほうが大きければ、maxTestScoreに代入する
@@ -58,7 +60,7 @@ public class En6_6 {
 		}
 
 		//配列要素の最小値を求めるための繰り返し処理
-		for(int minScoreLoop = 1; minScoreLoop < testScores.length; minScoreLoop++){
+		for(int minScoreLoop = 0; minScoreLoop < arrayLength; minScoreLoop++){
 			//最小値を求めるために、配列の要素とminTestScoreの値を比較する
 			if(testScores[minScoreLoop] < minTestScore){
 				//testScores[minScoreLoop]の値のほうが小さければ、minTestScoreに代入する

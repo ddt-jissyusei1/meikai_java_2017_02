@@ -40,11 +40,13 @@ public class En6_5 {
 		//値の入力が終わったので、開いていたリソースを開放する
 		inputStream.close();
 
+		int arrayLength = arrayNumbers.length;				//配列の長さを繰り返し処理で使用するため、別に用意した変数に代入する
+
 		//ここから各要素の値を表示するためのコード
 		//文の先頭を出力する
 		System.out.print("arrayNumbers = {");
 		//各要素の値を繰り返し処理で先頭文の後ろに出力する
-		for(int outputLoop = 0; outputLoop < arrayNumbers.length; outputLoop++){
+		for(int outputLoop = 0; outputLoop < arrayLength; outputLoop++){
 			//要素を出力する
 			System.out.print(arrayNumbers[outputLoop]);
 			//全要素出力後、｝を出力するための分岐処理

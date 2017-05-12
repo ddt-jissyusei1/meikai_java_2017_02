@@ -14,7 +14,7 @@ public class En6_9 {
 
 	public static void main(String[] args) {
 		//キーボードからの読み込みを行うためのプログラム
-		Scanner inputStream = new Scanner(System.in);
+		Scanner inputNumberStream = new Scanner(System.in);
 		//乱数を生成するためのプログラム
 		Random randomNumber = new Random();
 
@@ -24,10 +24,10 @@ public class En6_9 {
 		//要素数を入力してもらうための文を出力する
 		System.out.print(INPUT_ARRAY_NUMBER);
 		//入力された値の配列を作成するための変数に代入する
-		int arrayNumber = inputStream.nextInt();
+		int arrayNumber = inputNumberStream.nextInt();
 
 		//値の入力が終わったので、開いていたリソースを開放する
-		inputStream.close();
+		inputNumberStream.close();
 
 		int[] arrayRandomNumbers = new int[arrayNumber];		//入力された値の要素数の配列を宣言する
 		int arrayLength = arrayRandomNumbers.length;			//ループ処理で使用するため、配列の長さを変数に代入する

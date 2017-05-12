@@ -15,10 +15,12 @@ public class En6_7 {
 	private static final String OUTPUT_ALL_ARRAY_MESSAGE = "配列linearArraysの全要素の値は";
 	//要素数のための定数
 	private static final int ARRAY_NUMBERS = 12;
+	//探索失敗の出力文のための定数
+	private static final String OUTPUT_FAIL_SEARCH_MESSAGE = "キー値は見つかりませんでした。";
 
 	public static void main(String[] args) {
 		//キーボードからの読み込みを行うためのプログラム
-		Scanner inputStream = new Scanner(System.in);
+		Scanner inputNumberStream = new Scanner(System.in);
 		//乱数を生成するためのプログラム
 		Random randomNumber  = new Random();
 
@@ -46,15 +48,17 @@ public class En6_7 {
 		//探索するキー値を入力してもらうための文を出力する
 		System.out.print(INPUT_SEARCH_KEY_NUMBER_MESSAGE);
 		//入力された値を探索キー値とするため、変数に代入する
-		int searchKeyNumber = inputStream.nextInt();
+		int searchKeyNumber = inputNumberStream.nextInt();
 
 		//値の入力が終わったので開いていたリソースを開放する
-		inputStream.close();
+		inputNumberStream.close();
 
 		//ここから線形探索するためのコード
 
-		int searchLoop;										//探索するループと結果を出力する条件文で共通に使用するためのループ用変数
-		int loopDecrementNumber = ARRAY_NUMBERS-1;			//配列の最後から探索するため、要素数から1引いた値を代入する
+		//探索するループと結果を出力する条件文で共通に使用するためのループ用変数
+		int searchLoop;
+		//配列の最後から探索するため、要素数から1引いた値を代入する
+		int loopDecrementNumber = ARRAY_NUMBERS-1;
 
 		//入力されたキー値を配列から探すためのループ
 		for(searchLoop = 0; searchLoop <= loopDecrementNumber; loopDecrementNumber--){
@@ -72,7 +76,7 @@ public class En6_7 {
 		//キー値が配列になかった場合の分岐
 		}else {
 			//なかった場合に出力するための文
-			System.out.println("キー値は見つかりませんでした。");
+			System.out.println(OUTPUT_FAIL_SEARCH_MESSAGE);
 		}
 	}
 

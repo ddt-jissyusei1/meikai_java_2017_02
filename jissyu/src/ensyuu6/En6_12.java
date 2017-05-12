@@ -43,9 +43,6 @@ public class En6_12 {
 			System.out.printf(OUTPUT_RESULT_FORMAT, inputRandomNumberLoop, arrayShuffles[inputRandomNumberLoop]);
 		}
 
-		//要素の並びをシャッフルするプログラムを実行したと伝えるための文を出力する
-		System.out.println(OUTPUT_SHUFFLE_MESSAGE);
-
 		//ここから要素の並びをシャッフルするためのコード
 
 		//配列の長さだけ要素を入れ変えるための繰り返し処理
@@ -59,6 +56,9 @@ public class En6_12 {
 			//仮変数の値を入れ替え元に代入する
 			arrayShuffles[elementShuffleLoop] = subShuffleNumber;
 		}
+
+		//要素の並びをシャッフルするプログラムを実行したと伝えるための文を出力する
+		System.out.println(OUTPUT_SHUFFLE_MESSAGE);
 
 		//要素の並びのシャッフル結果を出力するための繰り返し処理
 		for(int inputRandomNumberLoop = 0; inputRandomNumberLoop < arrayLength; inputRandomNumberLoop++){

@@ -15,7 +15,7 @@ public class En6_8 {
 
 	public static void main(String[] args) {
 		//キーボードからの読み込みを行うためのプログラム
-		Scanner inputStream = new Scanner(System.in);
+		Scanner inputNumberStream = new Scanner(System.in);
 
 		//プログラムの説明文を出力する
 		System.out.println(PROGRAM_MESSAGE);
@@ -23,11 +23,14 @@ public class En6_8 {
 		//配列の要素の入力を促すための文
 		System.out.print(INPUT_ARRAY_NUMBER_MESSAGE);
 		//入力された値の配列を宣言するための変数に代入する
-		int arrayNumbers = inputStream.nextInt();
+		int arrayNumbers = inputNumberStream.nextInt();
 
-		double[] doubleArrays = new double[arrayNumbers];		//合計と平均を求めるための、入力された要素数の配列を宣言する
-		int arrayLength = doubleArrays.length;						//ループで使用するための、配列の長さで初期化した変数
-		double sumNumber = 0;										//要素の合計値を代入すための変数
+		//合計と平均を求めるための、入力された要素数の配列を宣言する
+		double[] doubleArrays = new double[arrayNumbers];
+		//ループで使用するための、配列の長さで初期化した変数
+		int arrayLength = doubleArrays.length;
+		//要素の合計値を代入すための変数
+		double sumNumber = 0;
 
 		//要素の値を入力してもらうための文を出力する
 		System.out.println(INPUT_DOUBLE_ARRAY_NUMBERS_MESSAGE);
@@ -36,12 +39,12 @@ public class En6_8 {
 			//代入する要素を把握するための文を出力する
 			System.out.print("doubleArrays[" + inputLoop + "] = ");
 			//要素に値を代入するためのコード
-			doubleArrays[inputLoop] = inputStream.nextDouble();
+			doubleArrays[inputLoop] = inputNumberStream.nextDouble();
 			//合計値を計算するために、sumNumberに入力された値を加算して代入する
 			sumNumber += doubleArrays[inputLoop];
 		}
 		//値の入力が終わったので開いていたリソースを開放する
-		inputStream.close();
+		inputNumberStream.close();
 
 		double arraysAverageNumber = sumNumber/arrayNumbers;		//全要素の平均を代入するための変数
 

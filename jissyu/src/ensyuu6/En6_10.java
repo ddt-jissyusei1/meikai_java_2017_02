@@ -14,7 +14,7 @@ public class En6_10 {
 
 	public static void main(String[] args) {
 		//キーボードからの読み込みを行うためのプログラム
-		Scanner inputStream = new Scanner(System.in);
+		Scanner inputNumberStream = new Scanner(System.in);
 		//乱数を生成するためのプログラム
 		Random randomNumber = new Random();
 
@@ -24,10 +24,10 @@ public class En6_10 {
 		//要素数を入力してもらうための文を出力する
 		System.out.print(INPUT_ARRAY_NUMBER_MESSAGE);
 		//入力された値の要素数の配列を作成するため、変数に代入する
-		int arrayNumber = inputStream.nextInt();
+		int arrayNumber = inputNumberStream.nextInt();
 
 		//値の入力が終わったので、開いていたリソースを開放する
-		inputStream.close();
+		inputNumberStream.close();
 
 		int[] arrayRandomNumbers = new int[arrayNumber];		//入力された値の要素数の配列を宣言する
 		int arrayLength = arrayRandomNumbers.length;			//ループで使用するための配列の長さの変数
@@ -42,10 +42,12 @@ public class En6_10 {
 				//同じ要素だった場合、再度乱数生成して代入する
 				arrayRandomNumbers[inputRandomNumberLoop] = randomNumber.nextInt(10)+1;
 			//配列の要素数が0以上かつ連続した要素が同じだった場合繰り返すための条件文
-			}while(inputRandomNumberLoop > 0 && arrayRandomNumbers[inputRandomNumberLoop] == arrayRandomNumbers[inputRandomNumberLoop-1]);
+			}while(inputRandomNumberLoop > 0 && arrayRandomNumbers[inputRandomNumberLoop]
+																	== arrayRandomNumbers[inputRandomNumberLoop-1]);
 
 			//代入された要素の値を表示するためのコード
-			System.out.println("arrayRandomNumbers[" + inputRandomNumberLoop + "] = " + arrayRandomNumbers[inputRandomNumberLoop]);
+			System.out.println("arrayRandomNumbers[" + inputRandomNumberLoop + "] = "
+																	+ arrayRandomNumbers[inputRandomNumberLoop]);
 		}
 
 	}

@@ -43,19 +43,16 @@ public class En6_14 {
 
 		int month = 0;										//出題する月の値を代入するための変数
 		int sameNumberCheck = 0;							//乱数が連続して同じ数値にならないよう比較するための変数
+		int repeatProgram;								//出題を繰り返す判定のための定数
 
 		//学習者が望む限りプログラムを繰り返せるための繰り返し処理
-		while (true){
+		do{
 			//連続して同じ月が出題されないようにするための繰り返し処理
-			while(true){
+			do{
 				//乱数を生成して変数に代入する
 				month = randomNumber.nextInt(11)+1;
-				//前問と同じ月かどうか判定するための条件文
-				if(month != sameNumberCheck){
-					//乱数を生成する繰り返し処理から抜けるためのbreak文
-					break;
-				}
-			}
+			//monthの値がsameNumberCheckと同じ間繰り返すための条件文
+			}while(month == sameNumberCheck);
 
 			//次の出題で連続した月かどうかの判定のために、monthの値を変数に代入する
 			sameNumberCheck = month;
@@ -81,14 +78,11 @@ public class En6_14 {
 			//プログラムの繰り返しの可否を聞くための文を出力するためのコード
 			System.out.print(REPEAT_QUESTION_MESSAGE);
 			//入力された値を繰り返し判定のための変数に代入する
-			int repeatProgram = inputAnswerStream.nextInt();
+			repeatProgram = inputAnswerStream.nextInt();
 
-			//繰り返しの可否の判定のための条件文
-			if(repeatProgram == 0){
-				//プログラムを終了するため、出題を繰り返す処理から抜け出すためのbreak文
-				break;
-			}
-		}
+		//repeatProgramの値が1である間、出題を繰り返すための条件文
+		}while(repeatProgram == 1);
+
 		//値の入力が終了したので、開いていたリソースを開放する
 		inputAnswerStream.close();
 

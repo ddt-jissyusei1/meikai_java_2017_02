@@ -49,7 +49,7 @@ public class En6_13 {
 		//ここから配列copyArrayTwoに逆順にコピーするコード
 
 		//プログラムを実行するという周知文を出力する
-				System.out.println(OUTPUT_RESULT_MESSAGE);
+		System.out.println(OUTPUT_RESULT_MESSAGE);
 
 		//copyArrayOneを降順で参照していくために、要素数から1引いた値を変数に代入する
 		int copyArrayOneElement = arrayNumber-1;

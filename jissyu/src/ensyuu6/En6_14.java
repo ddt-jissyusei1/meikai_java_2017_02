@@ -64,17 +64,15 @@ public class En6_14 {
 				System.out.printf(OUTPUT_QUESTION_STRING,month);
 				//入力された文字列を正解変数に代入する
 				answerMonth = inputAnswerStream.next();
-
-				//正解判定のための条件式
-				//if(answerMonth.equals(englishMonthString[month-1])){
-					//正解したと通知するための文を出力する
-					//System.out.println(CORRECT_ANSWER_MESSAGE);
-					//正解するまで出力を続けるループ処理を抜けるためのbreak文
-					//break;
-				//}
+				//不正解だった場合の条件式
+				if(!answerMonth.equals(englishMonthString[month-1])){
 				//不正解だった場合出力文
 				System.out.println(WRONG_ANSWER_MESSAGE);
+				}
 			}while(!answerMonth.equals(englishMonthString[month-1]));
+
+			//正解したと通知するための文を出力する
+			System.out.println(CORRECT_ANSWER_MESSAGE);
 
 			//プログラムの繰り返しの可否を聞くための文を出力するためのコード
 			System.out.print(REPEAT_QUESTION_MESSAGE);

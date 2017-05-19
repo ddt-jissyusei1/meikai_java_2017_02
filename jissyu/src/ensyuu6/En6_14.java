@@ -44,6 +44,7 @@ public class En6_14 {
 		int month = 0;										//出題する月の値を代入するための変数
 		int sameNumberCheck = 0;							//乱数が連続して同じ数値にならないよう比較するための変数
 		int repeatProgram;								//出題を繰り返す判定のための定数
+		String answerMonth;								//解答を代入するための変数
 
 		//学習者が望む限りプログラムを繰り返せるための繰り返し処理
 		do{
@@ -58,22 +59,22 @@ public class En6_14 {
 			sameNumberCheck = month;
 
 			//正解するまで問題を出力するためのループ処理
-			while(true){
+			do{
 				//生成した問題を出題するためのコード
 				System.out.printf(OUTPUT_QUESTION_STRING,month);
 				//入力された文字列を正解変数に代入する
-				String answerMonth = inputAnswerStream.next();
+				answerMonth = inputAnswerStream.next();
 
 				//正解判定のための条件式
-				if(answerMonth.equals(englishMonthString[month-1])){
+				//if(answerMonth.equals(englishMonthString[month-1])){
 					//正解したと通知するための文を出力する
-					System.out.println(CORRECT_ANSWER_MESSAGE);
+					//System.out.println(CORRECT_ANSWER_MESSAGE);
 					//正解するまで出力を続けるループ処理を抜けるためのbreak文
-					break;
-				}
+					//break;
+				//}
 				//不正解だった場合出力文
 				System.out.println(WRONG_ANSWER_MESSAGE);
-			}
+			}while(!answerMonth.equals(englishMonthString[month-1]));
 
 			//プログラムの繰り返しの可否を聞くための文を出力するためのコード
 			System.out.print(REPEAT_QUESTION_MESSAGE);

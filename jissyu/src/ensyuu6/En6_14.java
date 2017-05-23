@@ -69,6 +69,7 @@ public class En6_14 {
 				//不正解だった場合出力文
 				System.out.println(WRONG_ANSWER_MESSAGE);
 				}
+			//入力された値が正解の値と等しくない間出題を繰り返すための条件文
 			}while(!answerMonth.equals(englishMonthString[month-1]));
 
 			//正解したと通知するための文を出力する

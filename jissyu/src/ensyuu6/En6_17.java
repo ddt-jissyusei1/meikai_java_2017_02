@@ -12,9 +12,9 @@ public class En6_17 {
 	//数学の点数の入力を促す文のための定数
 	private static final String INPUT_MATH_SCORE_MESSAGE = "\n数学の点数を入力してください。";
 	//国語の平均点の文のための定数
-	private static final String JAPANESE_AVERAGE_MESSAGE = "国語の平均点は%dです。";
+	private static final String JAPANESE_AVERAGE_MESSAGE = "国語の平均点は%2.1fです。";
 	//数学の平均点の文のための定数
-	private static final String MATH_AVERAGE_MESSAGE = "\n数学の平均点は%dです。";
+	private static final String MATH_AVERAGE_MESSAGE = "\n数学の平均点は%2.1fです。";
 	//学生ごとの平均点の文のための定数
 	private static final String STUDENTS_AVERAGE_MESSAGE = "\n\n学生ごとの平均点は";
 	//配列の行数（科目数）のための定数
@@ -60,8 +60,8 @@ public class En6_17 {
 		//値の入力が終わったので、開いていたリソースを開放する
 		inputScoreStream.close();
 
-		int subjectsAverage;				//科目ごとの平均点を代入するための変数
-		int studentsAverage;				//学生事の平均点を代入するための変数
+		float subjectsAverage;				//科目ごとの平均点を代入するための変数
+		float studentsAverage;				//学生事の平均点を代入するための変数
 
 		//科目ごとの平均点を計算し出力するための繰り返し処理
 		for(arrayRowLoop = 0; arrayRowLoop < SUBJECTS_NUMBER; arrayRowLoop++){

@@ -76,6 +76,7 @@ public class En6_19 {
 		System.out.print(OUTPUT_RESULT_HEADER);
 
 		int allClassSum = 0;          //全クラスの合計点のための変数
+		float averageSum = 0;			//各クラスの平均点の合計のための点数
 		float allClassAverage = 0;   //全クラスの平均点のための変数
 
 		//各クラスの合計と平均を計算し出力する繰り返し処理
@@ -94,8 +95,10 @@ public class En6_19 {
 
 			//全クラスの合計点を計算するために、各クラスの合計点を変数に加算代入する
 			allClassSum += classScoreSum;
+			//全クラスの平均点を計算するために、各クラスの平均点を変数に加算代入する
+			averageSum += classScoreAverage;
 			//全クラスの平均点を計算し、変数に代入する
-			allClassAverage = (float)allClassSum/classNumber;
+			allClassAverage = (float)averageSum/classNumber;
 		}
 		//結果表示の文末のための出力
 		System.out.printf(OUTPUT_RESULT_FOOTER, allClassSum, allClassAverage);

@@ -24,7 +24,6 @@ public class En7_1 {
 
 		int numberToJudge = 0;		//正負判定する値のための変数
 
-
 		//プログラムの説明のための出力
 		System.out.println(PROGRAM_MESSAGE);
 
@@ -59,6 +58,7 @@ public class En7_1 {
 			//メインメソッドに0を返す
 			resultNumber = ZERO_JUDGE_NUMBER;
 		}
+		//判定結果の値をメインメソッドに返すためのreturn文
 		return resultNumber;
 	}
 

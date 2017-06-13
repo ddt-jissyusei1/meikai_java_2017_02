@@ -6,7 +6,7 @@ import java.util.Scanner;
  */
 public class En7_2 {
 	//プログラムの説明文のための定数
-	private static final String PROGRAM_MESSAGE = "三つの整数の最小値を求めす、";
+	private static final String PROGRAM_MESSAGE = "三つの整数の最小値を求めます、";
 	//値の入力を促す文のための定数
 	private static final String INPUT_NUMBER_MESSAGE = "\n三つの整数を入力してください。";
 	//一つ目の整数の入力文のための定数

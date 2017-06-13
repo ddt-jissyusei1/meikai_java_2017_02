@@ -10,9 +10,9 @@ public class En7_11 {
 	//検証する数値とシフトする数を表示する文のための定数
 	private static final String OUTPUT_USING_NUMBER = "シフトする整数：%d\nシフトする数：%d";
 	//右にシフトする文のための定数
-	private static final String RIGHT_SHIFT_MESSAGE = "\n\n右にシフトした値：%d == %d/%d";
+	private static final String RIGHT_SHIFT_MESSAGE = "\n\n右に%dシフトした値は%dで、%d/%d（2のべき乗）と等しい";
 	//左にシフトする文のための定数
-	private static final String LEFT_SHIFT_MESSAGE = "\n左にシフトした値：%d == %d*%d";
+	private static final String LEFT_SHIFT_MESSAGE = "\n左に%dシフトした値は%dで、%d*%d（2のべき乗）と等しい";
 	//検証用の整数の定数
 	private static final int SHIFT_NUMBER = 2;
 	//整数をシフトする数のための定数
@@ -43,13 +43,13 @@ public class En7_11 {
 		//右にシフトした値が2のべき乗での除算と等しい場合に出力するための条件分岐
 		if(shiftRightResult == SHIFT_NUMBER/SHIFT_NUMBER){
 			//右にシフトした値の確認のための出力
-			System.out.printf(RIGHT_SHIFT_MESSAGE, shiftRightResult, SHIFT_NUMBER,SHIFT_NUMBER);
+			System.out.printf(RIGHT_SHIFT_MESSAGE, SHIFT_BIT_NUMBER,shiftRightResult, SHIFT_NUMBER,SHIFT_NUMBER);
 		}
 
 		//左にシフトした値が2のべき乗での乗算と等しい場合に出力するための条件分岐
 		if(shiftLeftResult == SHIFT_NUMBER*SHIFT_NUMBER){
 			//左にシフトした値の確認のための出力
-			System.out.printf(LEFT_SHIFT_MESSAGE, shiftLeftResult, SHIFT_NUMBER, SHIFT_NUMBER);
+			System.out.printf(LEFT_SHIFT_MESSAGE, SHIFT_BIT_NUMBER, shiftLeftResult, SHIFT_NUMBER, SHIFT_NUMBER);
 		}
 
 	}

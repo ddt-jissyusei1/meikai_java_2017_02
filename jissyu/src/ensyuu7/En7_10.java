@@ -26,6 +26,10 @@ public class En7_10 {
 	private static final String WRONG_ANSWER_MESSAGE = "不正解です。";
 	//プログラムの繰り返しの可否の入力を促す文のための定数
 	private static final String OUTPUT_REPEAT_PROGRAM = "もう一度やりますか？<Yes・・・1/No・・・0>：";
+	//生成する乱数の範囲のための定数
+	private static final int RANDOM_RANGE_NUMBER = 900;
+	//生成する乱数の下限値のための定数
+	private static final int RANDOM_LOWER_LIMIT = 100;
 
 	//キーボードからの入力ストリームを読み込むためのプログラムをスコープの関係でここに記述する
 	static Scanner inputNumberStream = new Scanner(System.in);
@@ -46,11 +50,11 @@ public class En7_10 {
 		//出題を続けるための繰り返し処理
 		do{
 			//乱数を生成して出題する式に表示するための一つ目の変数に代入する
-			int firstMathNumber = randomNumber.nextInt(900) + 100;
+			int firstMathNumber = randomNumber.nextInt(RANDOM_RANGE_NUMBER) + RANDOM_LOWER_LIMIT;
 			//乱数を生成して出題する式に表示するための二つ目の変数に代入する
-			int secondMathNumber = randomNumber.nextInt(900) + 100;
+			int secondMathNumber = randomNumber.nextInt(RANDOM_RANGE_NUMBER) + RANDOM_LOWER_LIMIT;
 			//乱数を生成して出題する式に表示するための三つ目の変数に代入する
-			int thirdMathNumber = randomNumber.nextInt(900) + 100;
+			int thirdMathNumber = randomNumber.nextInt(RANDOM_RANGE_NUMBER) + RANDOM_LOWER_LIMIT;
 
 			//出題する問題を決定するための乱数の生成
 			int questionNumber = randomNumber.nextInt(4);

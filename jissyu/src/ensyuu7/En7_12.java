@@ -74,25 +74,6 @@ public class En7_12 {
 		//連続した表示にならないようにするための改行の出力
 		System.out.println("\n");
 
-		/*左右にシフトしたビットの位置確認のためのデバッグ用コード
-		 *
-		//右シフトのビットを確認表示するための繰り返し
-		for(int printBits = 31; printBits >= 0; printBits--){
-			//値のビットを確認表示するための出力
-			System.out.print(((rightRotateResult >>> printBits & 1) == 1) ? '1' : '0');
-		}
-		//連続した表示にならないようにするための改行の出力
-		System.out.println();
-
-		//左シフトのビットを確認表示するための繰り返し
-		for(int printBits = 31; printBits >= 0; printBits--){
-			//値のビットを確認表示するための出力
-			System.out.print(((rotateCompareNumber >>> printBits & 1) == 1) ? '1' : '0');
-		}
-		//連続した表示にならないようにするための改行の出力
-		System.out.println();
-		 */
-
 		//左右にシフトしたビットの論理和のための変数
 		int resultRightBits = rightRotateResult|rotateRightCompareNumber;
 

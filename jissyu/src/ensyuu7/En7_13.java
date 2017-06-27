@@ -79,15 +79,12 @@ public class En7_13 {
 	//入力された整数の指定されたビット目を1に変換するためのメソッド
 	private static int set(int numberChange, int posBitNumber){
 		int shiftedNumber = 0;		//整数をシフトした値のための変数
-		int reShiftNumber = 0;		//posBitNumber目を変換後、シフト前の並びに戻した値のための変数
 		int setResult = 0;				//1に変換した結果のための変数
 
-		//posBitNumber目のを1に変換するための右シフト
-		shiftedNumber = numberChange >>> posBitNumber | 1;
-		//posBitNumber目を1に変換したビットを、シフト前の並びに戻すための左シフト
-		reShiftNumber = shiftedNumber << posBitNumber;
-		//シフト前とビット変換後のビットを論理和した結果をメインメソッド返却用の変数に代入するためのコード
-		setResult = numberChange | reShiftNumber;
+		//posBitNumber目を1に変換するための1の左シフト
+		shiftedNumber = 1 << posBitNumber;
+		//posBitNumber目を1に変換するための論理和
+		setResult = numberChange | shiftedNumber;
 
 		//結果の値をメインメソッドに返却するためのreturn文
 		return setResult;
@@ -109,26 +106,31 @@ public class En7_13 {
 
 	//入力された整数の指定されたビット目を反転するためのメソッド
 	private static int inverse(int numberChange, int posBitNumber){
-		int inverseShiftNumber = 0;	//整数をシフトした値のための変数
-		int inverseReshiftNumber = 0;//posBitNumber目を反転後、シフト前の並びに戻した値のための変数
+		int inverseShiftNumber = 0;	//1をシフトした値のための変数
 		int inverseResult = 0;		//反転した結果のための変数
 
-		//posBitNumber目を反転する判定のための条件分岐
-		//右シフトした最下位ビットが1の場合のための実行文
-		if((numberChange >>> posBitNumber & 1) == 1){
-			//論理和でposBitNumber目を反転するために、1を左シフトする
-			inverseShiftNumber = 1 << posBitNumber;
-			//posBitNumber目を0にするための論理和
-			inverseResult = numberChange & ~inverseShiftNumber;
-		//右シフトした最下位ビットが1以外の場合（0の場合）のための実行分
-		}else{
-			//posBitNumber目を反転するための右シフト
-			inverseShiftNumber = numberChange >>> posBitNumber | 1;
-			//posBitNumber目を反転したビットを、シフト前の並びに戻すための左シフト
-			inverseReshiftNumber = inverseShiftNumber << posBitNumber;
-			//シフト前とビット反転後のビットを論理和した結果をメインメソッド返却用の変数に代入するためのコード
-			inverseResult = numberChange | inverseReshiftNumber;
-		}
+		/*簡略化のためコメントアウト
+		*posBitNumber目を反転する判定のための条件分岐
+		*右シフトした最下位ビットが1の場合のための実行文
+		*if((numberChange >>> posBitNumber & 1) == 1){
+		*	//論理和でposBitNumber目を反転するために、1を左シフトする
+		*	inverseShiftNumber = 1 << posBitNumber;
+		*	//posBitNumber目を0にするための論理和
+		*	inverseResult = numberChange & ~inverseShiftNumber;
+		*右シフトした最下位ビットが1以外の場合（0の場合）のための実行分
+		*}else{
+		*	//posBitNumber目を反転するための右シフト
+		*	inverseShiftNumber = numberChange >>> posBitNumber | 1;
+		*	//posBitNumber目を反転したビットを、シフト前の並びに戻すための左シフト
+		*	inverseReshiftNumber = inverseShiftNumber << posBitNumber;
+		*}
+		 */
+
+		//posBitNumber目を反転するために、1を左シフトする
+		inverseShiftNumber = 1 << posBitNumber;
+		//posBitNumber目を反転するための排他的論理和
+		inverseResult = numberChange ^ inverseShiftNumber;
+
 		//結果の値をメインメソッドに返却するためのreturn文
 		return inverseResult;
 	}

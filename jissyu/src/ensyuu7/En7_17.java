@@ -88,6 +88,8 @@ public class En7_17 {
 			if(linearSearchArray[reverseSearchLoop] == keyNumber){
 				//配列のインデックスをメインメソッドに返却するため、変数に代入する
 				searchResult = reverseSearchLoop;
+				//キー値が複数ある場合、最も末尾側の要素のみを返すために探索のループを抜けるbreak文
+				break;
 			}
 		}
 		//結果をメインメソッドに返すためのreturn文

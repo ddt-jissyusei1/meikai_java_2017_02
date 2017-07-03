@@ -2,8 +2,8 @@ package ensyuu7;
 import java.util.Scanner;
 
 /*
- * 配列arrayRemoveから要素arrayRemove[index]を削除するメソッドarrayRemoveMethodを作成せよ。
- * 削除はarrayRemove[index]より後ろの全要素を一つ前方にずらすことによって行うこと。
+ * 配列arrayRemoveから要素arrayRemove[removeIndexNumber]を削除するメソッドarrayRemoveMethodを作成せよ。
+ * 削除はarrayRemove[removeIndexNumber]より後ろの全要素を一つ前方にずらすことによって行うこと。
  * なお、移動されずにあまってしまう末尾要素arrayRemove[arrayRemove.length - 1]の値は変更しなくてよい。
  */
 public class En7_18 {
@@ -69,7 +69,7 @@ public class En7_18 {
 
 		//指定されたインデックスを削除するための繰り返し処理
 		for(int removeIndexLoop = removeIndexNumber; removeIndexLoop < arrayLength - 1; removeIndexLoop++){
-			//空いたインデックスに、後ろの要素を前方にひとつずらすための代入処理
+			//削除するインデックスに、後ろの要素を前方にひとつずらすための代入処理
 			arrayRemove[removeIndexLoop] = arrayRemove[removeIndexLoop + 1];
 		}
 

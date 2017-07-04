@@ -86,9 +86,9 @@ public class En7_21 {
 	//二つの配列の全要素を交換するためのメソッド
 	private static void arrayExchange(int[] arrayExchangeOne, int[] arrayExchangeTwo){
 		int exchangeSubVariable = 0;					//要素の交換のための予備変数
-		int arrayOneLength = arrayExchangeOne.length;		//繰り返し処理で使用するための、配列の長さの変数
+		int arrayOneLength = arrayExchangeOne.length;	//繰り返し処理で使用するための、配列の長さの変数
 		int arrayTwoLength = arrayExchangeTwo.length;	//二つ目の配列の長さを比較するための、二つ目の配列の長さの変数
-		int arrayLength = 0;						//小さいほうの配列の長さのための変数
+		int arrayLength = 0;							//小さいほうの配列の長さのための変数
 
 		//二つの配列の長さが等しくない場合の条件分岐
 		if(arrayOneLength != arrayTwoLength){

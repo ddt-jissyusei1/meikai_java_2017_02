@@ -18,7 +18,7 @@ public class En7_21 {
 	//要素入力時に表示する一つ目の配列のインデックス定形文のための定数
 	private static final String FIRST_ARRAY_INDEX_STRING = "arrayExchangeOne[%d] =";
 	//要素入力時に表示する二つ目の配列のインデックス定形文のための定数
-	private static final String SECOND_ARRAY_INDEX_STRING = "arrayExchangeSecond[%d] =";
+	private static final String SECOND_ARRAY_INDEX_STRING = "arrayExchangeTwo[%d] =";
 	//全要素を交換した結果文のための定数
 	private static final String OUTPUT_EXCHANGE_RESULT_MESSAGE = "\n二つの配列の全要素を交換しました。";
 	//交換後の一つ目の配列の要素を表示する定形文のための定数
@@ -124,7 +124,7 @@ public class En7_21 {
 
 		//二つ目の配列の、要素の交換結果を表示するための繰り返し処理
 		for(int exchangeResultLoop = 0; exchangeResultLoop < arrayTwoLength; exchangeResultLoop++){
-			//一つ目の配列の要素を表示するための出力
+			//二つ目の配列の要素を表示するための出力
 			System.out.printf(RESULT_SECOND_ARRAY_INDEX_STRING, exchangeResultLoop, arrayExchangeTwo[exchangeResultLoop]);
 		}
 	}

@@ -16,7 +16,7 @@ public class En7_23 {
 	//要素の値入力時に表示するインデックスの定形文のための定数
 	private static final String ARRAY_INDEX_STRING = "arraySearchIndex[%d] =";
 	//探索する値の入力を促す文のための定数
-	private static final String INPUT_SEARCH_KEY_NUMBER_MESSAGE = "\n探索する値を入力してください：";
+	private static final String INPUT_SEARCH_KEY_NUMBER_MESSAGE = "探索する値を入力してください：";
 	//探索成功時に表示する文のための定数
 	private static final String SEARCH_RESULT_SUCCESS_MESSAGE = "同じ値の要素のインデックスを配列に格納しました。";
 	//探索失敗時に表示する文のための定数
@@ -35,10 +35,14 @@ public class En7_23 {
 		//プログラムの説明文を表示するための出力
 		System.out.println(PROGRAM_MESSAGE);
 
-		//探索する配列の要素数の入力を促す文を表示するための出力
-		System.out.print(INPUT_ARRAY_NUMBER_MESSAGE);
-		//探索する配列を宣言するために、入力された値を変数に代入する
-		arrayNumber = inputNumberStream.nextInt();
+		//0以下の値が入力されている間、入力を促す処理を繰り返すための繰り返し処理
+		do{
+			//探索する配列の要素数の入力を促す文を表示するための出力
+			System.out.print(INPUT_ARRAY_NUMBER_MESSAGE);
+			//探索する配列を宣言するために、入力された値を変数に代入する
+			arrayNumber = inputNumberStream.nextInt();
+		//入力された値が0以下の間繰り返す条件文
+		}while(arrayNumber <= 0);
 
 		//入力された要素数で探索するための配列を宣言する
 		int[] arraySearchIndex = new int[arrayNumber];
@@ -54,6 +58,17 @@ public class En7_23 {
 			arraySearchIndex[inputElementsNumberLoop] = inputNumberStream.nextInt();
 		}
 
+		//表示文の区切りのための改行出力
+		System.out.println();
+
+		//作成した配列を表示するための繰り返し処理
+		for(int printArrayLoop = 0; printArrayLoop < arrayNumber; printArrayLoop++){
+			//配列のインデックスを表示するための定形文の出力
+			System.out.printf(ARRAY_INDEX_STRING, printArrayLoop);
+			//配列の要素の値を表示する
+			System.out.println(arraySearchIndex[printArrayLoop]);
+		}
+
 		//探索する値の入力を促す文を表示するための出力
 		System.out.print(INPUT_SEARCH_KEY_NUMBER_MESSAGE);
 		//入力された値を探索で使用するために、変数に代入する
@@ -62,30 +77,11 @@ public class En7_23 {
 		//値の入力が終了したので、開いていたリソースを開放する
 		inputNumberStream.close();
 
-		//探索する値を同じ値が格納されたインデックスを返却するためのメソッドの呼び出し
+		//探索する値と同じ値が格納されたインデックスを返却するためのメソッドの呼び出し
 		int[] arraySearchResult = arraySearchIndex(arraySearchIndex, searchKeyNumber);
-		//探索の結果で処理を分岐させるために、返却された配列の長さの値を変数に代入する
-		int arrayResultLength = arraySearchResult.length;
 
-		int outputLoop = 0;							//出力の拡張for文のためのカウンター変数
-
-		//返却された配列の長さが0でない場合に実行するための条件分岐
-		if(arrayResultLength != 0){
-			//探索結果文を表示するための出力
-			System.out.println(SEARCH_RESULT_SUCCESS_MESSAGE);
-
-			//返却されたインデックスの結果を表示するための繰り返し処理
-			for(int outputElements : arraySearchResult){
-				//結果表示のためのインデックスの定形文の出力
-				System.out.printf(INDEX_SEARCH_RESULT_STRING, outputLoop, outputElements);
-				//次のインデックスの表示のためにカウンター変数を1インクリメントする
-				outputLoop++;
-			}
-		//返却された配列の長さが0の場合に実行するための条件分岐
-		}else{
-			//探索失敗の結果文を表示するための出力
-			System.out.println(SEARCH_RESULT_FAILED_MESSAGE);
-		}
+		//探索結果で処理を分岐させるためのメソッドの呼び出し
+		searchResult(arraySearchResult);
 
 	}
 
@@ -120,5 +116,32 @@ public class En7_23 {
 
 		//探索結果をメインメソッドに返却するためのreturn文
 		return arraySearchResult;
+	}
+
+	//探索結果の処理を分岐させるためのメソッド
+	private static void searchResult(int[] arraySearchResult){
+		//探索の結果で処理を分岐させるために、返却された配列の長さの値を変数に代入する
+		int arrayResultLength = arraySearchResult.length;
+
+		int outputLoop = 0;							//出力の拡張for文のためのカウンター変数
+
+		//返却された配列の長さが0でない場合に実行するための条件分岐
+		if(arrayResultLength != 0){
+			//探索結果文を表示するための出力
+			System.out.println(SEARCH_RESULT_SUCCESS_MESSAGE);
+
+			//返却されたインデックスの結果を表示するための繰り返し処理
+			for(int outputElements : arraySearchResult){
+				//結果表示のためのインデックスの定形文の出力
+				System.out.printf(INDEX_SEARCH_RESULT_STRING, outputLoop, outputElements);
+				//次のインデックスの表示のためにカウンター変数を1インクリメントする
+				outputLoop++;
+			}
+		//返却された配列の長さが0の場合に実行するための条件分岐
+		}else{
+			//探索失敗の結果文を表示するための出力
+			System.out.println(SEARCH_RESULT_FAILED_MESSAGE);
+		}
+
 	}
 }

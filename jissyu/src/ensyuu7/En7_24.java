@@ -14,8 +14,10 @@ public class En7_24 {
 	private static final String INPUT_ELEMENTS_NUMBER_MESSAGE = "各要素の値を入力してください。";
 	//要素の値入力時に表示するインデックスの定形文のための定数
 	private static final String ARRAY_INDEX_STRING = "arrayRemove[%d] =";
+	//配列の要素を表示する際に出力するインデックスの定形文のための定数
+	private static final String OUTPUT_ARRAY_INDEX_STRING = "\narrayRemove[%d] = %d";
 	//削除するインデックスの入力を促す文のための定数
-	private static final String INPUT_REMOVE_INDEX_MESSAGE = "削除するインデックスを入力してください：";
+	private static final String INPUT_REMOVE_INDEX_MESSAGE = "\n削除するインデックスを入力してください：";
 	//削除実行時の文のための定数
 	private static final String REMOVE_SUCCESS_MESSAGE = "指定されたインデックスを削除しました。";
 	//表示する削除結果のインデックスの定形文のための定数
@@ -31,10 +33,15 @@ public class En7_24 {
 		//プログラムの説明をするための文を表示する出力
 		System.out.println(PROGRAM_MESSAGE);
 
-		//削除する配列の要素数の入力を促す文を表示するための出力
-		System.out.print(INPUT_ARRAY_NUMBER_MESSAGE);
-		//入力された値の要素数の配列を作成するために、変数に代入する
-		arrayNumber = inputNumberStream.nextInt();
+		//入力された値が0以下の間処理を繰り返すためのdo文
+		do{
+			//削除する配列の要素数の入力を促す文を表示するための出力
+			System.out.print(INPUT_ARRAY_NUMBER_MESSAGE);
+			//入力された値の要素数の配列を作成するために、変数に代入する
+			arrayNumber = inputNumberStream.nextInt();
+
+		//入力された値が0以下の間入力を促す文の表示を繰り返すための条件文
+		}while(arrayNumber <= 0);
 
 		//インデックスを削除するための配列を宣言する
 		int[] arrayRemove = new int[arrayNumber];
@@ -50,6 +57,12 @@ public class En7_24 {
 			arrayRemove[inputElementsLoop] = inputNumberStream.nextInt();
 		}
 
+		//表示する文を区切るための空白行の出力
+		System.out.println();
+
+		//作成した配列を表示するためのメソッドの呼び出し
+		printArray(arrayRemove, OUTPUT_ARRAY_INDEX_STRING);
+
 		//削除するインデックスの入力を促す文を表示するための出力
 		System.out.print(INPUT_REMOVE_INDEX_MESSAGE);
 		//入力された値のインデックスを削除で使用するため、変数に代入する
@@ -61,17 +74,11 @@ public class En7_24 {
 		//指定されたインデックスを削除するためのメソッドの呼び出し
 		int[] removeIndexResult = arrayRemoveOf(arrayRemove, removeIndexNumber);
 
-		//結果表示の繰り返し処理で使用するために、返却された配列の長さの値を変数に代入する
-		int resultArrayLength = removeIndexResult.length;
-
 		//削除を実行したことを表示するための文の出力
 		System.out.println(REMOVE_SUCCESS_MESSAGE);
 
-		//削除結果の配列を表示するための繰り返し処理
-		for(int outputResultLoop = 0; outputResultLoop < resultArrayLength; outputResultLoop++){
-			//結果を表示のためのインデックスの定形文の出力
-			System.out.printf(OUTPUT_INDEX_RESULT_STRING, outputResultLoop, removeIndexResult[outputResultLoop]);
-		}
+		//削除結果を表示するために、配列を表示出力するためのメソッドの呼び出し
+		printArray(removeIndexResult, OUTPUT_INDEX_RESULT_STRING);
 
 	}
 
@@ -97,6 +104,19 @@ public class En7_24 {
 
 		//メインメソッドに削除結果の配列を返却するためのreturn文
 		return arrayRemoveResult;
+	}
+
+	//配列を表示するための出力のメソッド
+	private static void printArray(int[] arrayPrint, String arrayIndex){
+		//配列を表示する繰り返し処理で使用するための、配列の長さのための変数
+		int arrayLength = arrayPrint.length;
+
+		//配列を表示するための繰り返し処理
+		for(int outputArrayLoop = 0; outputArrayLoop < arrayLength; outputArrayLoop++){
+			//結果を表示のためのインデックスの定形文の出力
+			System.out.printf(arrayIndex, outputArrayLoop, arrayPrint[outputArrayLoop]);
+		}
+
 	}
 
 }

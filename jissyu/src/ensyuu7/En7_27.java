@@ -33,6 +33,11 @@ public class En7_27 {
 	private static final String ARRAY_ELEMENTS_EQUALS_MESSAGE = "\n三つの配列の要素数は等しいです。";
 	//三つの配列の要素数が等しくない場合に表示する文のための定数
 	private static final String ARRAY_ELEMENTS_NOT_EQUALS_MESSAGE = "\n三つの配列の要素数は等しくありません。";
+	//作成する配列の数のためのマジックナンバー
+	private static final int ARRAY_MAGIC_NUMBER = 3;
+
+	//キーボードからの入力ストリームを読み込むためのプログラム
+	static Scanner inputNumberStream = new Scanner(System.in);
 
 	public static void main(String[] args) {
 		//プログラムの説明をするための説明文の出力
@@ -46,6 +51,9 @@ public class En7_27 {
 
 		//加算する三つ目の多次元配列を作成するためのメソッドの呼び出し
 		int[][] sumArrayMatrixThird = makeArrayMatrix(THIRD_ARRAY_INDEX_STRING, THIRD_ARRAY_LINE_INDEX_STRING, 3);
+
+		//値の入力が終了したので、開いていたリソースを開放する
+		inputNumberStream.close();
 
 		//一つ目の配列の要素を表示するための出力メソッドの呼び出し
 		printArrayMatrix(sumArrayMatrixFirst, FIRST_ARRAY_INDEX_STRING);
@@ -80,9 +88,6 @@ public class En7_27 {
 
 	//加算する3つの多次元配列を作成するためのメソッド
 	private static int[][] makeArrayMatrix(String indexString, String LineIndex, int arrayNumber){
-		//キーボードからの入力ストリームを読み込むためのプログラム
-		Scanner inputNumberStream = new Scanner(System.in);
-
 		int arrayRowNumber = 0;								//入力された配列の行数のための変数
 		int arrayLineNumber = 0;								//入力された配列の列数のための変数
 		int arrayLength = 0;									//要素の値入力時の繰り返し処理で使用する、配列の長さのための変数
@@ -109,7 +114,7 @@ public class En7_27 {
 		}
 
 		//加算する一つ目と二つ目の配列の要素の値の入力のための条件処理
-		if(arrayNumber < 3){
+		if(arrayNumber < ARRAY_MAGIC_NUMBER){
 			//各要素の値の入力を促すための文の出力
 			System.out.println(INPUT_ELEMENTS_NUMBER_MESSAGE);
 
@@ -127,11 +132,6 @@ public class En7_27 {
 			}
 		}
 
-		//最後の配列の宣言が終了した場合に、リソースを閉じるための条件処理
-		if(arrayNumber == 3){
-			//値の入力が終了したので、開いていたリソースを開放する
-			inputNumberStream.close();
-		}
 		//出力の表示を見やすく区切るための空白行の出力
 		System.out.println();
 

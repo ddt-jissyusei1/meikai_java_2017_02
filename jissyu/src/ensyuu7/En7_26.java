@@ -25,35 +25,22 @@ public class En7_26 {
 	//挿入結果を表示するためのインデックスの定型文のための定数
 	private static final String INSERT_RESULT_INDEX_STRING = "arrayInsertResult[%d] = %d\n";
 
-	public static void main(String[] args) {
-		//キーボードからの入力ストリームを読み込むためのプログラム
-		Scanner inputNumberStream = new Scanner(System.in);
+	//キーボードからの入力ストリームを読み込むためのプログラム
+	static Scanner inputNumberStream = new Scanner(System.in);
 
-		int arrayNumber = 0;						//値を挿入する配列の作成に使用する要素数のための変数
+	public static void main(String[] args) {
+
 		int insertIndexNumber = 0;				//値を挿入するインデックスのための変数
 		int insertNumber = 0;						//挿入する値のための変数
 
 		//プログラムの説明をするための文の出力
 		System.out.println(PROGRAM_MESSAGE);
 
-		//値を挿入する配列を作成するための、要素数の入力を促す文を出力する
-		System.out.print(INPUT_ARRAY_NUMBER_MESSAGE);
-		//入力された値を配列の宣言で使用するため、変数に代入する
-		arrayNumber = inputNumberStream.nextInt();
-
 		//値を挿入するための配列の宣言
-		int[] arrayInsert = new int[arrayNumber];
+		int[] makeArrayInsert = makeArray();
 
-		//各要素の値の入力を促す文を出力する
-		System.out.println(INPUT_ELEMENTS_NUMBER_MESSAGE);
-
-		//作成した配列の各要素に値を入力するための繰り返し処理
-		for(int inputElementsNumberLoop = 0; inputElementsNumberLoop < arrayNumber; inputElementsNumberLoop++){
-			//値を入力するインデックスを表示するための出力
-			System.out.printf(ARRAY_INDEX_STRING, inputElementsNumberLoop);
-			//入力された値を配列の要素に格納するための代入
-			arrayInsert[inputElementsNumberLoop] = inputNumberStream.nextInt();
-		}
+		//配列の要素に値を入力するためのメソッドの呼び出し
+		int[] arrayInsert = inputArrayElements(makeArrayInsert);
 
 		//値を挿入するためのインデックス番号の入力を促す文を出力する
 		System.out.print(INPUT_INSERT_INDEX_MESSAGE);
@@ -84,6 +71,40 @@ public class En7_26 {
 		//結果比較のための、挿入後の配列の要素を表示するためのメソッドの呼び出し
 		arrayOutPutElements(insertResultArray, INSERT_RESULT_INDEX_STRING);
 
+	}
+
+	//配列を作成するためのメソッド
+	private static int[] makeArray(){
+		int arrayNumber = 0;						//配列の作成に使用する要素数のための変数
+
+		//値を挿入する配列を作成するための、要素数の入力を促す文を出力する
+		System.out.print(INPUT_ARRAY_NUMBER_MESSAGE);
+		//入力された値を配列の宣言で使用するため、変数に代入する
+		arrayNumber = inputNumberStream.nextInt();
+
+		//入力された要素数の配列の宣言
+		int[] makeArrayResult = new int[arrayNumber];
+
+		//メインメソッドに作成した配列を返却するためのreturn文
+		return makeArrayResult;
+	}
+
+	//配列の要素に値を入力するためのメソッド
+	private static int[] inputArrayElements(int[] arrayElements){
+		int arrayLength = arrayElements.length;	//要素の値を入力する繰り返し処理の制御のための配列の長さの値の取得
+
+		//各要素の値の入力を促す文を出力する
+		System.out.println(INPUT_ELEMENTS_NUMBER_MESSAGE);
+
+		//作成した配列の各要素に値を入力するための繰り返し処理
+		for(int inputElementsNumberLoop = 0; inputElementsNumberLoop < arrayLength; inputElementsNumberLoop++){
+			//値を入力するインデックスを表示するための出力
+			System.out.printf(ARRAY_INDEX_STRING, inputElementsNumberLoop);
+			//入力された値を配列の要素に格納するための代入
+			arrayElements[inputElementsNumberLoop] = inputNumberStream.nextInt();
+		}
+		//メインメソッドに要素の値を入力した配列を返却するためのreturn文
+		return arrayElements;
 	}
 
 	//配列の指定されたインデックスに値を挿入するためのメソッド

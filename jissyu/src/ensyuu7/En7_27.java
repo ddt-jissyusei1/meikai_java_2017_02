@@ -33,8 +33,6 @@ public class En7_27 {
 	private static final String ARRAY_ELEMENTS_EQUALS_MESSAGE = "\n三つの配列の要素数は等しいです。";
 	//三つの配列の要素数が等しくない場合に表示する文のための定数
 	private static final String ARRAY_ELEMENTS_NOT_EQUALS_MESSAGE = "\n三つの配列の要素数は等しくありません。";
-	//作成する配列の数のためのマジックナンバー
-	private static final int ARRAY_MAGIC_NUMBER = 3;
 
 	//キーボードからの入力ストリームを読み込むためのプログラム
 	static Scanner inputNumberStream = new Scanner(System.in);
@@ -44,22 +42,26 @@ public class En7_27 {
 		System.out.println(PROGRAM_MESSAGE);
 
 		//加算する一つ目の多次元配列を作成するためのメソッドの呼び出し
-		int[][] sumArrayMatrixFirst = makeArrayMatrix(FIRST_ARRAY_INDEX_STRING, FIRST_ARRAY_LINE_INDEX_STRING, 1);
+		int[][] sumArrayMatrixFirst = makeArrayMatrix(FIRST_ARRAY_LINE_INDEX_STRING, 1);
+		//一つ目の配列に要素の値を入力するためのメソッドの呼び出し
+		int[][] sumArrayFirst = inputElementsValue(sumArrayMatrixFirst, FIRST_ARRAY_INDEX_STRING);
 
 		//加算する二つ目の多次元配列を作成するためのメソッドの呼び出し
-		int[][] sumArrayMatrixSecond = makeArrayMatrix(SECOND_ARRAY_INDEX_STRING, SECOND_ARRAY_LINE_INDEX_STRING, 2);
+		int[][] sumArrayMatrixSecond = makeArrayMatrix(SECOND_ARRAY_LINE_INDEX_STRING, 2);
+		//二つ目の配列に要素の値を入力するためのメソッドの呼び出し
+		int[][] sumArraySecond = inputElementsValue(sumArrayMatrixSecond, SECOND_ARRAY_INDEX_STRING);
 
 		//加算する三つ目の多次元配列を作成するためのメソッドの呼び出し
-		int[][] sumArrayMatrixThird = makeArrayMatrix(THIRD_ARRAY_INDEX_STRING, THIRD_ARRAY_LINE_INDEX_STRING, 3);
+		int[][] sumArrayMatrixThird = makeArrayMatrix(THIRD_ARRAY_LINE_INDEX_STRING, 3);
 
 		//値の入力が終了したので、開いていたリソースを開放する
 		inputNumberStream.close();
 
 		//一つ目の配列の要素を表示するための出力メソッドの呼び出し
-		printArrayMatrix(sumArrayMatrixFirst, FIRST_ARRAY_INDEX_STRING);
+		printArrayMatrix(sumArrayFirst, FIRST_ARRAY_INDEX_STRING);
 
 		//二つ目の配列の要素を表示するための出力メソッドの呼び出し
-		printArrayMatrix(sumArrayMatrixSecond, SECOND_ARRAY_INDEX_STRING);
+		printArrayMatrix(sumArraySecond, SECOND_ARRAY_INDEX_STRING);
 
 		//三つ目の配列の要素数を表示するための出力メソッドの呼び出し
 		printArrayMatrix(sumArrayMatrixThird, THIRD_ARRAY_INDEX_STRING);
@@ -81,16 +83,14 @@ public class En7_27 {
 		}else{
 			//三つの配列の要素数が等しくないという文を表示するための出力
 			System.out.println(ARRAY_ELEMENTS_NOT_EQUALS_MESSAGE);
-
 		}
 
 	}
 
 	//加算する3つの多次元配列を作成するためのメソッド
-	private static int[][] makeArrayMatrix(String indexString, String LineIndex, int arrayNumber){
+	private static int[][] makeArrayMatrix(String lineIndex, int arrayNumber){
 		int arrayRowNumber = 0;								//入力された配列の行数のための変数
 		int arrayLineNumber = 0;								//入力された配列の列数のための変数
-		int arrayLength = 0;									//要素の値入力時の繰り返し処理で使用する、配列の長さのための変数
 
 		//行数の入力を促すための文の出力
 		System.out.printf(INPUT_ARRAY_ROW_NUMBER_MESSAGE, arrayNumber);
@@ -105,7 +105,7 @@ public class En7_27 {
 		//配列の各行の列数の入力をするための繰り返し処理
 		for(int arrayLineLoop = 0; arrayLineLoop < arrayRowNumber; arrayLineLoop++){
 			//入力する配列の行のインデックスを表示するための出力
-			System.out.printf(LineIndex, arrayLineLoop);
+			System.out.printf(lineIndex, arrayLineLoop);
 			//各行の列数で使用するために、入力された値を変数に格納する
 			arrayLineNumber = inputNumberStream.nextInt();
 
@@ -113,30 +113,41 @@ public class En7_27 {
 			resultArray[arrayLineLoop] = new int[arrayLineNumber];
 		}
 
-		//加算する一つ目と二つ目の配列の要素の値の入力のための条件処理
-		if(arrayNumber < ARRAY_MAGIC_NUMBER){
-			//各要素の値の入力を促すための文の出力
-			System.out.println(INPUT_ELEMENTS_NUMBER_MESSAGE);
-
-			//配列の各要素に値を入力する、行数のための繰り返し処理
-			for(int inputRowLoop = 0; inputRowLoop < arrayRowNumber; inputRowLoop++){
-				//列数の繰り返し制御で使用するため、配列の長さを変数に格納する
-				arrayLength = resultArray[inputRowLoop].length;
-				//配列の各要素に値を入力する、列数のための繰り返し処理
-				for(int inputLineLoop = 0; inputLineLoop < arrayLength; inputLineLoop++){
-					//値を入力する要素のインデックスを表示するための出力
-					System.out.printf(indexString, inputRowLoop, inputLineLoop);
-					//入力された値を配列の要素に格納する
-					resultArray[inputRowLoop][inputLineLoop] = inputNumberStream.nextInt();
-				}
-			}
-		}
-
 		//出力の表示を見やすく区切るための空白行の出力
 		System.out.println();
 
 		//メインメソッドに配列を返却するためのreturn文
 		return resultArray;
+	}
+
+	//配列の要素に値を入力するためのメソッド
+	private static int[][] inputElementsValue(int[][] inputArray, String lineIndexString){
+		int rowLength = inputArray.length;				//行の繰り返し処理の制御のための、配列の行数の変数
+
+		//入力された値を格納するための2次元配列の行数の宣言
+		int[][] inputValueResult = new int[rowLength][];
+
+		//各要素の値の入力を促すための文の出力
+		System.out.println(INPUT_ELEMENTS_NUMBER_MESSAGE);
+
+		//要素に値を入力するための行の繰り返し処理
+		for(int arrayRowLoop = 0; arrayRowLoop < rowLength; arrayRowLoop++){
+			//配列の列の繰り返し制御のための、列数の変数
+			int lineLength = inputArray[arrayRowLoop].length;
+			//入力された値を格納するための2次元配列の列数の宣言
+			inputValueResult[arrayRowLoop] = new int[lineLength];
+
+			//要素に値を入力するための列の繰り返し処理
+			for(int arrayLineLoop = 0; arrayLineLoop < lineLength; arrayLineLoop++){
+				//値を入力する配列のインデックスを表示するための出力
+				System.out.printf(lineIndexString, arrayRowLoop, arrayLineLoop);
+				//入力された値を要素に格納するための代入
+				inputValueResult[arrayRowLoop][arrayLineLoop] = inputNumberStream.nextInt();
+			}
+		}
+
+		//メインメソッドに値を格納した配列を返却するためのreturn文
+		return inputValueResult;
 	}
 
 	//配列の要素を表示するための出力のメソッド

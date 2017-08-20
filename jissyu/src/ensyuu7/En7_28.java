@@ -33,34 +33,44 @@ public class En7_28 {
 	//二つの配列の行数、列数が等しくない場合に表示する文のための定数
 	private static final String ARRAY_ROW_LINE_NOT_EQUALS_MESSAGE = "二つの配列の行数または列数が等しくありません。";
 
+	//キーボードからの入力ストリームを読み込むためのプログラム
+	static Scanner inputNumberStream = new Scanner(System.in);
+
 	public static void main(String[] args) {
 		//プログラムの説明を表示するための出力
 		System.out.println(PROGRAM_MESSAGE);
 
 		//一つ目の二次元配列を作成するためのメソッドの呼び出し
 		int[][] arrayMatrixFirst = makeArrayMatrix(FIRST_ARRAY_INDEX_STRING, FIRST_ARRAY_ROW_INDEX_STRING, 1);
+		//配列の要素に値を入力するためのメソッドの呼び出し
+		int[][] arrayMatrixFirstResult = inputElementsValue(arrayMatrixFirst, FIRST_ARRAY_INDEX_STRING, 1);
 		//一つ目の配列を表示確認するため、配列を表示出力するメソッドの呼び出し
-		printArray(arrayMatrixFirst, PRINT_FIRST_ARRAY_INDEX_STRING);
+		printArray(arrayMatrixFirstResult, PRINT_FIRST_ARRAY_INDEX_STRING);
 
 		//二つ目の二次元配列を作成するためのメソッドの呼び出し
 		int[][] arrayMatrixSecond = makeArrayMatrix(SECOND_ARRAY_INDEX_STRING, SECOND_ARRAY_ROW_INDEX_STRING, 2);
+		//配列の要素に値を入力するためのメソッドの呼び出し
+		int[][] arrayMatrixSecondResult = inputElementsValue(arrayMatrixSecond, SECOND_ARRAY_INDEX_STRING, 2);
 		//二つ目の配列を表示確認するため、配列を表示出力するメソッドの呼び出し
-		printArray(arrayMatrixSecond, PRINT_SECOND_ARRAY_INDEX_STRING);
+		printArray(arrayMatrixSecondResult, PRINT_SECOND_ARRAY_INDEX_STRING);
+
+		//値の入力が終了したので、開いていたリソースを開放する
+		inputNumberStream.close();
 
 		//二つの配列の行数を比較するための、一つ目の配列の行数のための変数
-		int firstArrayRowLength = arrayMatrixFirst.length;
+		int firstArrayRowLength = arrayMatrixFirstResult.length;
 		//二つの配列の行数を比較するための、二つ目の配列の行数のための変数
-		int secondArrayRowLength = arrayMatrixSecond.length;
+		int secondArrayRowLength = arrayMatrixSecondResult.length;
 
 		//二つの配列の列数を比較するための、一つ目の配列の列数のための変数
-		int firstArrayLineLength = arrayMatrixFirst[0].length;
+		int firstArrayLineLength = arrayMatrixFirstResult[0].length;
 		//二つの配列の列数を比較するための、二つ目の配列の列数のための変数
-		int secondArrayLineLength = arrayMatrixSecond[0].length;
+		int secondArrayLineLength = arrayMatrixSecondResult[0].length;
 
 		//二つの配列の行数と列数が同じであれば、加算処理を実行するための条件分岐
 		if(firstArrayRowLength == secondArrayRowLength && firstArrayLineLength == secondArrayLineLength){
 			//二つの配列を加算するためのメソッドの呼び出し
-			int[][] addResultArray = addMatrix(arrayMatrixFirst, arrayMatrixSecond);
+			int[][] addResultArray = addMatrix(arrayMatrixFirstResult, arrayMatrixSecondResult);
 			//加算結果の文を表示するための出力
 			System.out.println(SUM_SUCCESS_MESSAGE);
 			//返却された和の結果の配列を表示するために、配列を表示出力するメソッドの呼び出し
@@ -71,14 +81,10 @@ public class En7_28 {
 			//二つの配列の行数・列数が等しくないと表示するための出力
 			System.out.println(ARRAY_ROW_LINE_NOT_EQUALS_MESSAGE);
 		}
-
 	}
 
 	//二次元配列を作成するためのメソッド
 	private static int[][] makeArrayMatrix(String indexString, String rowIndexString, int numberArray){
-		//キーボードからの入力ストリームを読み込むためのプログラム
-		Scanner inputNumberStream = new Scanner(System.in);
-
 		int arrayRowNumber = 0;				//配列の行数のための変数
 		int arrayLineNumber = 0;				//配列の列数のための変数
 
@@ -86,6 +92,9 @@ public class En7_28 {
 		System.out.printf(INPUT_ARRAY_ROW_NUMBER_MESSAGE, numberArray);
 		//配列の宣言で使用するために、入力された行の値を変数に代入する
 		arrayRowNumber = inputNumberStream.nextInt();
+
+		//加算するための配列の宣言
+		int[][] arrayMatrix = new int[arrayRowNumber][];
 
 		//各行の要素数の入力を促す文を表示するための出力
 		System.out.println(INPUT_ARRAY_LINE_NUMBER_MESSAGE);
@@ -96,43 +105,49 @@ public class En7_28 {
 			System.out.printf(rowIndexString, inputLineLoop);
 			//配列の宣言で使用するために、入力された列の値を変数に代入する
 			arrayLineNumber = inputNumberStream.nextInt();
-		}
-		//加算するための配列の宣言
-		int[][] arrayMatrix = new int[arrayRowNumber][arrayLineNumber];
-
-		//配列の要素の値の入力を促す文を表示するための出力
-		System.out.println(INPUT_ELEMENTS_NUMBER_MESSAGE);
-
-		//二次元配列の要素に値を入力するための繰り返し処理
-		for(int inputElementsRowLoop = 0; inputElementsRowLoop < arrayRowNumber; inputElementsRowLoop++){
-			//要素を入力する列のための繰り返し処理
-			for(int inputElementsLineLoop = 0; inputElementsLineLoop < arrayLineNumber; inputElementsLineLoop++){
-				//値を入力する要素のインデックスを表示するための出力
-				System.out.printf(indexString, inputElementsRowLoop, inputElementsLineLoop);
-				//入力された値を配列の要素に格納する
-				arrayMatrix[inputElementsRowLoop][inputElementsLineLoop] = inputNumberStream.nextInt();
-			}
-		}
-
-		//二つ目の配列の宣言が終わったら実行する処理のための条件文
-		if(numberArray == 2){
-			//値の入力が終了したので、開いていたリソースを開放する
-			inputNumberStream.close();
+			//配列の各行の列数の宣言
+			arrayMatrix[inputLineLoop] = new int[arrayLineNumber];
 		}
 
 		//メインメソッドに宣言した配列を返すためのreturn文
 		return arrayMatrix;
 	}
 
+	//配列の要素に値を格納するためのメソッド
+	private static int[][] inputElementsValue(int[][] elementsArray, String indexString, int arrayNumber){
+		int rowLength = elementsArray.length;	//繰り返し制御で使用するための、配列の行の長さの変数
+		//要素の値を格納するための配列の宣言
+		int[][] inputResultArray = new int[rowLength][];
+		//配列の要素の値の入力を促す文を表示するための出力
+		System.out.println(INPUT_ELEMENTS_NUMBER_MESSAGE);
+
+		//二次元配列の要素に値を入力するための繰り返し処理
+		for(int inputElementsRowLoop = 0; inputElementsRowLoop < rowLength; inputElementsRowLoop++){
+			//列の繰り返し制御でしようするための、配列の列の長さの変数
+			int lineLength = elementsArray[inputElementsRowLoop].length;
+			//取得した配列の列の長さの値で、要素を格納するための配列の列の宣言
+			inputResultArray[inputElementsRowLoop] = new int[lineLength];
+			//要素を入力する列のための繰り返し処理
+			for(int inputElementsLineLoop = 0; inputElementsLineLoop < lineLength; inputElementsLineLoop++){
+				//値を入力する要素のインデックスを表示するための出力
+				System.out.printf(indexString, inputElementsRowLoop, inputElementsLineLoop);
+				//入力された値を配列の要素に格納する
+				inputResultArray[inputElementsRowLoop][inputElementsLineLoop] = inputNumberStream.nextInt();
+			}
+		}
+		//メインメソッドに要素を格納した配列を返却するためのreturn文
+		return inputResultArray;
+	}
+
 	//配列の要素を表示するためのメソッド
 	private static void printArray(int[][] arrayPrint, String indexString){
 		//配列を表示する行の繰り返し制御のための、配列の行の長さのための変数
 		int arrayRowLength = arrayPrint.length;
-		//配列を表示する列の繰り返し制御のための、配列の列の長さのための変数
-		int arrayLineLength = arrayPrint[0].length;
 
 		//配列の要素を表示するための行の繰り返し処理
 		for(int printArrayRowLoop = 0; printArrayRowLoop < arrayRowLength; printArrayRowLoop++){
+			//配列を表示する列の繰り返し制御のための、配列の列の長さのための変数
+			int arrayLineLength = arrayPrint[printArrayRowLoop].length;
 			//配列の要素を表示するための列の繰り返し処理
 			for(int printArrayLineLoop = 0; printArrayLineLoop < arrayLineLength; printArrayLineLoop++){
 				//配列の要素を表示するための出力
@@ -145,14 +160,15 @@ public class En7_28 {
 	private static int[][] addMatrix(int[][] sumArrayFirst, int[][] sumArraySecond){
 		//配列を加算する行の繰り返し処理の制御のための配列の行の長さのための変数
 		int sumArrayRowLength = sumArrayFirst.length;
-		//配列を加算する列の繰り返し処理の制御のための配列の列の長さのための変数
-		int sumArrayLineLength = sumArrayFirst[0].length;
-
 		//二つの配列の和を格納するための配列の宣言
-		int[][] sumArrayResult = new int[sumArrayRowLength][sumArrayLineLength];
+		int[][] sumArrayResult = new int[sumArrayRowLength][];
 
 		//二つの配列を加算するための行の繰り返し処理
 		for(int sumArrayRowLoop = 0; sumArrayRowLoop < sumArrayRowLength; sumArrayRowLoop++){
+			//配列を加算する列の繰り返し処理の制御のための配列の列の長さのための変数
+			int sumArrayLineLength = sumArrayFirst[sumArrayRowLoop].length;
+			//二つの配列の和を格納するための配列の列の宣言
+			sumArrayResult[sumArrayRowLoop] = new int[sumArrayLineLength];
 			//二つの配列を加算するための列の繰り返し処理
 			for(int sumArrayLineLoop = 0; sumArrayLineLoop < sumArrayLineLength; sumArrayLineLoop++){
 				//配列の要素を加算し、結果用配列に格納するための代入

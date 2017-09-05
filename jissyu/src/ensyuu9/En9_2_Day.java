@@ -26,7 +26,7 @@ public class En9_2_Day {
 		this.date = date;						//日のフィールドに仮引数dateの値を代入するための代入式
 	}
 
-	//仮引数に日付のみ受け取る日付クラスのためのコンストラクタ
+	//仮引数に"日付"を受け取る日付クラスのためのコンストラクタ
 	public En9_2_Day(En9_2_Day day){
 		this(day.year, day.month, day.date);	//同一処理を委ねるための同一クラス内のコンストラクタの呼び出し
 	}
@@ -82,7 +82,7 @@ public class En9_2_Day {
 		}
 
 		//呼び出し元に求めた曜日の結果を返却するためのreturn文
-		return (yearForWeek + yearForWeek / 100 + yearForWeek / 400 + ( 13 * monthForWeek + 8) / 5 + date) % 7;
+		return (yearForWeek + yearForWeek / 4 - yearForWeek / 100 + yearForWeek / 400 + ( 13 * monthForWeek + 8) / 5 + date) % 7;
 	}
 
 	//仮引数の値がフィールドの日付と等しいか確認するためのメソッド

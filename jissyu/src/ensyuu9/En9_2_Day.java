@@ -68,6 +68,7 @@ public class En9_2_Day {
 		this.date = date;
 	}
 
+
 	//曜日を求めるためのメソッド
 	public int dayOfWeek(){
 		int yearForWeek = year;				//曜日を求めるための年の変数にフィールドの年の値を代入する

@@ -10,7 +10,7 @@ import java.util.Scanner;
 public class En10_2 {
     //プログラム説明文のための定数
     private static final String PROGRAM_EXPLANATION_STRING = "識別番号を指定数ずつ増やしてインスタンスに与えます。"
-                                                                    + "指定がない場合は1ずつインクリメントします。";
+            + "指定がない場合は1ずつインクリメントします。";
     //識別番号の増加数の入力を促す文のための定数
     private static final String INPUT_CHANGE_INCREMENT_NUMBER_MESSAGE = "識別番号の増加数を指定しますか？　はい＞＞1、いいえ＞＞0\n：";
     //変更する識別番号の増加数の入力を促す文のための定数
@@ -35,8 +35,8 @@ public class En10_2 {
 
             //増加数を変更する場合に変更メソッドを呼び出すための条件式
             if(changeIncrementNumberJudge() == 1){
-              //増加数変更有りの場合に増加数変更のメソッドを呼び出す
-              incrementNumber = changeIncrementNumber();
+                //増加数変更有りの場合に増加数変更のメソッドを呼び出す
+                incrementNumber = changeIncrementNumber();
             }
 
             //Idの増加数の値を渡してインスタンスを生成するためのメソッドを呼び出す
@@ -103,8 +103,8 @@ public class En10_2 {
 
     //インスタンスの識別番号を表示するためのメソッド
     private static void showId(){
-       //Id確認のために取得メソッドを呼び出して出力する
-       System.out.println("識別番号：" + En10_2_ExId.getMaxId());
+        //Id確認のために取得メソッドを呼び出して出力する
+        System.out.println("識別番号：" + En10_2_ExId.getMaxId());
     }
 
 }

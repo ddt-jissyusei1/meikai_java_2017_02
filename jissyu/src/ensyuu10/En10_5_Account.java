@@ -19,16 +19,12 @@ public class En10_5_Account {
     private String accountNo;                   //口座番号のための変数
     private long accountBalance;                //預金残高のための変数
     private int accountId;                      //口座識別番号のための変数
-    private String thanksMessage;               //口座開設お礼文のための変数
 
     //口座開設のインスタンスが生成されるたびに初期化するためのインスタンス初期化子
     {
-        accountId = ++counter;                  //異なる識別番号を与えるためインクリメントした値を代入
-    }
-
-  //新規で開設されるたびに表示するためのお礼文のインスタンス初期化子
-    {
-        //開設のお礼を表示するための出力
+        //異なる識別番号を与えるため、初期化されるたびに1インクリメントされた値がID変数に代入される
+        accountId = ++counter;
+        //口座開設時にお礼文を表示するため、初期化されるたびに出力される
         System.out.println(OPEN_ACCOUNT_THANKS_MESSAGE);
     }
 
@@ -77,12 +73,6 @@ public class En10_5_Account {
     public int getAccountId() {
         //呼び出し元に取得した識別番号を返却する
         return accountId;
-    }
-
-    //口座開設文を取得するためのメソッド
-    public String getThanksMessage(){
-        //呼び出し元に取得した口座開設文を返却する
-        return thanksMessage;
     }
 
     //預金を行う処理ためのメソッド

@@ -1,8 +1,10 @@
-package ensyuu10;
+
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Scanner;
+
+import ensyuu11_id.En10_4_Day;
 
 /*
  * 日付クラス第4版（p.346)を以下のように改良せよ。

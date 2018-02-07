@@ -45,7 +45,7 @@ public class En8_2_Tester {
 		int width;								//車幅のための変数
 		int height;							//車高のための変数
 		int length;							//車長のための変数
-		double tankAmount;					//タンク容量のための変数
+		double tankAmount;					    //タンク容量のための変数
 		double fuel = 0;						//残り燃料のための変数
 		int fuelEconomy;						//燃費のための変数
 		double x = 0.0;							//現在位置x座標のための変数

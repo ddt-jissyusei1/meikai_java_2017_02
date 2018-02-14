@@ -7,7 +7,7 @@ package ensyuu12;
 
 //En12_1_Carクラスを継承したクラス
 public class En12_1_Car2 extends En12_1_Car {
-        static double totalDistanceValue;                  //車の総走行距離のためのフィールド変数
+        private double mTotalDistanceValue;                  //車の総走行距離のためのフィールド変数
 
 
     //親クラスから継承したコンストラクタ
@@ -17,20 +17,20 @@ public class En12_1_Car2 extends En12_1_Car {
         super(name, width, height, length, x, y, fuel, purchaseDay, tankAmount, carNumber, fuelEconomy);
 
         //フィールド変数に初期値として0を代入する
-        En12_1_Car2.totalDistanceValue = 0;
+        this.mTotalDistanceValue = 0;
     }
 
 
     //走行距離の値を取得するためのメソッド
-    public static double getTotalDistanceValue() {
+    public double getTotalDistanceValue() {
         //呼び出し元に取得した値を返却する
-        return totalDistanceValue;
+        return mTotalDistanceValue;
     }
 
     //走行距離の値をセットするためのメソッド
-    public static void setTotalDistanceValue(double distanceValue) {
+    public void setTotalDistanceValue(double distanceValue) {
         //走行距離のフィールド変数に仮引数の値を代入する
-        totalDistanceValue = distanceValue;
+        mTotalDistanceValue = distanceValue;
     }
 
 

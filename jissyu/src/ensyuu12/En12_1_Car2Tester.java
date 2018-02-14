@@ -145,13 +145,13 @@ public class En12_1_Car2Tester {
             double distanceY = inputDataStream.nextDouble();
 
             //燃料不足だった場合に実行する処理のための条件式
-            if(!newCar.moveCar(distanceX, distanceY)){
+            if(!newCar.moveCar(distanceX, distanceY, newCar)){
                 //燃料不足を通知するための文の出力
                 System.out.println(FUEL_ERROR_MESSAGE);
             }
 
             //総走行距離を調べるためのメソッドを呼び出し出力する
-            System.out.printf("総走行距離は：%3.2fKm", En12_1_Car2.getTotalDistanceValue());
+            System.out.printf("総走行距離は：%3.2fKm", newCar.getTotalDistanceValue());
         }
         //値の入力が終了したので、開いていたリソースを開放する
         inputDataStream.close();

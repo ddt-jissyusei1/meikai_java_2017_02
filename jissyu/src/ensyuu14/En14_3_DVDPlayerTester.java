@@ -61,14 +61,20 @@ public class En14_3_DVDPlayerTester {
     }
 
     //番号選択式入力を処理するためのメソッド
-    public static int inputSelectNumber(String inputMessage, int selectionNumbers){
+    /**
+     *
+     * @param inputRequestMessage
+     * @param selectionNumbers
+     * @return selectedNumber
+     */
+    public static int inputSelectNumber(String inputRequestMessage, int selectionNumbers){
         //選択された番号を保持するための変数
         int selectedNumber = 0;
 
         //不正な値が入力された場合繰り返し入力を促せるようにするための繰り返し処理
         do{
             //ユーザーに選択させるための第一引数の選択文の出力
-            System.out.print(inputMessage);
+            System.out.print(inputRequestMessage);
             //入力された値を呼び出し元に返却するため変数に代入する
             selectedNumber = inputValueStream.nextInt();
         //不正な値が入力されている間入力処理を繰り返すための条件式
@@ -79,6 +85,11 @@ public class En14_3_DVDPlayerTester {
     }
 
     //選択されたプレーヤの操作を実行するためのメソッド
+    /**
+     *
+     * @param controlNumber
+     * @param controlDvd
+     */
     public static void executeDVDPlayerControl(int controlNumber, En14_3_IFExPlayer controlDvd){
         //第一引数の値で実行する操作の処理を分けるための分岐処理
         switch(controlNumber){
@@ -106,8 +117,12 @@ public class En14_3_DVDPlayerTester {
         }
     }
 
-
     //プログラムの繰り返し判定のためのメソッド
+    /**
+     *
+     * @param selectedControlNumber
+     * @return boolean
+     */
     public static boolean repeatProgramJudge(int selectedControlNumber){
         //入力された繰り返し可否のための変数
         int repeatJudge = 1;
@@ -130,6 +145,12 @@ public class En14_3_DVDPlayerTester {
     }
 
     //選択された番号が正常値であるか判定するためのメソッド
+    /**
+     *
+     * @param selectedNumber
+     * @param selectionNumbers
+     * @return errorCheckResult
+     */
     public static boolean selectNumberCheck(int selectedNumber, int selectionNumbers){
         //判定結果のための変数
         boolean errorCheckResult = false;

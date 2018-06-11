@@ -1,7 +1,7 @@
 package ensyuu14;
 
 //ペットクラス
-public abstract class En14_2_Pet implements En14_2_IFPetIntroduce, En14_2_IFPetSkinColor{
+public abstract class En14_2_Pet implements En14_2_IFPetIntroduce, Skinnable{
     private String name;                    //ペットの名前のフィールド変数
     private String masterName;              //飼い主の名前のフィールド変数
     //private int petSkin;                  //ペットの色のためのフィールド変数

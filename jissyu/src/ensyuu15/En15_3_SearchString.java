@@ -5,6 +5,9 @@ import java.util.Scanner;
 /*
  * 文字列探索のプログラムを書きかえて、右のように(p.489の実行例)表示するプログラムを作成せよ。
  * 一致する部分が上下で揃うように表示すること。
+ *
+ * 作成者：志田
+ * 作成日:2018/06/20
  */
 public class En15_3_SearchString {
     //プログラムンの説明文のための定数
@@ -78,30 +81,30 @@ public class En15_3_SearchString {
      * @return inputedString 入力された文字列を返却する
      */
     public static String inputString(String inputMessage){
-        String inputedString = "";                          //呼び出し元に返却するための変数
+        String inputtedString = "";                          //呼び出し元に返却するための変数
 
         //文字列の入力を促すための文の表示
         System.out.print(inputMessage);
         //呼び出し元に返却するための値を変数に保持する
-        inputedString = inputStream.next();
+        inputtedString = inputStream.next();
 
         //次の処理のための値を呼び出し元に返却する
-        return inputedString;
+        return inputtedString;
     }
 
     //文字列を探索するためのメソッド
     /**
      * 作成者：志田
      * 作成日：2018/06/20
-     * @param inputedString 探索元文字列のための引数
+     * @param inputtedString 探索元文字列のための引数
      * @param toSearch      探索する文字列のための引数
      * @return searchRsesult 探索結果の値を返却するための変数
      */
-    public static int searchString(String inputedString, String toSearch){
+    public static int searchString(String inputtedString, String toSearch){
         int searchResult = 0;                               //呼び出し元に探索結果を返却するための変数
 
         //文字列から文字を探索しその結果を変数に代入する
-        searchResult = inputedString.indexOf(toSearch);
+        searchResult = inputtedString.indexOf(toSearch);
 
         //探索結果を呼び出し元に返却する
         return searchResult;
@@ -111,16 +114,16 @@ public class En15_3_SearchString {
     /**
      * 作成者：志田
      * 作成日：2018/06/20
-     * @param inputedString 探索元文字列のための引数
+     * @param inputtedString 探索元文字列のための引数
      * @param toSearch      探索する文字列のための引数
      * @param searchResultIndex 探索する文字列が含まれている位置情報のための引数
      */
-    public static void showSearchResult(String inputedString, String toSearch, int searchResultIndex){
-        int stringLength = inputedString.length();          //文字列を出力する繰り返し処理制御のための変数
+    public static void showSearchResult(String inputtedString, String toSearch, int searchResultIndex){
+        int stringLength = inputtedString.length();          //文字列を出力する繰り返し処理制御のための変数
         int toSearchLength = toSearch.length();             //探索文字列の長さの取得
 
         //探索元文字列を表示するための出力
-        System.out.print(SHOW_INPUT_STRING_HEADER + inputedString);
+        System.out.print(SHOW_INPUT_STRING_HEADER + inputtedString);
 
         //探索文字列を表示するためのヘッダーの出力
         System.out.print(SHOW_SEARCH_STRING_HEADER);
@@ -129,7 +132,7 @@ public class En15_3_SearchString {
             //一致した位置から探索文字列を出力するための分岐処理
             if(outputStringLoop >= searchResultIndex && outputStringLoop < searchResultIndex+toSearchLength){
                 //一致箇所の文字を表示するための出力
-                System.out.print(inputedString.charAt(outputStringLoop));
+                System.out.print(inputtedString.charAt(outputStringLoop));
             //一致箇所以外を表示するための分岐処理
             }else{
                 //一致箇所以外は空白を表示するための出力

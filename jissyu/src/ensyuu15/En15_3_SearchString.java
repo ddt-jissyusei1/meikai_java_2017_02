@@ -35,18 +35,18 @@ public class En15_3_SearchString {
 
         //好きなだけプログラムを繰り返せるようにするための繰り返し処理
         do{
-            String inputedString = "";                      //文字列探索する文字列のための変数
+            String inputtedString = "";                      //文字列探索する文字列のための変数
             String searchString = "";                       //探索する文字列のための変数
             int searchResult = 0;                           //探索結果の返却値のための変数
 
             //文字列を入力をさせるためのメソッドの呼び出し
-            inputedString = inputString(INPUT_STRING_REQUEST_MESSAGE);
+            inputtedString = inputString(INPUT_STRING_REQUEST_MESSAGE);
 
             //探索する文字列を入力させるためのメソッドの呼び出し
             searchString = inputString(INPUT_STRING_TO_SEARCH_MESSAGE);
 
             //文字列を探索するためのメソッドの呼び出し
-            searchResult = searchString(inputedString, searchString);
+            searchResult = searchString(inputtedString, searchString);
 
             //探索する文字列が文字列内に含まれているか否かで処理を分けるための条件分岐
             if(searchResult == -1){
@@ -56,7 +56,7 @@ public class En15_3_SearchString {
             //文字列が含まれている結果のための分岐処理
             }else {
                 //結果を表示するためのメソッドの呼び出し
-                showSearchResult(inputedString, searchString, searchResult);
+                showSearchResult(inputtedString, searchString, searchResult);
             }
 
         //真偽値の戻り値で繰り返しを制御するための条件式

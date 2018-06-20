@@ -71,6 +71,12 @@ public class En15_3_SearchString {
     }
 
     //文字列の入力を促すためのメソッド
+    /**
+     * 作成者：志田
+     * 作成日：2018/06/20
+     * @param inputMessage 入力を促す文のための引数
+     * @return inputedString 入力された文字列を返却する
+     */
     public static String inputString(String inputMessage){
         String inputedString = "";                          //呼び出し元に返却するための変数
 
@@ -84,6 +90,13 @@ public class En15_3_SearchString {
     }
 
     //文字列を探索するためのメソッド
+    /**
+     * 作成者：志田
+     * 作成日：2018/06/20
+     * @param inputedString 探索元文字列のための引数
+     * @param toSearch      探索する文字列のための引数
+     * @return searchRsesult 探索結果の値を返却するための変数
+     */
     public static int searchString(String inputedString, String toSearch){
         int searchResult = 0;                               //呼び出し元に探索結果を返却するための変数
 
@@ -95,6 +108,13 @@ public class En15_3_SearchString {
     }
 
     //探索結果を表示するためのメソッド
+    /**
+     * 作成者：志田
+     * 作成日：2018/06/20
+     * @param inputedString 探索元文字列のための引数
+     * @param toSearch      探索する文字列のための引数
+     * @param searchResultIndex 探索する文字列が含まれている位置情報のための引数
+     */
     public static void showSearchResult(String inputedString, String toSearch, int searchResultIndex){
         int stringLength = inputedString.length();          //文字列を出力する繰り返し処理制御のための変数
         int toSearchLength = toSearch.length();             //探索文字列の長さの取得
@@ -119,6 +139,11 @@ public class En15_3_SearchString {
     }
 
     //プログラム繰り返す判定のためのメソッド
+    /**
+     * 作成者：志田
+     * 作成日：2018/06/20
+     * @return boolean 繰り返し判定の条件式の真偽値を返却する
+     */
     public static boolean isRepeatProgram(){
         int repeatSelection = 0;                //選択された繰り返し可否番号のための変数
 

@@ -21,8 +21,6 @@ public class En15_5_FingerFlashing {
     private static final String HANDS_SELECTION_STRING = "(%d)%s ";
     //入力時前に表示する全角コロンのための定数
     private static final String SEPARATION_STRING = "：";
-    //それぞれの手を表示するための文字列の定数
-    private static final String SHOW_SELECTED_HANDS_STRING = "プレーヤ：%s\nコンピュータ１：%s\nコンピュータ２：%s";
     //引き分け結果の文のための定数
     private static final String EVEN_RESULT_MESSAGE = "\n引き分けです。";
     //ユーザーの勝ちを通知する文のための定数
@@ -59,31 +57,31 @@ public class En15_5_FingerFlashing {
     public static String[] hands = {"グー", "チョキ","パー"};
 
     public static void main(String[] args) {
-        int comOneHand = 0;                                   //コンピュータ１の手の値のための変数
-        int comTwoHand = 0;                                   //コンピュータ２の手の値のための変数
-        int playerHand = 0;                                   //プレーヤの手の値のための変数
         int judgeResult = 0;                                  //勝敗判定結果のための変数
 
+        En15_5_Player[] playersHand = new En15_5_Player[3];
         //プログラムの説明をするための文の表示
         System.out.println(PROGRAM_EXPLANATION_STRING);
 
         //ユーザーが希望するだけプログラムを繰り返すようにするための繰り返し処理
         do{
-            //コンピュータ１の手を生成するためのメソッドの呼び出し
-            comOneHand = makeComHands();
-            //コンピュータ２の手を生成するためのメソッドの呼び出し
-            comTwoHand = makeComHands();
             //プレーヤにジャンケンの手を選択させるためのメソッドの呼び出し
-            playerHand = selectPlayerHand();
+            playersHand[0] = new En15_5_PlayerHuman(selectPlayerHand());
+            //コンピュータ１の手を生成するためのメソッドの呼び出し
+            playersHand[1] = new En15_5_PlayerComOne();
+            //コンピュータ２の手を生成するためのメソッドの呼び出し
+            playersHand[2] = new En15_5_PlayerComTwo();
 
             //ジャンケンんの掛け声を表示するための出力
             System.out.println(START_GAME_STRING);
 
-            //それぞれの手を表示するための出力
-            System.out.printf(SHOW_SELECTED_HANDS_STRING,hands[playerHand], hands[comOneHand], hands[comTwoHand]);
+            for(En15_5_Player gamePlay: playersHand){
+                //それぞれの手を表示するための出力
+                gamePlay.showHands();
+            }
 
             //勝敗判定のためのメソッドの呼び出し
-            judgeResult = judgeGameResult(playerHand, comOneHand, comTwoHand);
+            judgeResult = judgeGameResult(playersHand);
 
             //勝敗の結果を通知するためのメソッドの呼び出し
             showGameResult(judgeResult);
@@ -105,7 +103,7 @@ public class En15_5_FingerFlashing {
      *作成日：20180625
      * @return madeComHand 生成されたジャンケンの手の値の返却
      */
-    public static int makeComHands(){
+    public int makeComHands(){
         int madeComHand = 0;                //生成されたコンピュータの手の値のための変数
 
         //コンピュータの手を0～2の乱数で生成して返却するための変数に保持する
@@ -123,7 +121,7 @@ public class En15_5_FingerFlashing {
      * @return selectedHand ジャンケンするためのプレーヤの手の値の返却
      */
     public static int selectPlayerHand(){
-        int selectedHand = 0;               //選択された手の番号のための変数
+        int selectedHand = 0;                                 //選択された手の番号のための変数
 
         //正しい選択番号が入力されるまで選択処理を続けるための繰り返し処理
         do{
@@ -156,15 +154,15 @@ public class En15_5_FingerFlashing {
      * @param comTwoHand    コンピュータ２の手の値
      * @return finalJudgeResult  勝敗判定結果を返却する
      */
-    public static int judgeGameResult(int playerHand, int comOneHand, int comTwoHand){
+    public static int judgeGameResult(En15_5_Player[] playerHands ){
         int firstJudgeResult = 0;                            //プレイヤーとコンピュータ１との勝敗判定結果のための変数
         int secondJudgeResult = 0;                           //プレイヤーとコンピュータ２との勝敗判定結果のための変数
         int finalJudgeResult = 0;                            //最終判定の結果のための変数
 
             //プレイヤーとコンピュータ１の勝敗判定結果の算出
-            firstJudgeResult = (playerHand - comOneHand + 3)%3;
+            firstJudgeResult = (En15_5_PlayerHuman.getUserHand() - En15_5_PlayerComOne.getComOneHand() + 3)%3;
             //プレイヤーとコンピュータ２の勝敗判定結果の算出
-            secondJudgeResult = (playerHand - comTwoHand + 3)%3;
+            secondJudgeResult = (En15_5_PlayerHuman.getUserHand() - En15_5_PlayerComTwo.getComTwoHand() + 3)%3;
 
           //引き分け判定の場合に実行する処理のための条件分岐
             if(firstJudgeResult == JUDGE_RESULT_EVEN && secondJudgeResult == JUDGE_RESULT_EVEN){

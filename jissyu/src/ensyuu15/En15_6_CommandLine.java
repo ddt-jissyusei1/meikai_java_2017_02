@@ -40,7 +40,7 @@ public class En15_6_CommandLine {
      * 円周の長さを求めるためのメソッド</br>
      * 作成者：志田</br>
      * 作成日：20180709
-     * @param radius
+     * @param radius    円の半径の値のための引数
      * @return Double.parseDouble(radius)*2*PI 求めた円周の長さの値
      */
     public static double circleLength(String radius){
@@ -52,7 +52,7 @@ public class En15_6_CommandLine {
      * 円の面積を求めるためのメソッド</br>
      * 作成者：志田</br>
      * 作成日：20180709
-     * @param radius
+     * @param radius    円の半径の値のための引数
      * @return circleRadius*circleRadius*PI 求めた円の面積の値
      */
     public static double circleArea(String radius){

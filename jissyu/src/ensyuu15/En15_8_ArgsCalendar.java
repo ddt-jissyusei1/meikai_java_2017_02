@@ -1,12 +1,17 @@
 package ensyuu15;
 
-import java.util.Calendar;
+import java.util.GregorianCalendar;
 
 /*
  * コマンドライン引数で指定された月のカレンダーを表示するプログラムを作成せよ。
  * コマンドラインから年のみが与えられた場合は、その年の1月から12月までのカレンダーを表示して、
  * 年と月が与えられた場合は、その月のカレンダーを表示して、
  * 年も月も与えられたなかったら、現在の月のカレンダーを表示すること。
+ *
+ *追加仕様：年、月以外にも引数が入力された場合(引数三つ以上ある)、許容数以上であることを通知し、
+ *          処理を実行せずプログラムを終了することとする。
+ *追加日　：2018/07/18　メンター・卜部決定
+ *
  */
 public class En15_8_ArgsCalendar {
     //プログラムの説明文のための定数
@@ -26,7 +31,7 @@ public class En15_8_ArgsCalendar {
     //カレンダーの曜日の文字列のための定数
     private static final String WEEKDAY_STRINGS = "\n月　火　水　木　金　土　日";
 
-    public static Calendar calendar = Calendar.getInstance();
+    public static GregorianCalendar calendar = new GregorianCalendar();
 
     public static void main(String[] args) {
         //プログラムの説明文を表示するための出力
@@ -36,6 +41,7 @@ public class En15_8_ArgsCalendar {
 
         int argsLength = args.length;                    //引数の数によって処理を分けるための引数の配列の長さの取得
 
+        int[] argsValues = new int[argsLength];
 
         //コマンドライン引数の値を表示するための拡張for文
         for(String argsValue : args){
@@ -45,42 +51,21 @@ public class En15_8_ArgsCalendar {
             showArgsValueCounter++;
         }
 
-        //コマンドライン引数の数によって呼び出すメソッドを分けるための条件分岐
+
+
+        //コマンドライン引数の数によって呼び出して生成するインスタンスを分けるための条件分岐
         switch(argsLength){
 
-        case 0: showTodayMonthCalendar();
+            case 0: new En15_8_CurrentMonthCalendar();
 
-        case 1: showYearCalendar(args);
+            case 1: new En15_8_YearCalendar(argsLength);
 
-        case 2: showMonthCalendar(args);
+            case 2: new En15_8_YearMonthCalendar(2018,10);
+
+            default: System.out.println("コマンドライン引数の数が許容数以上です。年または年と月を入れなおしてください。");
+
         }
 
     }
-
-    //年の引数のみの場合に実行する処理のためのメソッド
-    public static void showYearCalendar(String[] commandLineArgs){
-
-
-    }
-
-    //年と月のコマンドライン引数の場合に実行する処理のためのメソッド
-    public static void showMonthCalendar(String[] commandLineArgs){
-
-    }
-
-    //コマンドライン引数がなかった場合に実行する処理のためのメソッド
-    public static void showTodayMonthCalendar(){
-        //その月を表示するための出力
-        System.out.printf(MONTH_CHAR,  calendar.get(Calendar.MONTH) + 1);
-
-        //その月のカレンダーを表示するためのループ処理
-
-
-    }
-
-
-
-
-
 
 }

@@ -10,9 +10,9 @@ public class En15_8_YearMonthCalendar extends En15_8_AbsCalendar {
     private int month;                              //月の値のためのフィールド変数
 
     //指定年月カレンダーのためのコンストラクタ
-    public En15_8_YearMonthCalendar(int year, int month) {
-        this.year = year;
-        this.month = month;
+    public En15_8_YearMonthCalendar(String year, String month) {
+        this.year = Integer.parseInt(year);
+        this.month = Integer.parseInt(month);
     }
 
     //年の値を取得するためのメソッド
@@ -36,6 +36,19 @@ public class En15_8_YearMonthCalendar extends En15_8_AbsCalendar {
     }
 
     /**
+     * 日付から月の開始曜日を求めるためのメソッド
+     * @return
+     *
+     *
+     */
+    @Override
+    public int dayOfWeek() {
+        return 0;
+        //
+
+    }
+
+    /**
      *指定年月のカレンダーを表示するためのメソッド</br>
      *作成日：2018/07/18</br>
      *作成者：志田
@@ -45,5 +58,6 @@ public class En15_8_YearMonthCalendar extends En15_8_AbsCalendar {
         //
 
     }
+
 
 }

@@ -29,7 +29,7 @@ public class En15_8_ArgsCalendar {
     //引数がない場合に表示する『なし』の文字列のための定数
     private static final String NONE_ARGUMENTS_STRING = "なし";
     //カレンダーの曜日の文字列のための定数
-    private static final String WEEKDAY_STRINGS = "\n月　火　水　木　金　土　日";
+    //private static final String WEEKDAY_STRINGS = "\n月　火　水　木　金　土　日";
 
     public static GregorianCalendar calendar = new GregorianCalendar();
 
@@ -41,7 +41,7 @@ public class En15_8_ArgsCalendar {
 
         int argsLength = args.length;                    //引数の数によって処理を分けるための引数の配列の長さの取得
 
-        int[] argsValues = new int[argsLength];
+        //int[] argsValues = new int[argsLength];
 
         //コマンドライン引数の値を表示するための拡張for文
         for(String argsValue : args){
@@ -55,14 +55,20 @@ public class En15_8_ArgsCalendar {
 
         //コマンドライン引数の数によって呼び出して生成するインスタンスを分けるための条件分岐
         switch(argsLength){
-
+            //引数なしの場合に実行する処理のための分岐
             case 0: new En15_8_CurrentMonthCalendar();
-
-            case 1: new En15_8_YearCalendar(argsLength);
-
-            case 2: new En15_8_YearMonthCalendar(2018,10);
-
-            default: System.out.println("コマンドライン引数の数が許容数以上です。年または年と月を入れなおしてください。");
+                    break;
+            //引数
+            case 1: En15_8_AbsCalendar calendar = new En15_8_YearCalendar(args[0]);
+                    calendar.outputCalendar();
+                    break;
+            //
+            case 2: new En15_8_YearMonthCalendar(args[0],args[1]);
+                    break;
+            //コマンドライン引数が指定上限数以上の場合に実行するためのデフォルト分岐
+            default:
+                //上限数以上であることを、
+                System.out.println("\nコマンドライン引数の数が許容数以上です。年または年と月を入れなおしてください。");
 
         }
 

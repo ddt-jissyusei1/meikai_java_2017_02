@@ -8,6 +8,7 @@ package ensyuu15;
 public class En15_8_YearMonthCalendar extends En15_8_AbsCalendar {
     private int year;                               //年の値のためのフィールド変数
     private int month;                              //月の値のためのフィールド変数
+    private int day = 1;
 
     //指定年月カレンダーのためのコンストラクタ
     public En15_8_YearMonthCalendar(String year, String month) {
@@ -43,9 +44,8 @@ public class En15_8_YearMonthCalendar extends En15_8_AbsCalendar {
      */
     @Override
     public int dayOfWeek() {
-        return 0;
-        //
-
+        //フィールドの年月日の値から月の開始曜日を求め、その値を呼び出し元に返却する
+        return (year + year / 4 - year / 100 + year / 400 + (13*month + 8) / 5 + day) % 7;
     }
 
     /**
@@ -55,7 +55,24 @@ public class En15_8_YearMonthCalendar extends En15_8_AbsCalendar {
      */
     @Override
     public void outputCalendar() {
-        //
+        System.out.println("\n" + month + "月\n日　月　火　水　木　金　土");
+
+        for(int weekLoop = 0; day < 32; weekLoop++){
+            //曜日列の出力のための繰り返し処理
+            //指定年のカレンダーを出力するための繰り返し処理
+            for(int weekdayLoop = 0; weekdayLoop < 7; weekdayLoop++){
+                if(weekdayLoop <= dayOfWeek() || day > 31){
+                    System.out.print("    ");
+
+                }else{
+                    System.out.printf("%02d  ",day);
+                    day++;
+                }
+            }
+            System.out.println();
+
+        }
+
 
     }
 

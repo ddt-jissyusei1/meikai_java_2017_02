@@ -14,4 +14,12 @@ public abstract class En15_8_AbsCalendar {
     //カレンダーを出力するためのメソッド
     public abstract void outputCalendar();
 
+    //カレンダーを表示するためのメソッド
+    public void showCalendar(){
+        //カレンダー情報を出力するための文字列メソッドの呼び出し
+        System.out.println(toString());
+        //カレンダー出力メソッドの呼び出し
+        outputCalendar();
+    }
+
 }

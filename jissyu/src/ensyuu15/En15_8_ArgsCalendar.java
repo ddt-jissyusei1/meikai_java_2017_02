@@ -19,7 +19,7 @@ public class En15_8_ArgsCalendar {
             + "\n年のみが与えられたら1月～12月まで表示します。\n年と月が与えられたらその月のカレンダーを表示します。"
             + "\nどちらも与えられなかったら現在の月のカレンダーを表示します。";
     //コマンドライン引数の年の値を表示する文のための定数
-    private static final String SHOW_ARGUMENTS_VALUE_STRING = "\nargs[%d]：%s";
+    private static final String SHOW_ARGUMENTS_VALUE_STRING = "\nargs[%d]：%s\n\n";
     //コマンドライン引数の月の値を表示する文のための定数
     //private static final String SHOW_ARGUMENTS_MONTH_VALUE_STRING = "\n月の値(args[%d):%s";
     //表示する『月』の文字リテラルのための定数
@@ -56,11 +56,12 @@ public class En15_8_ArgsCalendar {
         //コマンドライン引数の数によって呼び出して生成するインスタンスを分けるための条件分岐
         switch(argsLength){
             //引数なしの場合に実行する処理のための分岐
-            case 0: new En15_8_CurrentMonthCalendar();
+            case 0: En15_8_AbsCalendar currentCalendar = new En15_8_CurrentMonthCalendar();
+                    currentCalendar.showCalendar();
                     break;
             //引数
-            case 1: En15_8_AbsCalendar calendar = new En15_8_YearCalendar(args[0]);
-                    calendar.outputCalendar();
+            case 1: En15_8_AbsCalendar yearCalendar = new En15_8_YearCalendar(args[0]);
+                    yearCalendar.showCalendar();
                     break;
             //
             case 2: new En15_8_YearMonthCalendar(args[0],args[1]);

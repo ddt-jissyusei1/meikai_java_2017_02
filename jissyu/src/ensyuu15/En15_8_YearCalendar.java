@@ -43,6 +43,7 @@ public class En15_8_YearCalendar extends En15_8_AbsCalendar {
     }
 
     //閏年を判定するためのメソッド
+    @Override
     public boolean isLeap(int year){
         //引数の年から閏年であるか計算し、真偽値を呼び出し元に返却する
         return year % 4 == 0 && year % 100 != 0 || year % 400 == 0;
@@ -90,10 +91,10 @@ public class En15_8_YearCalendar extends En15_8_AbsCalendar {
             System.out.println("\n" + month + "月\n日　月　火　水　木　金　土");
 
             //週ごとに出力するための繰り返し処理
-            for(int weekLoop = 0; day <= monthMaxDays[monthLoop]; weekLoop++){
+            for(int weekLoop = 0; day <= monthDays; weekLoop++){
                 //曜日列の出力のための繰り返し処理
                 for(int weekdayLoop = 0; weekdayLoop < 7; weekdayLoop++){
-                    if(weekdayLoop >= startday && weekLoop == 0 || day > 1 && day <= monthMaxDays[monthLoop]){
+                    if(weekdayLoop >= startday && weekLoop == 0 || day > 1 && day <= monthDays){
                         System.out.printf("%02d  ",day);
                         day++;
                     } else {

@@ -1,7 +1,5 @@
 package ensyuu15;
 
-import java.util.GregorianCalendar;
-
 /*
  * コマンドライン引数で指定された月のカレンダーを表示するプログラムを作成せよ。
  * コマンドラインから年のみが与えられた場合は、その年の1月から12月までのカレンダーを表示して、
@@ -17,31 +15,21 @@ public class En15_8_ArgsCalendar {
     //プログラムの説明文のための定数
     private static final String PROGRAM_EXPLANATION_STRING = "コマンドライン引数で指定された月のカレンダーを表示します。"
             + "\n年のみが与えられたら1月～12月まで表示します。\n年と月が与えられたらその月のカレンダーを表示します。"
-            + "\nどちらも与えられなかったら現在の月のカレンダーを表示します。";
+            + "\nどちらも与えられなかったら現在の月のカレンダーを表示します。\n";
     //コマンドライン引数の年の値を表示する文のための定数
-    private static final String SHOW_ARGUMENTS_VALUE_STRING = "\nargs[%d]：%s\n\n";
-    //コマンドライン引数の月の値を表示する文のための定数
-    //private static final String SHOW_ARGUMENTS_MONTH_VALUE_STRING = "\n月の値(args[%d):%s";
-    //表示する『月』の文字リテラルのための定数
-    private static final String MONTH_CHAR = "\n%02d月";
-    //表示する『年』の文字リテラルのための定数
-    private static final String YEAR_CHAR = "%04d年";
-    //引数がない場合に表示する『なし』の文字列のための定数
-    private static final String NONE_ARGUMENTS_STRING = "なし";
-    //カレンダーの曜日の文字列のための定数
-    //private static final String WEEKDAY_STRINGS = "\n月　火　水　木　金　土　日";
-
-    public static GregorianCalendar calendar = new GregorianCalendar();
+    private static final String SHOW_ARGUMENTS_VALUE_STRING = "args[%d]：%s\n";
+    //引数がないことを通知するための文の定数
+    private static final String NONE_ARGUMENTS_MESSAGE = "コマンドライン引数がないので、\n現在月のカレンダーを表示します。";
+    //コマンドライン引数の数が許容数以上であることを告げる通知文のための定数
+    private static final String ARGUMENTS_NUMBER_ERROR_MESSAGE = "\nコマンドライン引数の数が許容数以上です。"
+                                                                            + "年または年と月を入れなおしてください。";
 
     public static void main(String[] args) {
         //プログラムの説明文を表示するための出力
         System.out.println(PROGRAM_EXPLANATION_STRING);
 
         int showArgsValueCounter = 0;                   //コマンドライン引数の値を表示するループのためのカウンタ変数
-
         int argsLength = args.length;                    //引数の数によって処理を分けるための引数の配列の長さの取得
-
-        //int[] argsValues = new int[argsLength];
 
         //コマンドライン引数の値を表示するための拡張for文
         for(String argsValue : args){
@@ -51,25 +39,33 @@ public class En15_8_ArgsCalendar {
             showArgsValueCounter++;
         }
 
-
+        //コマンドライン引数がない場合に実行する処理のための条件式
+        if(argsLength == 0){
+            //引数がないことを通知するための文を表示する
+            System.out.println(NONE_ARGUMENTS_MESSAGE);
+        }
 
         //コマンドライン引数の数によって呼び出して生成するインスタンスを分けるための条件分岐
         switch(argsLength){
             //引数なしの場合に実行する処理のための分岐
             case 0: En15_8_AbsCalendar currentCalendar = new En15_8_CurrentMonthCalendar();
+                    //現在月のカレンダーを表示するためのメソッドの呼び出し
                     currentCalendar.showCalendar();
                     break;
-            //引数
+            //引数が年のみの場合に実行する処理のための分岐
             case 1: En15_8_AbsCalendar yearCalendar = new En15_8_YearCalendar(args[0]);
+                    //引数の年の年間カレンダーを表示するためのメソッドの呼び出し
                     yearCalendar.showCalendar();
                     break;
-            //
-            case 2: new En15_8_YearMonthCalendar(args[0],args[1]);
+            //引数が年と月の場合に実行する処理のための分岐
+            case 2: En15_8_AbsCalendar yearMonthCalendar = new En15_8_YearMonthCalendar(args[0],args[1]);
+                    //引数の年月のカレンダーを表示するためのメソッドの呼び出し
+                    yearMonthCalendar.showCalendar();
                     break;
             //コマンドライン引数が指定上限数以上の場合に実行するためのデフォルト分岐
             default:
-                //上限数以上であることを、
-                System.out.println("\nコマンドライン引数の数が許容数以上です。年または年と月を入れなおしてください。");
+                //コマンドライン引数が上限数以上であることを通知するための文の、
+                System.out.println(ARGUMENTS_NUMBER_ERROR_MESSAGE);
 
         }
 

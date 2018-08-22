@@ -18,8 +18,6 @@ public class En15_8_ArgsCalendar {
             + "\nどちらも与えられなかったら現在の月のカレンダーを表示します。\n";
     //コマンドライン引数の年の値を表示する文のための定数
     private static final String SHOW_ARGUMENTS_VALUE_STRING = "args[%d]：%s\n";
-    //引数がないことを通知するための文の定数
-    private static final String NONE_ARGUMENTS_MESSAGE = "コマンドライン引数がないので、\n現在月のカレンダーを表示します。";
     //コマンドライン引数の数が許容数以上であることを告げる通知文のための定数
     private static final String ARGUMENTS_NUMBER_ERROR_MESSAGE = "\nコマンドライン引数の数が許容数以上です。"
                                                                             + "年または年と月を入れなおしてください。";
@@ -39,34 +37,36 @@ public class En15_8_ArgsCalendar {
             showArgsValueCounter++;
         }
 
-        //コマンドライン引数がない場合に実行する処理のための条件式
-        if(argsLength == 0){
-            //引数がないことを通知するための文を表示する
-            System.out.println(NONE_ARGUMENTS_MESSAGE);
-        }
-
         //コマンドライン引数の数によって呼び出して生成するインスタンスを分けるための条件分岐
         switch(argsLength){
             //引数なしの場合に実行する処理のための分岐
-            case 0: En15_8_AbsCalendar currentCalendar = new En15_8_CurrentMonthCalendar();
+            case 0:
+                    //現在月のカレンダーを表示するためのクラスを参照するインスタンスの生成
+                    En15_8_AbsCalendar currentCalendar = new En15_8_CurrentMonthCalendar();
                     //現在月のカレンダーを表示するためのメソッドの呼び出し
                     currentCalendar.showCalendar();
+                    //次の処理に流れないようにするためのブロック抜け処理
                     break;
             //引数が年のみの場合に実行する処理のための分岐
-            case 1: En15_8_AbsCalendar yearCalendar = new En15_8_YearCalendar(args[0]);
+            case 1:
+                    //指定年間カレンダーを表示するためのクラスを参照するインスタンスを生成
+                    En15_8_AbsCalendar yearCalendar = new En15_8_YearCalendar(args[0]);
                     //引数の年の年間カレンダーを表示するためのメソッドの呼び出し
                     yearCalendar.showCalendar();
+                  //次の処理に流れないようにするためのブロック抜け処理
                     break;
             //引数が年と月の場合に実行する処理のための分岐
-            case 2: En15_8_AbsCalendar yearMonthCalendar = new En15_8_YearMonthCalendar(args[0],args[1]);
+            case 2:
+                    //指定年月のカレンダーを表示するためのクラスを参照するインスタンスを生成
+                    En15_8_AbsCalendar yearMonthCalendar = new En15_8_YearMonthCalendar(args[0],args[1]);
                     //引数の年月のカレンダーを表示するためのメソッドの呼び出し
                     yearMonthCalendar.showCalendar();
+                  //次の処理に流れないようにするためのブロック抜け処理
                     break;
             //コマンドライン引数が指定上限数以上の場合に実行するためのデフォルト分岐
             default:
                 //コマンドライン引数が上限数以上であることを通知するための文の、
                 System.out.println(ARGUMENTS_NUMBER_ERROR_MESSAGE);
-
         }
 
     }

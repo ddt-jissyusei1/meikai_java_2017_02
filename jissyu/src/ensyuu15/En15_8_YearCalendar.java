@@ -23,26 +23,38 @@ public class En15_8_YearCalendar extends En15_8_AbsCalendar {
      * @return year 取得した年の値
      */
     public int getYear() {
+        //取得した年の値を呼び出し元に返却する
         return year;
     }
 
+    /**フィールド変数の月の値を取得するためのメソッド</br>
+     * 作成日：2018/08/22</br>
+     * 作成者：志田</br>
+     * @return month 取得した月の値
+     */
     public int getMonth(){
+        //取得した月の値を呼び出し元に返却する
         return month;
     }
 
-
     /**
-     * 出力するカレンダーの年の情報を文字列として返却するためのメソッド
-     * @return year年 カレンダーの年情報
+     * 出力するカレンダーの年の情報を文字列として返却するためのメソッド</br>
+     * 作成日：2018/08/22</br>
+     * 作成者：志田</br>
      *
+     * @return String 表示するカレンダー情報の文字列
      */
     @Override
     public String toString() {
         //年の値を取得して文字列として呼び出し元に返却する
-        return   getYear() + "年";
+        return   "コマンドライン引数が年のみのため、年間カレンダーを表示します。\n\n" + getYear() + "年";
     }
 
-    //閏年を判定するためのメソッド
+    /**
+     * 閏年を判定するためのメソッド
+     *
+     * @return boolean 閏年判定の式の真偽値
+     */
     @Override
     public boolean isLeap(int year){
         //引数の年から閏年であるか計算し、真偽値を呼び出し元に返却する
@@ -50,9 +62,11 @@ public class En15_8_YearCalendar extends En15_8_AbsCalendar {
     }
 
     /**
-     * 日付から開始曜日を求めるためのメソッド
-     * @return (year + year / 4 - year / 100 + year / 400 + (13*month + 8) / 5 + day) % 7
-     *          日付から計算した曜日の値を返却
+     * 日付から開始曜日を求めるためのメソッド</br>
+     * 作成日：2018/08/22</br>
+     * 作成者：志田</br>
+     *
+     * @return int 日付から計算した曜日の値を返却
      */
     @Override
     public int dayOfWeek() {
@@ -70,7 +84,17 @@ public class En15_8_YearCalendar extends En15_8_AbsCalendar {
         return (yearOfWeek + yearOfWeek / 4 - yearOfWeek / 100 + yearOfWeek / 400 + (13*monthOfWeek + 8) / 5 + day) % 7;
     }
 
-    //カレンダーを出力するためのメソッド
+    /**
+     * カレンダーを出力するためのメソッド</br>
+     * 作成日：2018/08/22</br>
+     * 作成者：志田</br>
+     *
+     * @param monthMaxDays 月ごとの最大日数を保持する配列
+     * @param monthDays 出力処理で使用する月の最大日数を保持する
+     * @param startday 出力する月の開始曜日を保持する
+     * @param weekLoop 週の繰り返し処理で使用するループカウンタ変数
+     * @param weekdayLoop 曜日の繰り返し処理で使用するループカウンタ変数
+     */
     @Override
     public void outputCalendar() {
         //各月の最大日数のための配列の宣言
@@ -88,22 +112,32 @@ public class En15_8_YearCalendar extends En15_8_AbsCalendar {
             //出力する月の開始曜日を取得し変数に保持する
             int startday = dayOfWeek();
             //月と曜日情報を表示するための出力
-            System.out.println("\n" + month + "月\n日　月　火　水　木　金　土");
+            System.out.println(month + "月\n日　月　火　水　木　金　土");
 
             //週ごとに出力するための繰り返し処理
             for(int weekLoop = 0; day <= monthDays; weekLoop++){
                 //曜日列の出力のための繰り返し処理
                 for(int weekdayLoop = 0; weekdayLoop < 7; weekdayLoop++){
+                    //月の開始曜日から日にちを出力するための条件式
                     if(weekdayLoop >= startday && weekLoop == 0 || day > 1 && day <= monthDays){
+                        //日にちを表示するための出力
                         System.out.printf("%02d  ",day);
+                        //次の日の表示のため一日加算
                         day++;
+                    //上記条件以外の場合に実行する処理のための分岐
                     } else {
+                        //空白を表示するための出力
                         System.out.print("    ");
                     }
                 }
+                //次の行に表示するための改行の出力
                 System.out.println();
             }
+            //次の月と表示を区切るための改行の出力
+            System.out.println();
+            //次月の情報にするための月の値の加算
             month++;
+            //次月のカレンダー表示のため日にちの値を1で初期化
             day = 1;
         }
 

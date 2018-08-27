@@ -10,14 +10,14 @@ import java.util.GregorianCalendar;
  *
  */
 public class En15_8_CurrentMonthCalendar extends En15_8_AbsCalendar {
-    private int currentYear;                                  //現在年のためのフィールド変数
-    private int currentMonth;                                 //現在月のためのフィールド変数
-    private int firstDay = 1;                                 //月の初日のためのフィールド変数
-    GregorianCalendar calendarToday = new GregorianCalendar();      //現在日時取得のためのカレンダークラスのインスタンスの宣言
+    private int currentYear;                                        //現在年のためのフィールド変数
+    private int currentMonth;                                       //現在月のためのフィールド変数
+    private int firstDay = 1;                                       //月の初日のためのフィールド変数
+    GregorianCalendar calendarToday = new GregorianCalendar();       //現在日時取得のためのカレンダークラスのインスタンスの宣言
 
     public En15_8_CurrentMonthCalendar(){
-        this.currentYear = calendarToday.get(YEAR);                    //フィールド変数に現在年をセットするための代入
-        this.currentMonth = calendarToday.get(MONTH)+1;                //フィールド変数に現在月をセットするための代入
+        this.currentYear = calendarToday.get(YEAR);                 //フィールド変数に現在年をセットするための代入
+        this.currentMonth = calendarToday.get(MONTH)+1;             //フィールド変数に現在月をセットするための代入
     }
 
     /**
@@ -67,33 +67,7 @@ public class En15_8_CurrentMonthCalendar extends En15_8_AbsCalendar {
     public String toString() {
         //取得した年と月の値を文字列にして呼び出し元に返却する
         return "コマンドライン引数がないので、\n現在月のカレンダーを表示します。\n\n"
-                                                            +getCurrentYear() + "年" + getCurrentMonth() + "月";
-    }
-
-    /**
-     * 閏年を判定するためのメソッド</br>
-     * 作成日：2018/08/22</br>
-     * 作成者：志田</br>
-     *
-     * @return boolean 閏年判定の真偽値
-     */
-    @Override
-    public boolean isLeap(int year){
-        //引数の年から閏年であるか計算し、真偽値を呼び出し元に返却する
-        return calendarToday.isLeapYear(year);
-    }
-
-    /**
-     * 日付から月の開始曜日を求めるためのメソッド</br>
-     * 作成日：2018/08/22</br
-     * 作成者：志田</br>
-     *
-     * @return 月の開始曜日の値
-     */
-    @Override
-    public int dayOfWeek() {
-        //現在年月日のカレンダークラスインスタンスより月の開始曜日を求め、その値を呼び出し元に返却する
-        return calendarToday.get(GregorianCalendar.DAY_OF_WEEK);
+                                       +calendarToday.get(YEAR) + "年" + calendarToday.get(MONTH) + "月";
     }
 
     /**
@@ -106,14 +80,15 @@ public class En15_8_CurrentMonthCalendar extends En15_8_AbsCalendar {
         //各月の最大日数のための配列の宣言
         int[] monthMaxDays = {31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31};
         //閏年であった場合、2月の最大日数に1加算するための条件式
-        if(isLeap(getCurrentYear())){
+        if(calendarToday.isLeapYear(currentYear)){
             //2月の最大日数の要素に1加算する
             monthMaxDays[1] +=1;
         }
 
-        int maxDays = monthMaxDays[getCurrentMonth() -1];       //現在月の最大日数を取得しループ制御で使用するため変数に保持する
-        int day = getFirstDay();                                //日を加算し表示するための変数
-        int startDay = dayOfWeek();                            //現在月の開始曜日を取得し保持するための変数
+        int maxDays = monthMaxDays[getCurrentMonth() -1];         //現在月の最大日数を取得しループ制御で使用するため変数に保持する
+
+        int day = getFirstDay();                                  //日を加算し表示するための変数
+        int startDay = calendarToday.get(GregorianCalendar.DAY_OF_WEEK);  //現在月の開始曜日を取得し保持するための変数
 
         //曜日のヘッダーを表示するための出力
         System.out.println("日　月　火　水　木　金　土");

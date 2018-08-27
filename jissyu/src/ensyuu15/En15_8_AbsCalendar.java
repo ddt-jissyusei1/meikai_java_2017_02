@@ -8,12 +8,6 @@ public abstract class En15_8_AbsCalendar {
     //出力するカレンダー情報を返却するためのメソッド
     public abstract String toString();
 
-    //閏年判定をするためのメソッド
-    public abstract boolean isLeap(int year);
-
-    //曜日を求めるためのメソッド
-    public abstract int dayOfWeek();
-
     //カレンダーを出力するためのメソッド
     public abstract void outputCalendar();
 

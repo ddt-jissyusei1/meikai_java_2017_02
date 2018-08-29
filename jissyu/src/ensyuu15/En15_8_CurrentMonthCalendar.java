@@ -13,9 +13,10 @@ public class En15_8_CurrentMonthCalendar extends En15_8_AbsCalendar {
     private int currentYear;                                        //現在年のためのフィールド変数
     private int currentMonth;                                       //現在月のためのフィールド変数
     private int firstDay = 1;                                       //月の初日のためのフィールド変数
-    GregorianCalendar calendarToday = new GregorianCalendar();       //現在日時取得のためのカレンダークラスのインスタンスの宣言
+    GregorianCalendar calendarToday;                                 //現在年月日のためのフィールド変数
 
     public En15_8_CurrentMonthCalendar(){
+        this.calendarToday = new GregorianCalendar();               //現在日時取得のためのカレンダークラスのインスタンスの宣言
         this.currentYear = calendarToday.get(YEAR);                 //フィールド変数に現在年をセットするための代入
         this.currentMonth = calendarToday.get(MONTH)+1;             //フィールド変数に現在月をセットするための代入
     }
@@ -67,7 +68,7 @@ public class En15_8_CurrentMonthCalendar extends En15_8_AbsCalendar {
     public String toString() {
         //取得した年と月の値を文字列にして呼び出し元に返却する
         return "コマンドライン引数がないので、\n現在月のカレンダーを表示します。\n\n"
-                                       +calendarToday.get(YEAR) + "年" + calendarToday.get(MONTH) + "月";
+                                       +calendarToday.get(YEAR) + "年" + (calendarToday.get(MONTH)+1) + "月";
     }
 
     /**
@@ -77,6 +78,8 @@ public class En15_8_CurrentMonthCalendar extends En15_8_AbsCalendar {
      */
     @Override
     public void outputCalendar() {
+        int currentMonth = calendarToday.get(MONTH);
+
         //各月の最大日数のための配列の宣言
         int[] monthMaxDays = {31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31};
         //閏年であった場合、2月の最大日数に1加算するための条件式
@@ -85,10 +88,10 @@ public class En15_8_CurrentMonthCalendar extends En15_8_AbsCalendar {
             monthMaxDays[1] +=1;
         }
 
-        int maxDays = monthMaxDays[getCurrentMonth() -1];         //現在月の最大日数を取得しループ制御で使用するため変数に保持する
+        int maxDays = monthMaxDays[currentMonth];                             //現在月の最大日数を取得しループ制御で使用するため変数に保持する
 
-        int day = getFirstDay();                                  //日を加算し表示するための変数
-        int startDay = calendarToday.get(GregorianCalendar.DAY_OF_WEEK);  //現在月の開始曜日を取得し保持するための変数
+        int day = getFirstDay();                                              //日を加算し表示するための変数
+        int startDay = calendarToday.get(GregorianCalendar.DAY_OF_WEEK)-1;  //現在月の開始曜日を取得し保持するための変数
 
         //曜日のヘッダーを表示するための出力
         System.out.println("日　月　火　水　木　金　土");

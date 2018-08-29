@@ -38,6 +38,15 @@ public class En15_8_ArgsCalendar {
             showArgsValueCounter++;
         }
 
+        En15_8_AbsCalendar[] calendars = {new En15_8_CurrentMonthCalendar(),
+                                          new En15_8_YearCalendar(args[0]),
+                                          new En15_8_YearMonthCalendar(args[0],args[1])
+        };
+
+        if(argsLength < 3){
+            calendars[argsLength].showCalendar();
+        }
+
         //コマンドライン引数の数によって呼び出して生成するインスタンスを分けるための条件分岐
         switch(argsLength){
             //引数なしの場合に実行する処理のための分岐

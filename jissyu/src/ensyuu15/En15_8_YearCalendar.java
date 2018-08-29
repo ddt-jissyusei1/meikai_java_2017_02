@@ -14,7 +14,7 @@ public class En15_8_YearCalendar extends En15_8_AbsCalendar {
 
     //年間カレンダーのためのコンストラクタ
     public En15_8_YearCalendar(String year) {
-        this.specifiedYearCalendar = new GregorianCalendar(Integer.parseInt(year), 1, 1);
+        this.specifiedYearCalendar = new GregorianCalendar(Integer.parseInt(year), 0, 1);
     }
 
     /**
@@ -44,7 +44,6 @@ public class En15_8_YearCalendar extends En15_8_AbsCalendar {
     @Override
     public void outputCalendar() {
         int specifiedYear = specifiedYearCalendar.get(YEAR);        //指定年の値の取得
-        int calendarMonth = specifiedYearCalendar.get(MONTH);       //指定年の初月の値の取得
         int calendarDay = specifiedYearCalendar.get(DATE);          //月の初日の値の取得
 
         //各月の最大日数のための配列の宣言
@@ -60,9 +59,9 @@ public class En15_8_YearCalendar extends En15_8_AbsCalendar {
             //出力する月の最大日数を変数に保持する
             int monthDays = monthMaxDays[monthLoop];
             //出力する月の開始曜日を取得し変数に保持する
-            int startday = specifiedYearCalendar.get(GregorianCalendar.DAY_OF_WEEK);
+            int startday = specifiedYearCalendar.get(GregorianCalendar.DAY_OF_WEEK)-1;
             //月と曜日情報を表示するための出力
-            System.out.println(calendarMonth + "月\n日　月　火　水　木　金　土");
+            System.out.println((monthLoop+1) + "月\n日　月　火　水　木　金　土");
 
             //週ごとに出力するための繰り返し処理
             for(int weekLoop = 0; calendarDay <= monthDays; weekLoop++){
@@ -86,8 +85,8 @@ public class En15_8_YearCalendar extends En15_8_AbsCalendar {
             //次の月と表示を区切るための改行の出力
             System.out.println();
             //次月の情報にするための月の値の加算
-            calendarMonth++;
-            //month++;
+            specifiedYearCalendar.add(MONTH, 1);
+
             //次月のカレンダー表示のため日にちの値を1で初期化
             calendarDay = 1;
         }

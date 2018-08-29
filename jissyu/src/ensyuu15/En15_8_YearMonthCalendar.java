@@ -9,12 +9,12 @@ import java.util.GregorianCalendar;
  *
  */
 public class En15_8_YearMonthCalendar extends En15_8_AbsCalendar {
-    public GregorianCalendar specifiedMonthCalendar;        //指定年月のためのフィールド変数
+    public GregorianCalendar specifiedMonthCalendar;               //指定年月のためのフィールド変数
 
     //指定年月カレンダーのためのコンストラクタ
     public En15_8_YearMonthCalendar(String year, String month) {
         //引数の値をフィールド変数にセット
-        this.specifiedMonthCalendar = new GregorianCalendar(Integer.parseInt(year), Integer.parseInt(month),1);
+        this.specifiedMonthCalendar = new GregorianCalendar(Integer.parseInt(year), Integer.parseInt(month)-1,1);
     }
 
     /**
@@ -28,7 +28,7 @@ public class En15_8_YearMonthCalendar extends En15_8_AbsCalendar {
     public String toString() {
         //取得した年と月の値を文字列にして呼び出し元に返却する
         return "コマンドライン引数が年と月のため、その年月のカレンダーを表示します。\n\n"
-                                            +specifiedMonthCalendar.get(YEAR) + "年" + specifiedMonthCalendar.get(MONTH) + "月";
+                                            +specifiedMonthCalendar.get(YEAR) + "年" + (specifiedMonthCalendar.get(MONTH)+1) + "月";
     }
 
     /**
@@ -38,9 +38,9 @@ public class En15_8_YearMonthCalendar extends En15_8_AbsCalendar {
      */
     @Override
     public void outputCalendar() {
-        int specifiedYear = specifiedMonthCalendar.get(YEAR);       //指定年の値の取得
-        int specifiedMonth = specifiedMonthCalendar.get(MONTH);     //指定月の値の取得
-        int specifiedDay = specifiedMonthCalendar.get(DATE);        //月の初日の値を取得
+        int specifiedYear = specifiedMonthCalendar.get(YEAR);     //指定年の値の取得
+        int specifiedMonth = specifiedMonthCalendar.get(MONTH);   //指定月の値の取得
+        int firstDay = specifiedMonthCalendar.get(DATE);           //月の初日の値を取得
 
         //各月の最大日数のための配列の宣言
         int[] monthMaxDays = {31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31};
@@ -50,22 +50,22 @@ public class En15_8_YearMonthCalendar extends En15_8_AbsCalendar {
             monthMaxDays[1] +=1;
         }
 
-        int maxDays = monthMaxDays[specifiedMonth -1];     //指定月の最大日数を取得しループ制御で使用するため変数に保持する
+        int maxDays = monthMaxDays[specifiedMonth-1];              //指定月の最大日数を取得しループ制御で使用するため変数に保持する
         //月の開始曜日の取得
-        int startDay = specifiedMonthCalendar.get(GregorianCalendar.DAY_OF_WEEK);
+        int startDay = specifiedMonthCalendar.get(GregorianCalendar.DAY_OF_WEEK)-1;
         //曜日のヘッダーを表示するための出力
         System.out.println("日　月　火　水　木　金　土");
 
         //指定月のカレンダーを出力するための繰り返し処理
-        for(int weekLoop = 0; specifiedDay <= maxDays; weekLoop++){
+        for(int weekLoop = 0; firstDay <= maxDays; weekLoop++){
             //一週間分の日にちを出力するための繰り返し処理
             for(int weekdayLoop = 0; weekdayLoop < 7; weekdayLoop++){
                 //月の開始曜日から出力開始するための条件式
-                if(weekdayLoop >= startDay && weekLoop == 0 || specifiedDay > 1 && specifiedDay <= maxDays){
+                if(weekdayLoop >= startDay && weekLoop == 0 || firstDay > 1 && firstDay <= maxDays){
                     //日にちを表示するための出力
-                    System.out.printf("%02d  ",specifiedDay);
+                    System.out.printf("%02d  ",firstDay);
                     //次の日の表示のため日にちを1日加算する
-                    specifiedDay++;
+                    firstDay++;
                 //日曜始まり土曜終わり以外の場合に実行する処理のための条件分岐
                 } else {
                     //空白を表示するための出力

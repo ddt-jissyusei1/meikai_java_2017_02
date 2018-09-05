@@ -8,6 +8,9 @@ public abstract class En15_8_AbsCalendar {
     //出力するカレンダー情報を返却するためのメソッド
     public abstract String toString();
 
+    //曜日のヘッダを出力するためのメソッド
+    public abstract void outputWeekHeader();
+
     //カレンダーを出力するためのメソッド
     public abstract void outputCalendar();
 

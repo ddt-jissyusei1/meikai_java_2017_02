@@ -38,45 +38,19 @@ public class En15_8_ArgsCalendar {
             showArgsValueCounter++;
         }
 
+        //引数の数ごとに処理を分けるために各カレンダー表示クラスの参照を配列に保持
         En15_8_AbsCalendar[] calendars = {new En15_8_CurrentMonthCalendar(),
                                           new En15_8_YearCalendar(args[0]),
                                           new En15_8_YearMonthCalendar(args[0],args[1])
         };
 
+        //コマンドライン引数の配列の長さが3以下の場合に実行する処理のための条件分岐
         if(argsLength < 3){
+            //カレンダー表示メソッドの呼び出し
             calendars[argsLength].showCalendar();
-        }
-
-        //コマンドライン引数の数によって呼び出して生成するインスタンスを分けるための条件分岐
-        switch(argsLength){
-            //引数なしの場合に実行する処理のための分岐
-            case 0:
-                    //現在月のカレンダーを表示するためのクラスを参照するインスタンスの生成
-                    En15_8_AbsCalendar currentCalendar = new En15_8_CurrentMonthCalendar();
-                    //現在月のカレンダーを表示するためのメソッドの呼び出し
-                    currentCalendar.showCalendar();
-                    //次の処理に流れないようにするためのブロック抜け処理
-                    break;
-            //引数が年のみの場合に実行する処理のための分岐
-            case 1:
-                    //指定年間カレンダーを表示するためのクラスを参照するインスタンスを生成
-                    En15_8_AbsCalendar yearCalendar = new En15_8_YearCalendar(args[0]);
-                    //引数の年の年間カレンダーを表示するためのメソッドの呼び出し
-                    yearCalendar.showCalendar();
-                  //次の処理に流れないようにするためのブロック抜け処理
-                    break;
-            //引数が年と月の場合に実行する処理のための分岐
-            case 2:
-                    //指定年月のカレンダーを表示するためのクラスを参照するインスタンスを生成
-                    En15_8_AbsCalendar yearMonthCalendar = new En15_8_YearMonthCalendar(args[0],args[1]);
-                    //引数の年月のカレンダーを表示するためのメソッドの呼び出し
-                    yearMonthCalendar.showCalendar();
-                  //次の処理に流れないようにするためのブロック抜け処理
-                    break;
-            //コマンドライン引数が指定上限数以上の場合に実行するためのデフォルト分岐
-            default:
-                //コマンドライン引数が上限数以上であることを通知するための文の、
-                System.out.println(ARGUMENTS_NUMBER_ERROR_MESSAGE);
+        }else{
+            //コマンドライン引数が上限数以上であることを通知するための文の、
+            System.out.println(ARGUMENTS_NUMBER_ERROR_MESSAGE);
         }
 
     }

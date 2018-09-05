@@ -30,16 +30,22 @@ public class En15_8_YearCalendar extends En15_8_AbsCalendar {
         return   "コマンドライン引数が年のみのため、年間カレンダーを表示します。\n\n" + specifiedYearCalendar.get(YEAR) + "年";
     }
 
+    @Override
+    public void outputWeekHeader() {
+        System.out.println(En15_8_Common.WEEKHEADER);
+
+    }
+
     /**
      * カレンダーを出力するためのメソッド</br>
      * 作成日：2018/08/22</br>
      * 作成者：志田</br>
      *
      * @param monthMaxDays 月ごとの最大日数を保持する配列
-     * @param monthDays 出力処理で使用する月の最大日数を保持する
-     * @param startday 出力する月の開始曜日を保持する
-     * @param weekLoop 週の繰り返し処理で使用するループカウンタ変数
-     * @param weekdayLoop 曜日の繰り返し処理で使用するループカウンタ変数
+     * @param monthDays    出力処理で使用する月の最大日数を保持する
+     * @param startday     出力する月の開始曜日を保持する
+     * @param weekLoop     週の繰り返し処理で使用するループカウンタ変数
+     * @param weekdayLoop  曜日の繰り返し処理で使用するループカウンタ変数
      */
     @Override
     public void outputCalendar() {
@@ -48,20 +54,21 @@ public class En15_8_YearCalendar extends En15_8_AbsCalendar {
 
         //各月の最大日数のための配列の宣言
         int[] monthMaxDays = {31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31};
-        //閏年であった場合、2月の最大日数に1加算するための条件式
-        if(specifiedYearCalendar.isLeapYear(specifiedYear)){
-            //2月の最大日数の要素に1加算する
-            monthMaxDays[1] +=1;
-        }
+
 
         //月ごとの出力をするための繰り返し処理
         for(int monthLoop = 0; monthLoop < 12;monthLoop++){
             //出力する月の最大日数を変数に保持する
             int monthDays = monthMaxDays[monthLoop];
+            //閏年であった場合、2月の最大日数に1加算するための条件式
+            if(specifiedYearCalendar.isLeapYear(specifiedYear)){
+                //2月の最大日数の要素に1加算する
+                monthMaxDays[1] +=1;
+            }
             //出力する月の開始曜日を取得し変数に保持する
             int startday = specifiedYearCalendar.get(GregorianCalendar.DAY_OF_WEEK)-1;
             //月と曜日情報を表示するための出力
-            System.out.println((monthLoop+1) + "月\n日　月　火　水　木　金　土");
+
 
             //週ごとに出力するための繰り返し処理
             for(int weekLoop = 0; calendarDay <= monthDays; weekLoop++){
@@ -91,5 +98,7 @@ public class En15_8_YearCalendar extends En15_8_AbsCalendar {
             calendarDay = 1;
         }
     }
+
+
 
 }

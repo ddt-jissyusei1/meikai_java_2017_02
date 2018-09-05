@@ -31,6 +31,12 @@ public class En15_8_YearMonthCalendar extends En15_8_AbsCalendar {
                                             +specifiedMonthCalendar.get(YEAR) + "年" + (specifiedMonthCalendar.get(MONTH)+1) + "月";
     }
 
+    @Override
+    public void outputWeekHeader() {
+        System.out.println(En15_8_Common.WEEKHEADER);
+
+    }
+
     /**
      *指定年月のカレンダーを表示するためのメソッド</br>
      *作成日：2018/08/22</br>
@@ -42,19 +48,13 @@ public class En15_8_YearMonthCalendar extends En15_8_AbsCalendar {
         int specifiedMonth = specifiedMonthCalendar.get(MONTH);   //指定月の値の取得
         int firstDay = specifiedMonthCalendar.get(DATE);           //月の初日の値を取得
 
-        //各月の最大日数のための配列の宣言
-        int[] monthMaxDays = {31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31};
-        //閏年であった場合、2月の最大日数に1加算するための条件式
-        if(specifiedMonthCalendar.isLeapYear(specifiedYear)){
-            //2月の最大日数の要素に1加算する
-            monthMaxDays[1] +=1;
-        }
+        //指定月の最大日数を取得しループ制御で使用するため変数に保持する
+        int maxDays = En15_8_Common.getMonthMaxDays(specifiedMonth-1, specifiedYear);
 
-        int maxDays = monthMaxDays[specifiedMonth-1];              //指定月の最大日数を取得しループ制御で使用するため変数に保持する
         //月の開始曜日の取得
         int startDay = specifiedMonthCalendar.get(GregorianCalendar.DAY_OF_WEEK)-1;
         //曜日のヘッダーを表示するための出力
-        System.out.println("日　月　火　水　木　金　土");
+        outputWeekHeader();
 
         //指定月のカレンダーを出力するための繰り返し処理
         for(int weekLoop = 0; firstDay <= maxDays; weekLoop++){
@@ -77,6 +77,8 @@ public class En15_8_YearMonthCalendar extends En15_8_AbsCalendar {
         }
 
     }
+
+
 
 
 

@@ -31,12 +31,6 @@ public class En15_8_YearMonthCalendar extends En15_8_AbsCalendar {
                                             +specifiedMonthCalendar.get(YEAR) + "年" + (specifiedMonthCalendar.get(MONTH)+1) + "月";
     }
 
-    @Override
-    public void outputWeekHeader() {
-        System.out.println(En15_8_Common.WEEKHEADER);
-
-    }
-
     /**
      *指定年月のカレンダーを表示するためのメソッド</br>
      *作成日：2018/08/22</br>
@@ -49,12 +43,12 @@ public class En15_8_YearMonthCalendar extends En15_8_AbsCalendar {
         int firstDay = specifiedMonthCalendar.get(DATE);           //月の初日の値を取得
 
         //指定月の最大日数を取得しループ制御で使用するため変数に保持する
-        int maxDays = En15_8_Common.getMonthMaxDays(specifiedMonth-1, specifiedYear);
+        int maxDays = En15_8_Common.getMonthMaxDays(specifiedMonth, specifiedYear);
 
         //月の開始曜日の取得
-        int startDay = specifiedMonthCalendar.get(GregorianCalendar.DAY_OF_WEEK)-1;
+        int startDay = En15_8_Common.getWeekDay(specifiedYear, specifiedMonth);
         //曜日のヘッダーを表示するための出力
-        outputWeekHeader();
+        En15_8_Common.outputWeekHeader();
 
         //指定月のカレンダーを出力するための繰り返し処理
         for(int weekLoop = 0; firstDay <= maxDays; weekLoop++){

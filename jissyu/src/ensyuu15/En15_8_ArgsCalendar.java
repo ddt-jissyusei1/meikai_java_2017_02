@@ -30,6 +30,11 @@ public class En15_8_ArgsCalendar {
         int showArgsValueCounter = 0;                   //コマンドライン引数の値を表示するループのためのカウンタ変数
         int argsLength = args.length;                    //引数の数によって処理を分けるための引数の配列の長さの取得
 
+        //引数の数ごとに処理を分けるために各カレンダー表示クラスの参照を配列に保持
+        En15_8_AbsCalendar[] calendars = {new En15_8_CurrentMonthCalendar(),
+                                           new En15_8_YearCalendar(args[0]),
+                                           new En15_8_YearMonthCalendar(args[0],args[1])};
+
         //コマンドライン引数の値を表示するための拡張for文
         for(String argsValue : args){
             //コマンドライン引数の値を表示するための出力
@@ -37,12 +42,6 @@ public class En15_8_ArgsCalendar {
             //次の引数の値を表示するためのカウンタの加算
             showArgsValueCounter++;
         }
-
-        //引数の数ごとに処理を分けるために各カレンダー表示クラスの参照を配列に保持
-        En15_8_AbsCalendar[] calendars = {new En15_8_CurrentMonthCalendar(),
-                                          new En15_8_YearCalendar(args[0]),
-                                          new En15_8_YearMonthCalendar(args[0],args[1])
-        };
 
         //コマンドライン引数の配列の長さが3以下の場合に実行する処理のための条件分岐
         if(argsLength < 3){

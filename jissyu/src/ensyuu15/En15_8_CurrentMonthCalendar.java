@@ -2,7 +2,7 @@ package ensyuu15;
 
 import static java.util.Calendar.*;
 
-import java.util.GregorianCalendar;
+import java.util.Calendar;
 
 /**
  * 現在の月のカレンダーのためのクラス</br>
@@ -12,11 +12,12 @@ import java.util.GregorianCalendar;
 public class En15_8_CurrentMonthCalendar extends En15_8_AbsCalendar{
     private int currentYear;                                        //現在年のためのフィールド変数
     private int currentMonth;                                       //現在月のためのフィールド変数
-    private int firstDay = 1;                                       //月の初日のためのフィールド変数
+    private int firstDay;                                           //月の初日のためのフィールド変数
 
     public En15_8_CurrentMonthCalendar(){
-        this.currentYear = En15_8_Common.calendar.get(YEAR);       //フィールド変数に現在年をセットするための代入
-        this.currentMonth = En15_8_Common.calendar.get(MONTH)+1;   //フィールド変数に現在月をセットするための代入
+        Calendar currentCalendar = Calendar.getInstance();
+        this.currentYear = currentCalendar.get(YEAR);       //フィールド変数に現在年をセットするための代入
+        this.currentMonth = currentCalendar.get(MONTH)+1;   //フィールド変数に現在月をセットするための代入
         this.firstDay = En15_8_Common.baseDay;
     }
 
@@ -70,12 +71,6 @@ public class En15_8_CurrentMonthCalendar extends En15_8_AbsCalendar{
                                        +getCurrentYear() + "年" + getCurrentMonth() + "月";
     }
 
-
-    @Override
-    public void outputWeekHeader() {
-        System.out.println(En15_8_Common.WEEKHEADER);
-    }
-
     /**
      * 現在月のカレンダーを表示するためのメソッド</br>
      * 作成日：2018/08/20</br>
@@ -83,17 +78,19 @@ public class En15_8_CurrentMonthCalendar extends En15_8_AbsCalendar{
      */
     @Override
     public void outputCalendar() {
-        //現在月の取得
+        //現在年の値の取得
+        int currentYear = getCurrentYear();
+        //現在月の値の取得
         int currentMonth = getCurrentMonth();
 
         //現在月の最大日数を取得しループ制御で使用するため変数に保持する
         int maxDays = En15_8_Common.getMonthMaxDays(currentMonth, currentYear);
 
-        int firstDay = getFirstDay();                                              //日を加算し表示するための変数
-        int startWeekDay = En15_8_Common.calendar.get(GregorianCalendar.DAY_OF_WEEK)-1;  //現在月の開始曜日を取得し保持するための変数
+        int firstDay = getFirstDay();                                                       //日を加算し表示するための変数
+        int startWeekDay = En15_8_Common.getWeekDay(currentYear,currentMonth);  //現在月の開始曜日を取得し保持するための変数
 
         //曜日のヘッダーを表示するための出力
-        outputWeekHeader();
+        En15_8_Common.outputWeekHeader();
 
         //現在月のカレンダーを出力するための繰り返し処理
         for(int weekLoop = 0; firstDay <= maxDays; weekLoop++){

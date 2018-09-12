@@ -30,12 +30,6 @@ public class En15_8_YearCalendar extends En15_8_AbsCalendar {
         return   "コマンドライン引数が年のみのため、年間カレンダーを表示します。\n\n" + specifiedYearCalendar.get(YEAR) + "年";
     }
 
-    @Override
-    public void outputWeekHeader() {
-        System.out.println(En15_8_Common.WEEKHEADER);
-
-    }
-
     /**
      * カレンダーを出力するためのメソッド</br>
      * 作成日：2018/08/22</br>
@@ -52,23 +46,16 @@ public class En15_8_YearCalendar extends En15_8_AbsCalendar {
         int specifiedYear = specifiedYearCalendar.get(YEAR);        //指定年の値の取得
         int calendarDay = specifiedYearCalendar.get(DATE);          //月の初日の値の取得
 
-        //各月の最大日数のための配列の宣言
-        int[] monthMaxDays = {31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31};
-
-
         //月ごとの出力をするための繰り返し処理
         for(int monthLoop = 0; monthLoop < 12;monthLoop++){
             //出力する月の最大日数を変数に保持する
-            int monthDays = monthMaxDays[monthLoop];
-            //閏年であった場合、2月の最大日数に1加算するための条件式
-            if(specifiedYearCalendar.isLeapYear(specifiedYear)){
-                //2月の最大日数の要素に1加算する
-                monthMaxDays[1] +=1;
-            }
+            int monthDays = En15_8_Common.getMonthMaxDays(monthLoop, specifiedYear);
             //出力する月の開始曜日を取得し変数に保持する
-            int startday = specifiedYearCalendar.get(GregorianCalendar.DAY_OF_WEEK)-1;
-            //月と曜日情報を表示するための出力
-
+            int startday = En15_8_Common.getWeekDay(specifiedYear, monthLoop);
+            //月情報を表示するための出力
+            System.out.println(monthLoop + "月\n");
+            //曜日のヘッダーを表示するための関数の呼び出し
+            En15_8_Common.outputWeekHeader();
 
             //週ごとに出力するための繰り返し処理
             for(int weekLoop = 0; calendarDay <= monthDays; weekLoop++){
@@ -95,7 +82,7 @@ public class En15_8_YearCalendar extends En15_8_AbsCalendar {
             specifiedYearCalendar.add(MONTH, 1);
 
             //次月のカレンダー表示のため日にちの値を1で初期化
-            calendarDay = 1;
+            calendarDay = En15_8_Common.baseDay;
         }
     }
 

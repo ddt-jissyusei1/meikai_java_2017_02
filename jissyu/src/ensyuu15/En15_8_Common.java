@@ -14,6 +14,12 @@ public class En15_8_Common {
     //カレンダークラスインスタンスの生成
     public static GregorianCalendar calendar = new GregorianCalendar();
 
+    public static int getWeekDay(int year, int month){
+        calendar.set(year, month);
+        int weekday = calendar.get(GregorianCalendar.DAY_OF_WEEK)-1;
+        return weekday;
+    }
+
     //引数の月の最大日数を取得するための関数
     public static int getMonthMaxDays(int month, int year){
         //各月の最大日数のための配列の宣言
@@ -27,6 +33,11 @@ public class En15_8_Common {
         //呼び出し元に引数月の最大日数を返却する
         return monthMaxDays[month];
     }
+
+    //曜日のヘッダを出力するためのメソッド
+    public static void outputWeekHeader(){
+        System.out.println(En15_8_Common.WEEKHEADER);
+    };
 
 
 

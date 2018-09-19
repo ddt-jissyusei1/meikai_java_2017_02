@@ -10,10 +10,12 @@ import java.util.GregorianCalendar;
  *
  */
 public class En15_8_YearCalendar extends En15_8_AbsCalendar {
+    //年間カレンダーのためのカレンダークラスのフィールド変数
     private GregorianCalendar specifiedYearCalendar;
 
     //年間カレンダーのためのコンストラクタ
     public En15_8_YearCalendar(String year) {
+        //カレンダークラスのフィールド変数に引数の年の値をセットする
         this.specifiedYearCalendar = new GregorianCalendar(Integer.parseInt(year), 0, 1);
     }
 
@@ -35,11 +37,12 @@ public class En15_8_YearCalendar extends En15_8_AbsCalendar {
      * 作成日：2018/08/22</br>
      * 作成者：志田</br>
      *
-     * @param monthMaxDays 月ごとの最大日数を保持する配列
-     * @param monthDays    出力処理で使用する月の最大日数を保持する
-     * @param startday     出力する月の開始曜日を保持する
-     * @param weekLoop     週の繰り返し処理で使用するループカウンタ変数
-     * @param weekdayLoop  曜日の繰り返し処理で使用するループカウンタ変数
+     * @param specifiedYear 指定年の値を保持する
+     * @param calendarDay   月の初日の値を保持する
+     * @param monthDays     出力処理で使用する月の最大日数を保持する
+     * @param startday      出力する月の開始曜日を保持する
+     * @param weekLoop      週の繰り返し処理で使用するループカウンタ変数
+     * @param weekdayLoop   曜日の繰り返し処理で使用するループカウンタ変数
      */
     @Override
     public void outputCalendar() {
@@ -49,11 +52,11 @@ public class En15_8_YearCalendar extends En15_8_AbsCalendar {
         //月ごとの出力をするための繰り返し処理
         for(int monthLoop = 0; monthLoop < 12;monthLoop++){
             //出力する月の最大日数を変数に保持する
-            int monthDays = En15_8_Common.getMonthMaxDays(monthLoop, specifiedYear);
+            int monthDays = En15_8_Common.getMonthMaxDays(specifiedYear, monthLoop);
             //出力する月の開始曜日を取得し変数に保持する
             int startday = En15_8_Common.getWeekDay(specifiedYear, monthLoop);
             //月情報を表示するための出力
-            System.out.println(monthLoop + "月\n");
+            System.out.println((monthLoop+1) + "月");
             //曜日のヘッダーを表示するための関数の呼び出し
             En15_8_Common.outputWeekHeader();
 

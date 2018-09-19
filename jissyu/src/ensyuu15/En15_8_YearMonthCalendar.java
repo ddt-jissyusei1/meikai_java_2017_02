@@ -28,13 +28,22 @@ public class En15_8_YearMonthCalendar extends En15_8_AbsCalendar {
     public String toString() {
         //取得した年と月の値を文字列にして呼び出し元に返却する
         return "コマンドライン引数が年と月のため、その年月のカレンダーを表示します。\n\n"
-                                            +specifiedMonthCalendar.get(YEAR) + "年" + (specifiedMonthCalendar.get(MONTH)+1) + "月";
+                                            + specifiedMonthCalendar.get(YEAR) + "年" + (specifiedMonthCalendar.get(MONTH)+1) + "月";
     }
 
     /**
      *指定年月のカレンダーを表示するためのメソッド</br>
      *作成日：2018/08/22</br>
      *作成者：志田
+     *
+     * @param specifiedYear   指定年のための変数
+     * @param specifiedMonth  指定付きのための変数
+     * @param firstDay        月の開始日のための変数
+     * @param maxDays         月の最大日数のための変数
+     * @param startDay        月の開始曜日の値のための変数
+     * @param weekLoop        週ごとの繰り返しのカウンタ変数
+     * @param weekdayLoop     週の日にちごとの繰り返しのカウンタ変数
+     *
      */
     @Override
     public void outputCalendar() {
@@ -43,7 +52,7 @@ public class En15_8_YearMonthCalendar extends En15_8_AbsCalendar {
         int firstDay = specifiedMonthCalendar.get(DATE);           //月の初日の値を取得
 
         //指定月の最大日数を取得しループ制御で使用するため変数に保持する
-        int maxDays = En15_8_Common.getMonthMaxDays(specifiedMonth, specifiedYear);
+        int maxDays = En15_8_Common.getMonthMaxDays(specifiedYear, specifiedMonth);
 
         //月の開始曜日の取得
         int startDay = En15_8_Common.getWeekDay(specifiedYear, specifiedMonth);

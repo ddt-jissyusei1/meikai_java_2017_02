@@ -30,11 +30,6 @@ public class En15_8_ArgsCalendar {
         int showArgsValueCounter = 0;                   //コマンドライン引数の値を表示するループのためのカウンタ変数
         int argsLength = args.length;                    //引数の数によって処理を分けるための引数の配列の長さの取得
 
-        //引数の数ごとに処理を分けるために各カレンダー表示クラスの参照を配列に保持
-        En15_8_AbsCalendar[] calendars = {new En15_8_CurrentMonthCalendar(),
-                                           new En15_8_YearCalendar(args[0]),
-                                           new En15_8_YearMonthCalendar(args[0],args[1])};
-
         //コマンドライン引数の値を表示するための拡張for文
         for(String argsValue : args){
             //コマンドライン引数の値を表示するための出力
@@ -43,15 +38,34 @@ public class En15_8_ArgsCalendar {
             showArgsValueCounter++;
         }
 
-        //コマンドライン引数の配列の長さが3以下の場合に実行する処理のための条件分岐
-        if(argsLength < 3){
-            //カレンダー表示メソッドの呼び出し
-            calendars[argsLength].showCalendar();
-        }else{
-            //コマンドライン引数が上限数以上であることを通知するための文の、
-            System.out.println(ARGUMENTS_NUMBER_ERROR_MESSAGE);
+        //配列の要素数によってい処理を分けるための条件分岐
+        switch(argsLength){
+            //要素数が0の場合に実行する処理のための条件分岐
+            case 0://現在月のカレンダーを表示するための参照先インスタンスの宣言
+                    En15_8_AbsCalendar currentCalendar = new En15_8_CurrentMonthCalendar();
+                    //現在月のカレンダーを表示するためのメソッドの呼び出し
+                    currentCalendar.showCalendar();
+                    //次の分岐に処理が移らないようにするためのブロック抜け文
+                    break;
+            //要素数が１の場合に実行する処理のための条件分岐
+            case 1://指定年の年間カレンダーを表示するための参照先インスタンスの宣言
+                    En15_8_AbsCalendar yearCalendar = new En15_8_YearCalendar(args[0]);
+                    //指定年の年間カレンダーを表示するためのメソッドの呼び出し
+                    yearCalendar.showCalendar();
+                    //次の分岐に処理が移らないようにするためのブロック抜け文
+                    break;
+            //要素数が２の場合に実行する処理のための条件分岐
+            case 2://指定年月のカレンダーを表示するための参照先インスタンスの宣言
+                    En15_8_AbsCalendar yearMonthCalendar = new En15_8_YearMonthCalendar(args[0],args[1]);
+                    //指定年月のカレンダーを表示するためのメソッドの呼び出し
+                    yearMonthCalendar.showCalendar();
+                    //次の分岐に処理が移らないようにするためのブロック抜け文
+                    break;
+            //上記条件以外の時に実行する処理のためのデフォルト分岐
+            default:
+                 //コマンドライン引数が上限数以上であることを通知するための文の表示
+                 System.out.println(ARGUMENTS_NUMBER_ERROR_MESSAGE);
         }
-
     }
 
 }

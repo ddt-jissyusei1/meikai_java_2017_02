@@ -18,7 +18,7 @@ public class En15_8_CurrentMonthCalendar extends En15_8_AbsCalendar{
         Calendar currentCalendar = Calendar.getInstance();
         this.currentYear = currentCalendar.get(YEAR);       //フィールド変数に現在年をセットするための代入
         this.currentMonth = currentCalendar.get(MONTH)+1;   //フィールド変数に現在月をセットするための代入
-        this.firstDay = En15_8_Common.baseDay;
+        this.firstDay = En15_8_Common.baseDay;              //フィールド変数に月の初日をセットするための代入
     }
 
     /**
@@ -75,6 +75,14 @@ public class En15_8_CurrentMonthCalendar extends En15_8_AbsCalendar{
      * 現在月のカレンダーを表示するためのメソッド</br>
      * 作成日：2018/08/20</br>
      * 作成者：志田
+     *
+     * @param currentYear  現在年の値のための変数
+     * @param currentMonth 現在月の値のための変数
+     * @param maxDays      月の最大日数のための変数
+     * @param firstDay     月の開始日の値のための変数
+     * @paramstartWeekDay 月の開始曜日の値のための変数
+     * @param weekLoop     週ごとの繰り返しのためのカウンタ変数
+     * @param weekdayLoop  週の日にちごとの繰り返しのためのカウンタ変数
      */
     @Override
     public void outputCalendar() {
@@ -84,10 +92,10 @@ public class En15_8_CurrentMonthCalendar extends En15_8_AbsCalendar{
         int currentMonth = getCurrentMonth();
 
         //現在月の最大日数を取得しループ制御で使用するため変数に保持する
-        int maxDays = En15_8_Common.getMonthMaxDays(currentMonth, currentYear);
+        int maxDays = En15_8_Common.getMonthMaxDays(currentYear, currentMonth-1);
 
-        int firstDay = getFirstDay();                                                       //日を加算し表示するための変数
-        int startWeekDay = En15_8_Common.getWeekDay(currentYear,currentMonth);  //現在月の開始曜日を取得し保持するための変数
+        int firstDay = getFirstDay();                                               //日を加算し表示するための変数
+        int startWeekDay = En15_8_Common.getWeekDay(currentYear,currentMonth-1);  //現在月の開始曜日を取得し保持するための変数
 
         //曜日のヘッダーを表示するための出力
         En15_8_Common.outputWeekHeader();

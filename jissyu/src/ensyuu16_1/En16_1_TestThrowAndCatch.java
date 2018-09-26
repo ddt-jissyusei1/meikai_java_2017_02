@@ -28,7 +28,8 @@ public class En16_1_TestThrowAndCatch {
             //入力された値を例外捕捉に使用するため変数に保持する
             exceptionTestValue = inputStream.nextInt();
         //規定数値以外が入力されている間処理を繰り返す
-        }while(exceptionTestValue < 1 || exceptionTestValue > 2);
+        }while(exceptionTestValue < En16_1_ThrowAndCatch.EXCEPTION_SWITCH_VALUE ||
+               exceptionTestValue > En16_1_ThrowAndCatch.RUNTIMEEXCEPTION_SWITCH_VALUE);
 
         //入力された値に対する処理を行うためのtryブロック
         try{

@@ -38,7 +38,7 @@ public class En16_2_RangeErrorTester {
     //範囲設定数値の最大値のための定数
     private static final int MAX_RANGE_NUMBER = 9;
     //繰り返し判定で『はい』の選択値のための定数
-    private static final int SELECT_NUMBER_FOR_YES = 1;
+    private static final int SELECTION_NUMBER_FOR_YES = 1;
 
     //キーボードからの入力ストリームを読み込むためのプログラム
     private static Scanner inputStream = new Scanner(System.in);
@@ -75,6 +75,7 @@ public class En16_2_RangeErrorTester {
             }catch(En16_2_RangeError e){
                 //例外の詳細文字列を取得し表示するための出力
                 System.out.println(e.getMessage());
+                //System.out.println(e.toString());
             }
 
             //プログラムの繰り返し可否の質問文を表示するための出力
@@ -83,12 +84,11 @@ public class En16_2_RangeErrorTester {
             repeatJudge = inputStream.nextInt();
 
         //入力された値が1の間プログラムを繰り返すための条件式
-        }while(repeatJudge == SELECT_NUMBER_FOR_YES);
+        }while(repeatJudge == SELECTION_NUMBER_FOR_YES);
 
         //プログラムの終了を通知する文を表示するための出力
         System.out.println(EXIT_PROGRAM_MESSAGE);
     }
-
 
     /**
      * 1桁の整数二つを加算し結果を返却するためのメソッド</br>
@@ -98,7 +98,7 @@ public class En16_2_RangeErrorTester {
      * @return addResult 加算結果の値の返却
      */
     public static int calcAdd(int[] addNumbers){
-        int addResult;                      //加算結果を保持するための変数
+        int addResult = 0;                      //加算結果を保持するための変数を0で初期化
 
         //範囲外検査をするための加算する数値を保持した配列の拡張for文
         for(int objAddNumber : addNumbers){
@@ -107,10 +107,9 @@ public class En16_2_RangeErrorTester {
                 //例外ハンドラにパラメータ範囲外例外を渡すための送出。
                 throw new En16_2_ParameterRangeError(PARAMETER_RANGE_ERROR_MESSAGE,objAddNumber);
             }
+            //配列の要素の値を加算するための加算結果への加算代入
+            addResult += objAddNumber;
         }
-
-        //二つの引数の値を加算する
-        addResult = addNumbers[ADD_NUMBER_ARRAY_FIRST_INDEX] + addNumbers[ADD_NUMBER_ARRAY_SECOND_INDEX];
 
         //計算結果が一桁ではない場合に範囲外例外を送出するための条件式
         if(!isValid(addResult)){
@@ -122,7 +121,6 @@ public class En16_2_RangeErrorTester {
         return addResult;
 
     }
-
 
     /**
      * 引数の値が1桁であるか判定するためのメソッド</br>

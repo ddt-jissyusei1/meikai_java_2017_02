@@ -38,34 +38,36 @@ public class En15_8_ArgsCalendar {
             showArgsValueCounter++;
         }
 
+        //カレンダーを表示するためのインスタンスの宣言
+        En15_8_AbsCalendar calendars = null;
+
         //配列の要素数によってい処理を分けるための条件分岐
         switch(argsLength){
             //要素数が0の場合に実行する処理のための条件分岐
-            case 0://現在月のカレンダーを表示するための参照先インスタンスの宣言
-                    En15_8_AbsCalendar currentCalendar = new En15_8_CurrentMonthCalendar();
-                    //現在月のカレンダーを表示するためのメソッドの呼び出し
-                    currentCalendar.showCalendar();
+            case 0://現在月のカレンダーを表示するための参照先インスタンスを生成
+                    calendars = new En15_8_CurrentMonthCalendar();
                     //次の分岐に処理が移らないようにするためのブロック抜け文
                     break;
             //要素数が１の場合に実行する処理のための条件分岐
             case 1://指定年の年間カレンダーを表示するための参照先インスタンスの宣言
-                    En15_8_AbsCalendar yearCalendar = new En15_8_YearCalendar(args[0]);
-                    //指定年の年間カレンダーを表示するためのメソッドの呼び出し
-                    yearCalendar.showCalendar();
+                    calendars = new En15_8_YearCalendar(args[0]);
                     //次の分岐に処理が移らないようにするためのブロック抜け文
                     break;
             //要素数が２の場合に実行する処理のための条件分岐
             case 2://指定年月のカレンダーを表示するための参照先インスタンスの宣言
-                    En15_8_AbsCalendar yearMonthCalendar = new En15_8_YearMonthCalendar(args[0],args[1]);
-                    //指定年月のカレンダーを表示するためのメソッドの呼び出し
-                    yearMonthCalendar.showCalendar();
+                    calendars = new En15_8_YearMonthCalendar(args[0],args[1]);
                     //次の分岐に処理が移らないようにするためのブロック抜け文
                     break;
             //上記条件以外の時に実行する処理のためのデフォルト分岐
             default:
                  //コマンドライン引数が上限数以上であることを通知するための文の表示
                  System.out.println(ARGUMENTS_NUMBER_ERROR_MESSAGE);
+                 //例外発生を防ぐためのプログラム終了コード
+                 System.exit(0);
         }
+
+        //コマンドライン引数の数に応じたカレンダーを表示するためのカレンダー表示メソッドの呼び出し
+        calendars.showCalendar();
     }
 
 }

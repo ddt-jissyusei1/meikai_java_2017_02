@@ -63,7 +63,7 @@ public class En15_8_YearCalendar extends En15_8_AbsCalendar {
             //週ごとに出力するための繰り返し処理
             for(int weekLoop = 0; calendarDay <= monthDays; weekLoop++){
                 //曜日列の出力のための繰り返し処理
-                for(int weekdayLoop = 0; weekdayLoop < 7; weekdayLoop++){
+                for(int weekdayLoop = 0; weekdayLoop < En15_8_Common.weekDays; weekdayLoop++){
                     //月の開始曜日から日にちを出力するための条件式
                     if(weekdayLoop >= startday && weekLoop == 0 || calendarDay > 1 && calendarDay <= monthDays){
                         //日にちを表示するための出力

@@ -10,9 +10,9 @@ public class En15_8_Common {
     public static final String WEEKHEADER = "日　月　火　水　木　金　土";
 
     //月の初日から表示するための開始日の保持
-    public static int baseDay = 1;
+    public static final int baseDay = 1;
     //カレンダーを表示する繰り返し処理で使用するための1週間の日数の値の保持
-    public int weekDays = 7;
+    public static final int weekDays = 7;
 
     //カレンダークラスインスタンスの生成
     public static GregorianCalendar calendar = new GregorianCalendar();

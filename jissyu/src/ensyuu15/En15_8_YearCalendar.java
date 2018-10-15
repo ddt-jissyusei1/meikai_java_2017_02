@@ -52,18 +52,18 @@ public class En15_8_YearCalendar extends En15_8_AbsCalendar {
         //月ごとの出力をするための繰り返し処理
         for(int monthLoop = 0; monthLoop < 12;monthLoop++){
             //出力する月の最大日数を変数に保持する
-            int monthDays = En15_8_Common.getMonthMaxDays(specifiedYear, monthLoop);
+            int monthDays = En15_8_OutputCalendarsCommonProcesses.getMonthMaxDays(specifiedYear, monthLoop);
             //出力する月の開始曜日を取得し変数に保持する
-            int startday = En15_8_Common.getWeekDay(specifiedYear, monthLoop);
+            int startday = En15_8_OutputCalendarsCommonProcesses.getWeekDay(specifiedYear, monthLoop);
             //月情報を表示するための出力
             System.out.println((monthLoop+1) + "月");
             //曜日のヘッダーを表示するための関数の呼び出し
-            En15_8_Common.outputWeekHeader();
+            En15_8_OutputCalendarsCommonProcesses.outputWeekHeader();
 
             //週ごとに出力するための繰り返し処理
             for(int weekLoop = 0; calendarDay <= monthDays; weekLoop++){
                 //曜日列の出力のための繰り返し処理
-                for(int weekdayLoop = 0; weekdayLoop < En15_8_Common.weekDays; weekdayLoop++){
+                for(int weekdayLoop = 0; weekdayLoop < En15_8_OutputCalendarsCommonProcesses.weekDays; weekdayLoop++){
                     //月の開始曜日から日にちを出力するための条件式
                     if(weekdayLoop >= startday && weekLoop == 0 || calendarDay > 1 && calendarDay <= monthDays){
                         //日にちを表示するための出力
@@ -85,7 +85,7 @@ public class En15_8_YearCalendar extends En15_8_AbsCalendar {
             specifiedYearCalendar.add(MONTH, 1);
 
             //次月のカレンダー表示のため日にちの値を1で初期化
-            calendarDay = En15_8_Common.baseDay;
+            calendarDay = En15_8_OutputCalendarsCommonProcesses.baseDay;
         }
     }
 

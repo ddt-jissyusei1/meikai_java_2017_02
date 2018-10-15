@@ -18,7 +18,7 @@ public class En15_8_CurrentMonthCalendar extends En15_8_AbsCalendar{
         Calendar currentCalendar = Calendar.getInstance();
         this.currentYear = currentCalendar.get(YEAR);       //フィールド変数に現在年をセットするための代入
         this.currentMonth = currentCalendar.get(MONTH)+1;   //フィールド変数に現在月をセットするための代入
-        this.firstDay = En15_8_Common.baseDay;              //フィールド変数に月の初日をセットするための代入
+        this.firstDay = En15_8_OutputCalendarsCommonProcesses.baseDay;              //フィールド変数に月の初日をセットするための代入
     }
 
     /**
@@ -92,18 +92,18 @@ public class En15_8_CurrentMonthCalendar extends En15_8_AbsCalendar{
         int currentMonth = getCurrentMonth();
 
         //現在月の最大日数を取得しループ制御で使用するため変数に保持する
-        int maxDays = En15_8_Common.getMonthMaxDays(currentYear, currentMonth-1);
+        int maxDays = En15_8_OutputCalendarsCommonProcesses.getMonthMaxDays(currentYear, currentMonth-1);
 
         int firstDay = getFirstDay();                                               //日を加算し表示するための変数
-        int startWeekDay = En15_8_Common.getWeekDay(currentYear,currentMonth-1);  //現在月の開始曜日を取得し保持するための変数
+        int startWeekDay = En15_8_OutputCalendarsCommonProcesses.getWeekDay(currentYear,currentMonth-1);  //現在月の開始曜日を取得し保持するための変数
 
         //曜日のヘッダーを表示するための出力
-        En15_8_Common.outputWeekHeader();
+        En15_8_OutputCalendarsCommonProcesses.outputWeekHeader();
 
         //現在月のカレンダーを出力するための繰り返し処理
         for(int weekLoop = 0; firstDay <= maxDays; weekLoop++){
             //一週間分の日にちを出力するための繰り返し処理
-            for(int weekdayLoop = 0; weekdayLoop < En15_8_Common.weekDays; weekdayLoop++){
+            for(int weekdayLoop = 0; weekdayLoop < En15_8_OutputCalendarsCommonProcesses.weekDays; weekdayLoop++){
                 //月の開始曜日から出力開始するための条件式
                 if(weekdayLoop >= startWeekDay && weekLoop == 0 || firstDay > 1 && firstDay <= maxDays){
                     //日にちを表示するための出力

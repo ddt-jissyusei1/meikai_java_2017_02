@@ -5,7 +5,7 @@ import java.util.GregorianCalendar;
 /*
  * 演習15-8のカレンダー表示クラスで使用する共通の関数をまとめたクラス
  */
-public class En15_8_Common {
+public class En15_8_OutputCalendarsCommonProcesses {
     //表示するカレンダーの曜日のヘッダのための定数
     public static final String WEEKHEADER = "日　月　火　水　木　金　土";
 
@@ -44,7 +44,7 @@ public class En15_8_Common {
     //曜日のヘッダを出力するためのメソッド
     public static void outputWeekHeader(){
         //曜日のヘッダを表示するための出力
-        System.out.println(En15_8_Common.WEEKHEADER);
+        System.out.println(En15_8_OutputCalendarsCommonProcesses.WEEKHEADER);
     };
 
 

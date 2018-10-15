@@ -75,7 +75,7 @@ public class En16_2_RangeErrorTester {
             }catch(En16_2_RangeError e){
                 //例外の詳細文字列を取得し表示するための出力
                 System.out.println(e.getMessage());
-                //System.out.println(e.toString());
+                System.out.println(e.toString());
             }
 
             //プログラムの繰り返し可否の質問文を表示するための出力

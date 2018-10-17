@@ -5,9 +5,9 @@ package ensyuu16_2;
  */
 public class En16_2_ParameterRangeError extends En16_2_RangeError {
     //加算する数が範囲外例外のためのコンストラクタ
-    public En16_2_ParameterRangeError(String errorMessage,int addNumberValue) {
+    public En16_2_ParameterRangeError(int addNumberValue) {
         //仮引数の値をセットするための親クラスのコンストラクタの呼び出し
-        super(errorMessage,addNumberValue);
+        super("\n加える数が範囲外です。",addNumberValue);
     }
 
 }

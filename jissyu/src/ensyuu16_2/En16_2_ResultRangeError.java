@@ -5,9 +5,9 @@ package ensyuu16_2;
  */
 public class En16_2_ResultRangeError extends En16_2_RangeError {
     //計算結果が範囲外例外のためのコンストラクタ
-    public En16_2_ResultRangeError(String errorMessage, int resultValue) {
+    public En16_2_ResultRangeError(int resultValue) {
         //仮引数の値セットするための親クラスのコンストラクタの呼び出し
-        super(errorMessage,resultValue);
+        super("\n計算結果が範囲外です。",resultValue);
     }
 
 }

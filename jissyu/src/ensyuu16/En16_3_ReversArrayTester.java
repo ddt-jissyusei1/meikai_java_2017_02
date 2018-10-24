@@ -10,7 +10,8 @@ import java.util.Scanner;
 public class En16_3_ReversArrayTester {
     //プログラムの説明文のための定数
     private static final String PROGRAM_EXPLANATION_STRING = "配列の要素の並びを反転する際、"
-                                + "仮引数に受け取った参照が空参照だった場合に何らかの対処を行うテストプログラムです。";
+                                + "仮引数に受け取った参照が空参照だった場合に例外発生を通知し、"
+                                + "\n処理を中断する対処を行うテストプログラムです。";
     //並びを反転する配列の要素数の入力を促す文のための定数
     private static final String INPUT_REVERSE_ARRAY_INDEX_NUMBER = "\n要素の並びを反転する配列の要素数を入力してください。";
     //要素数入力時に表示する項目目のための定数
@@ -23,6 +24,8 @@ public class En16_3_ReversArrayTester {
     private static final String REVERSE_ARRAY_RESULT_MESSAGE = "\n要素の並びを反転しました。";
     //プログラムの繰り返し可否の質問文のための定数
     private static final String REPEAT_PROGRAM_QUESTION_STRING = "\nもう一度やりますか？はい>>>1、いいえ>>>0：";
+    //空参照例外を通知する文のための定数
+    private static final String NULL_POINTER_EXCEPTION_MESSAGE = "\n空参照例外が発生しました。\n例外発生箇所を出力します。";
 
     //キーボードからの入力ストリームを読み込むためのプログラム
     public static Scanner inputReverseTestNumber = new Scanner(System.in);
@@ -46,6 +49,12 @@ public class En16_3_ReversArrayTester {
 
             //並びを反転するための配列の宣言
             int[] reverseArrays = new int[arrayIndexAmount];
+
+            //空参照例外を発生させるための空の配列の宣言
+            int[] emptyArrays = null;
+
+            //空参照例外を発生させるためのメソッドの呼び出し
+            reverse(emptyArrays);
 
             //要素の値の入力を促す文を表示するための出力
             System.out.println(INPUT_REVERSE_ARRAY_VALUE_MESSAGE);
@@ -75,35 +84,45 @@ public class En16_3_ReversArrayTester {
     }
 
     /**
-     * 配列の要素の並びを反転するための繰り返しメソッド
+     *  配列の要素の並びを反転するための繰り返しメソッド
      *
+     * @param reverseArrays
      *
      *
      */
     public static void reverse(int[] reverseArrays){
-        int reverseArrayLength = reverseArrays.length;  //並びを反転する繰り返し処理の制御に使用するための配列の長さの取得
-
         //発生した例外を送出するためのブロック
         try{
+            int reverseArrayLength = reverseArrays.length;  //並びを反転する繰り返し処理の制御に使用するための配列の長さの取得
+
             //要素の値の並びを反転するための繰り返す処理
             for(int reverseLoopCount = 0; reverseLoopCount < reverseArrayLength/2; reverseLoopCount++){
                 //要素の値を入れ替えるためのメソッドの呼び出し
-                swap(reverseArrays, reverseLoopCount, reverseArrayLength - reverseLoopCount);
+                swap(reverseArrays, reverseLoopCount, reverseArrayLength - reverseLoopCount-1);
             }
+         //捕捉した空参照例外に対する処理を行うための例外ハンドラ
+         }catch(NullPointerException e){
+             //空参照例外が発生したことを通知するための文の表示
+             System.out.println(NULL_POINTER_EXCEPTION_MESSAGE);
+             //例外が発生した箇所を遡って表示するための出力
+             e.printStackTrace();
+             //処理を中断するためのコード
+             System.exit(1);
 
-        //捕捉した例外に対する処理を行うための例外ハンドラ
+        //捕捉した範囲外の配列添字例外に対する処理を行うための例外ハンドラ
         }catch(ArrayIndexOutOfBoundsException e){
             //例外が発生した箇所を遡って表示するための出力
             e.printStackTrace();
             //処理を中断するためのコード
             //return;
             System.exit(1);
-
         }
+
     }
 
     /**
      * 配列の要素の値を入れ替えるためのメソッド
+     *
      * @param switchArrays
      * @param indexA
      * @param indexB

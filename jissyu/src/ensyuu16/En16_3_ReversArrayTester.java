@@ -25,7 +25,7 @@ public class En16_3_ReversArrayTester {
     //プログラムの繰り返し可否の質問文のための定数
     private static final String REPEAT_PROGRAM_QUESTION_STRING = "\nもう一度やりますか？はい>>>1、いいえ>>>0：";
     //空参照例外を通知する文のための定数
-    private static final String NULL_POINTER_EXCEPTION_MESSAGE = "\n空参照例外が発生しました。\n例外発生箇所を出力します。";
+    private static final String NULL_POINTER_EXCEPTION_MESSAGE = "\n空参照例外が発生しました。\n例外発生箇所を出力して処理を中断します。";
 
     //キーボードからの入力ストリームを読み込むためのプログラム
     public static Scanner inputReverseTestNumber = new Scanner(System.in);
@@ -34,38 +34,20 @@ public class En16_3_ReversArrayTester {
         //プログラムの説明文を表示するための出力
         System.out.println(PROGRAM_EXPLANATION_STRING);
 
-        int arrayIndexAmount = 0;                  //並びを反転する配列の要素数のための変数
-        int inputArrayValueLoopCount;             //要素の値入力の繰り返しのためのカウンタ変数
-        int reverseArrayOutputLoopCount;          //反転した要素の並びを出力する繰り返しのためのカウンタ変数
+        int arrayIndexAmount = 0;                       //並びを反転する配列の要素数のための変数
+        int reverseArrayOutputLoopCount;               //反転した要素の並びを出力する繰り返しのためのカウンタ変数
 
         //ユーザーが希望するだけプログラムを繰り返せるようにするための繰り返し処理
         do{
-            //要素の並びを反転する配列の要素数の入力を促す文を表示するための出力
-            System.out.println(INPUT_REVERSE_ARRAY_INDEX_NUMBER);
-            //入力する要素数の項目名を表示するための出力
-            System.out.print(ARRAY_INDEX_AMOUNT_COLUMN_STRING);
-            //並びを反転する配列を生成するために入力された値を変数に保持する
-            arrayIndexAmount = inputReverseTestNumber.nextInt();
+            //並びを反転する配列の要素数の入力をするためのメソッドの呼び出し
+            arrayIndexAmount = inputArrayLength();
 
-            //並びを反転するための配列の宣言
-            int[] reverseArrays = new int[arrayIndexAmount];
+            //並びを反転するための配列の宣言(要素数が偶数であれば空参照例外を発生させるため空リテラルを代入する)
+            //int[] reverseArrays = new int[arrayIndexAmount];
+            int[] reverseArrays = arrayIndexAmount%2 == 0 ? null : new int[arrayIndexAmount];
 
-            //空参照例外を発生させるための空の配列の宣言
-            int[] emptyArrays = null;
-
-            //空参照例外を発生させるためのメソッドの呼び出し
-            reverse(emptyArrays);
-
-            //要素の値の入力を促す文を表示するための出力
-            System.out.println(INPUT_REVERSE_ARRAY_VALUE_MESSAGE);
-
-            //要素数の数だけ入力を繰り返すための繰り返し処理
-            for(inputArrayValueLoopCount = 0; inputArrayValueLoopCount < arrayIndexAmount; inputArrayValueLoopCount++){
-                //値を入力する要素の要素番号を表示するための出力
-                System.out.printf(ARRAY_INDEX_COLUMN_STRING,inputArrayValueLoopCount);
-                //入力された値を保持するために配列の要素に代入する
-                reverseArrays[inputArrayValueLoopCount] = inputReverseTestNumber.nextInt();
-            }
+            //配列の要素に値を入力するためのメソッドの呼び出し
+            reverseArrays = inputArrayValue(arrayIndexAmount);
 
             //要素の並びを反転するためのメソッドの呼び出し
             reverse(reverseArrays);
@@ -84,11 +66,78 @@ public class En16_3_ReversArrayTester {
     }
 
     /**
-     *  配列の要素の並びを反転するための繰り返しメソッド
+     *配列の要素数の入力処理を行うためのメソッド</br>
+     *作成日：2018/10/31</br>
+     *作成者：2018/10/31</br>
      *
-     * @param reverseArrays
+     * @return arrayIndexAmount 配列の要素数の値を返却する
+     */
+    public static int inputArrayLength(){
+        int arrayIndexAmount = 0;
+
+        //要素の並びを反転する配列の要素数の入力を促す文を表示するための出力
+        System.out.println(INPUT_REVERSE_ARRAY_INDEX_NUMBER);
+
+        //入力された要素数の値が0以下の間入力処理を繰り返すための繰り返し処理
+        do{
+            //入力する要素数の項目名を表示するための出力
+            System.out.print(ARRAY_INDEX_AMOUNT_COLUMN_STRING);
+            //並びを反転する配列を生成するために入力された値を変数に保持する
+            arrayIndexAmount = inputReverseTestNumber.nextInt();
+
+        //入力された値が自然数ではない判定が真の間繰り返すための条件式
+        }while(isNotNaturalNumber(arrayIndexAmount));
+
+        //要素数の値を呼び出し元に返却する
+        return arrayIndexAmount;
+    }
+
+    /**
+     * 入力された要素数の値が自然数ではないという判定をするためのメソッド</br>
+     * 作成日：2018/10/31</br>
+     * 作成者：志田</br>
      *
+     * @param checkNumber 自然数であるか判定する値
+     * @return boolean 自然数ではないという判定結果を真偽値で返却
+     */
+    public static boolean isNotNaturalNumber(int checkNumber){
+        //仮引数が0以下の場合に真を呼び出し元に返却する
+        return checkNumber <= 0;
+    }
+
+    /**
+     * 配列の要素の値をユーザーに入力してもらうための入力処理メソッド</br>
+     * 作成日：2018/10/31</br>
+     * 作成者：2018/10/31</br>
      *
+     * @param arrayLength 入力する配列の長さの値
+     * @return inputResultArrays 要素の値の入力が完了した配列の返却
+     */
+    public static int[] inputArrayValue(int arrayLength){
+
+        int[] inputResultArrays = new int[arrayLength]; //要素の値を保持するための配列宣言
+        int inputArrayValueLoopCount;                   //要素の値入力の繰り返しのためのカウンタ変数
+
+        //要素の値の入力を促す文を表示するための出力
+        System.out.println(INPUT_REVERSE_ARRAY_VALUE_MESSAGE);
+
+        //要素数の数だけ入力を繰り返すための繰り返し処理
+        for(inputArrayValueLoopCount = 0; inputArrayValueLoopCount < arrayLength; inputArrayValueLoopCount++){
+            //値を入力する要素の要素番号を表示するための出力
+            System.out.printf(ARRAY_INDEX_COLUMN_STRING,inputArrayValueLoopCount);
+            //入力された値を保持するために配列の要素に代入する
+            inputResultArrays[inputArrayValueLoopCount] = inputReverseTestNumber.nextInt();
+        }
+        //要素の値の入力が完了した配列を呼び出し元に返却する
+        return inputResultArrays;
+    }
+
+    /**
+     *  配列の要素の並びを反転するための繰り返しメソッド</br>
+     *  作成日：2018/10/24</br>
+     *  作成者：志田</br>
+     *
+     * @param reverseArrays 要素の値の並びを反転させる配列
      */
     public static void reverse(int[] reverseArrays){
         //発生した例外を送出するためのブロック
@@ -107,7 +156,8 @@ public class En16_3_ReversArrayTester {
              //例外が発生した箇所を遡って表示するための出力
              e.printStackTrace();
              //処理を中断するためのコード
-             System.exit(1);
+             return;
+             //System.exit(1);
 
         //捕捉した範囲外の配列添字例外に対する処理を行うための例外ハンドラ
         }catch(ArrayIndexOutOfBoundsException e){
@@ -117,15 +167,16 @@ public class En16_3_ReversArrayTester {
             //return;
             System.exit(1);
         }
-
     }
 
     /**
-     * 配列の要素の値を入れ替えるためのメソッド
+     * 配列の要素の値を入れ替えるためのメソッド</br>
+     * 作成日：2018/10/24</br>
+     * 作成者：志田</br>
      *
-     * @param switchArrays
-     * @param indexA
-     * @param indexB
+     * @param switchArrays 要素の値の並びを反転させる配列
+     * @param indexA 値の入れ替え先の要素番号
+     * @param indexB 値の入れ替え元の要素番号
      */
     public static void swap(int[] switchArrays, int indexA, int indexB){
         //配列の要素の値を入れ替えるための変数への退避
@@ -137,12 +188,14 @@ public class En16_3_ReversArrayTester {
     }
 
     /**
-     * プログラムの繰り返し可否の入力をユーザーに促すためのメソッド
+     * プログラムの繰り返し可否の入力をユーザーに促すためのメソッド</br>
+     *作成日：2018/10/24</br>
+     *作成者：志田</br>
      *
-     * @return
+     * @return repeatJudgeResult 入力された繰り返し可否の値の返却
      */
     public static int repeatProgram(){
-        int repeatJudgeResult = 0;       //入力された値を保持するための変数
+        int repeatJudgeResult = 0;                      //入力された値を保持するための変数
 
         //ユーザーに繰り返しの可否の入力を促す文を表示するための出力
         System.out.println(REPEAT_PROGRAM_QUESTION_STRING);

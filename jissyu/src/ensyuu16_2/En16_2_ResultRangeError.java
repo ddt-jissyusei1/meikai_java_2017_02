@@ -9,5 +9,4 @@ public class En16_2_ResultRangeError extends En16_2_RangeError {
         //仮引数の値セットするための親クラスのコンストラクタの呼び出し
         super("\n計算結果が範囲外です。",resultValue);
     }
-
 }

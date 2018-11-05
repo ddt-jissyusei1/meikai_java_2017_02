@@ -9,5 +9,4 @@ public class En16_2_ParameterRangeError extends En16_2_RangeError {
         //仮引数の値をセットするための親クラスのコンストラクタの呼び出し
         super("\n加える数が範囲外です。",addNumberValue);
     }
-
 }

@@ -13,10 +13,3 @@ public class En16_2_RangeError extends RuntimeException {
         super(errorMessage + "範囲外の値:" + errorValue);
         }
     }
-
-
-
-
-
-
-

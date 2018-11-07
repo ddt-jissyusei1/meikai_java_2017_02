@@ -11,7 +11,7 @@ public class En16_3_ReversArrayTester {
     //プログラムの説明文のための定数
     private static final String PROGRAM_EXPLANATION_STRING = "配列の要素の並びを反転する際、"
                                                                 + "\n仮引数に受け取った参照が空参照だった場合に例外発生を通知して、"
-                                                                + "\nプログラムの繰り返すを問うテストプログラムです。";
+                                                                + "\nプログラムを中断するテストプログラムです。";
     //並びを反転する配列の要素数の入力を促す文のための定数
     private static final String INPUT_REVERSE_ARRAY_INDEX_NUMBER = "\n要素の並びを反転する配列の要素数を入力してください。"
                                                                       + "\n要素数が偶数で空参照例外が発生します。";
@@ -28,7 +28,8 @@ public class En16_3_ReversArrayTester {
     //プログラムの繰り返し可否の質問文のための定数
     private static final String REPEAT_PROGRAM_QUESTION_STRING = "\nもう一度やりますか？はい>>>1、いいえ>>>0：";
     //空参照例外を通知する文のための定数
-    private static final String NULL_POINTER_EXCEPTION_MESSAGE = "\n空参照例外が発生しました。\n例外発生箇所をします。";
+    private static final String NULL_POINTER_EXCEPTION_MESSAGE = "\n空参照例外が発生しました。"
+                                                                    + "\n例外発生箇所を出力し、処理を中断します。";
 
     //プログラム繰り返しの「可」の判定番号のための定数
     private static final int REPEAT_PROGRAM_YES_NUMBER = 1;
@@ -40,7 +41,7 @@ public class En16_3_ReversArrayTester {
         //プログラムの説明文を表示するための出力
         System.out.println(PROGRAM_EXPLANATION_STRING);
 
-        int arrayIndexAmount = 0;                       //並びを反転する配列の要素数のための変数
+        int arrayIndexAmount = 0;                           //並びを反転する配列の要素数のための変数
 
         //ユーザーが希望するだけプログラムを繰り返せるようにするための繰り返し処理
         do{
@@ -64,14 +65,12 @@ public class En16_3_ReversArrayTester {
                 System.out.println(NULL_POINTER_EXCEPTION_MESSAGE);
                 //例外が発生した箇所を遡って表示するための出力
                 e.printStackTrace();
-                //処理を終了するための条件式
-                if(repeatProgram() == 0){
-                    //繰り返し処理を抜けるためのbreak文
-                    break;
-                }
+                //処理を中断するためのコード
+                break;
             }
-        //プログラムの繰り返しを判定するための条件式
-        }while(repeatProgram() == REPEAT_PROGRAM_YES_NUMBER);
+
+         //プログラムの繰り返しを判定するための条件式
+         }while(repeatProgram() == REPEAT_PROGRAM_YES_NUMBER);
     }
 
     /**
@@ -124,8 +123,8 @@ public class En16_3_ReversArrayTester {
      */
     public static int[] inputArrayValue(int arrayLength){
 
-        int[] inputResultArrays = new int[arrayLength]; //要素の値を保持するための配列宣言
-        int inputArrayValueLoopCount;                   //要素の値入力の繰り返しのためのカウンタ変数
+        int[] inputResultArrays = new int[arrayLength];     //要素の値を保持するための配列宣言
+        int inputArrayValueLoopCount;                       //要素の値入力の繰り返しのためのカウンタ変数
 
         //要素の値の入力を促す文を表示するための出力
         System.out.println(INPUT_REVERSE_ARRAY_VALUE_MESSAGE);
@@ -194,7 +193,7 @@ public class En16_3_ReversArrayTester {
      *
      */
     public static void showArrayValues(String outputMessage, int[] resultArrays){
-        int indexNumber = 0;                            //配列の要素番号のための変数
+        int indexNumber = 0;                                //配列の要素番号のための変数
 
         //出力する配列の内容を説明するための文の表示
         System.out.println(outputMessage);
@@ -216,7 +215,7 @@ public class En16_3_ReversArrayTester {
      * @return repeatJudgeResult 入力された繰り返し可否の値の返却
      */
     public static int repeatProgram(){
-        int repeatJudgeResult = 0;                      //入力された値を保持するための変数
+        int repeatJudgeResult = 0;                          //入力された値を保持するための変数
 
         //ユーザーに繰り返しの可否の入力を促す文を表示するための出力
         System.out.print(REPEAT_PROGRAM_QUESTION_STRING);

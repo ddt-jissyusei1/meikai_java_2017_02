@@ -168,7 +168,7 @@ public class En16_3_ReversArrayTester {
             //例外が発生した箇所を遡って表示するための出力
             e.printStackTrace();
             //処理を中断するためのコード
-            System.exit(1);
+            return false;
         }
         //処理を継続するため反転成功の判定値を返却する
         return true;

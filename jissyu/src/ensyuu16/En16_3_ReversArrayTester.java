@@ -42,32 +42,27 @@ public class En16_3_ReversArrayTester {
         System.out.println(PROGRAM_EXPLANATION_STRING);
 
         int arrayIndexAmount = 0;                           //並びを反転する配列の要素数のための変数
+        boolean reverseProcessResult;                      //並び反転処理結果真偽値のための変数
 
         //ユーザーが希望するだけプログラムを繰り返せるようにするための繰り返し処理
         do{
-            //発生する例外を捕捉するためのtryブロック
-            try{
-                //並びを反転する配列の要素数の入力をするためのメソッドの呼び出し
-                arrayIndexAmount = inputArrayLength();
+            //並びを反転する配列の要素数の入力をするためのメソッドの呼び出し
+            arrayIndexAmount = inputArrayLength();
 
-                //並びを反転するための配列の宣言(要素数が偶数であれば空参照例外を発生させるため空リテラルを代入する)
-                int[] reverseArrays = arrayIndexAmount%2 == 0 ? null : inputArrayValue(arrayIndexAmount);
+            //並びを反転するための配列の宣言(要素数が偶数であれば空参照例外を発生させるため空リテラルを代入する)
+            int[] reverseArrays = arrayIndexAmount%2 == 0 ? null : inputArrayValue(arrayIndexAmount);
 
-                //要素の並びを反転するためのメソッドの呼び出し
-                reverse(reverseArrays);
+            //要素の並びを反転するためのメソッドの呼び出し
+            reverseProcessResult = reverse(reverseArrays);
 
-                //反転した要素の並びの結果を表示するための配列の要素表示メソッドの呼び出し
-                showArrayValues(REVERSE_ARRAY_RESULT_MESSAGE, reverseArrays);
-
-            //捕捉した空参照例外のための例外ハンドラ
-            }catch(NullPointerException e){
-                //空参照例外が発生したことを通知するための文の表示
-                System.out.println(NULL_POINTER_EXCEPTION_MESSAGE);
-                //例外が発生した箇所を遡って表示するための出力
-                e.printStackTrace();
+            //反転処理結果が偽の場合に実行するための条件式
+            if (!reverseProcessResult) {
                 //処理を中断するためのコード
                 break;
             }
+
+            //反転した要素の並びの結果を表示するための配列の要素表示メソッドの呼び出し
+            showArrayValues(REVERSE_ARRAY_RESULT_MESSAGE, reverseArrays);
 
          //プログラムの繰り返しを判定するための条件式
          }while(repeatProgram() == REPEAT_PROGRAM_YES_NUMBER);
@@ -81,7 +76,7 @@ public class En16_3_ReversArrayTester {
      * @return arrayIndexAmount 配列の要素数の値を返却する
      */
     public static int inputArrayLength(){
-        int arrayIndexAmount = 0;
+        int arrayIndexAmount = 0;                          //配列の要素数のための変数
 
         //要素の並びを反転する配列の要素数の入力を促す文を表示するための出力
         System.out.println(INPUT_REVERSE_ARRAY_INDEX_NUMBER);
@@ -147,7 +142,7 @@ public class En16_3_ReversArrayTester {
      *
      * @param reverseArrays 要素の値の並びを反転させる配列
      */
-    public static void reverse(int[] reverseArrays){
+    public static boolean reverse(int[] reverseArrays){
         //発生した例外を送出するためのブロック
         try{
             int reverseArrayLength = reverseArrays.length;  //並びを反転する繰り返し処理の制御に使用するための配列の長さの取得
@@ -157,6 +152,17 @@ public class En16_3_ReversArrayTester {
                 //要素の値を入れ替えるためのメソッドの呼び出し
                 swap(reverseArrays, reverseLoopCount, reverseArrayLength - reverseLoopCount-1);
             }
+
+         //捕捉した空参照例外のための例外ハンドラ
+         }catch(NullPointerException e){
+
+            //空参照例外が発生したことを通知するための文の表示
+            System.out.println(NULL_POINTER_EXCEPTION_MESSAGE);
+            //例外が発生した箇所を遡って表示するための出力
+            e.printStackTrace();
+            //処理を中断するため反転失敗の判定値を呼び出しもとに返却する
+            return false;
+
         //捕捉した範囲外の配列添字例外に対する処理を行うための例外ハンドラ
         }catch(ArrayIndexOutOfBoundsException e){
             //例外が発生した箇所を遡って表示するための出力
@@ -164,6 +170,8 @@ public class En16_3_ReversArrayTester {
             //処理を中断するためのコード
             System.exit(1);
         }
+        //処理を継続するため反転成功の判定値を返却する
+        return true;
     }
 
     /**
@@ -193,7 +201,7 @@ public class En16_3_ReversArrayTester {
      *
      */
     public static void showArrayValues(String outputMessage, int[] resultArrays){
-        int indexNumber = 0;                                //配列の要素番号のための変数
+        int indexNumber = 0;                                 //配列の要素番号のための変数
 
         //出力する配列の内容を説明するための文の表示
         System.out.println(outputMessage);

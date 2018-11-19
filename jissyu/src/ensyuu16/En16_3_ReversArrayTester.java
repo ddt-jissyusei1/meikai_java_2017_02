@@ -71,7 +71,7 @@ public class En16_3_ReversArrayTester {
     /**
      *配列の要素数の入力処理を行うためのメソッド</br>
      *作成日：2018/10/31</br>
-     *作成者：2018/10/31</br>
+     *作成者：志田</br>
      *
      * @return arrayIndexAmount 配列の要素数の値を返却する
      */
@@ -111,7 +111,7 @@ public class En16_3_ReversArrayTester {
     /**
      * 配列の要素の値をユーザーに入力してもらうための入力処理メソッド</br>
      * 作成日：2018/10/31</br>
-     * 作成者：2018/10/31</br>
+     * 作成者：志田</br>
      *
      * @param arrayLength 入力する配列の長さの値
      * @return inputResultArrays 要素の値の入力が完了した配列の返却

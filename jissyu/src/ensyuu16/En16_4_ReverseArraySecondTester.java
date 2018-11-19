@@ -9,8 +9,9 @@ import java.util.Scanner;
  */
 public class En16_4_ReverseArraySecondTester {
     //プログラムの説明文のための定数
-    private static final String PROGRAM_EXPLANATION_STRING = "メソッドreverseで受け取った仮引数が空参照であった場合に"
-                                                               + "別の例外として送出する対処を行うテストプログラムです。";
+    private static final String PROGRAM_EXPLANATION_STRING = "メソッドreverseで受け取った仮引数が空参照であった場合に、"
+                                                               + "\n別の例外として送出し"
+                                                               + "プログラムを中断する対処を行うテストプログラムです。";
     //配列の要素数の入力をユーザーに促すための文の定数
     private static final String INPUT_ARRAY_INDEX_MESSAGE = "\n並びを反転する配列の要素数を入力してください。"
                                                                + "\n要素数が奇数で空参照例外が発生します。\n要素数：";
@@ -24,12 +25,18 @@ public class En16_4_ReverseArraySecondTester {
     private static final String NULLPOINTER_EXCEPTION_MESSAGE = "空参照例外が発生しました！";
     //不正添字例外が発生したことを通知する文のための定数
     private static final String OUTOFBOUNDS_EXCEPTION_MESSAGE = "不正添字例外が発生しました！";
+    //並び反転メソッドで捕捉した例外であることを通知する文のための定数
+    private static final String CATCH_REVERSE_EXCEPTION_MESSAGE = "\n並び反転メソッドで捕捉した例外の結果です。";
+    //再送出された例外であることを通知する文のための定数
+    private static final String THROW_OTHER_EXCEPTION_MESSAGE = "\n捕捉した例外を別の例外として再送出しました。";
     //例外内容を表示する文のための定数
     private static final String EXCEPTION_STRING = "例外　　　：";
     //例外の原因を表示する文のための定数
     private static final String EXCEPTION_CAUSE_STRING = "例外の原因：";
     //捕捉した例外を別の例外として送出する際に表示する文のための定数
     private static final String OTHER_EXCEPTION_MESSAGE = "reverseのバグ？";
+    //プログラムを中断する通知文のための定数
+    private static final String INTERRUPT_PROGRAM_MESSAGE = "\nプログラムを中断します。";
     //反転した結果を表示する項目番号のための定数
     private static final String RESULT_ARRAY_INDEX_STRING = "reverseArray[%d] = %d\n";
     //プログラムの繰り返しの可否の入力を促す文のための定数
@@ -49,7 +56,7 @@ public class En16_4_ReverseArraySecondTester {
         //プログラムの説明文を表示するための出力
         System.out.println(PROGRAM_EXPLANATION_STRING);
 
-        int reverseArrayAmounts = INITIALIZE_NUMBER;       //並びを反転する配列の要素数のための変数
+        int reverseArrayAmounts = INITIALIZE_NUMBER;      //並びを反転する配列の要素数のための変数
 
         //ユーザーが希望するだけプログラムを繰り返せるための繰り返し処理
         do{
@@ -86,10 +93,16 @@ public class En16_4_ReverseArraySecondTester {
 
             //捕捉した再送出例外のための例外ハンドラ
             }catch(RuntimeException e){
+                //別の例外として送出されたことを通知するための文の表示
+                System.out.println(THROW_OTHER_EXCEPTION_MESSAGE);
                 //例外内容を表示するための出力
                 System.out.println(EXCEPTION_STRING + e);
                 //例外の原因を表示するための出力
                 System.out.println(EXCEPTION_CAUSE_STRING + e.getCause());
+                //プログラムを中断する通知文を表示するための出力
+                System.out.println(INTERRUPT_PROGRAM_MESSAGE);
+                //発生した例外の対処としてプログラムを終了するためのコード
+                return;
             }
 
         //プログラム繰り返し判定メソッドの返り値が真の間処理を繰り返すための条件式
@@ -112,7 +125,7 @@ public class En16_4_ReverseArraySecondTester {
         int inputLoopCount;                                  //要素の値入力の繰り返し処理で使用するためのカウンタ変数
 
         //要素の数だけ値の入力を繰り返すための処理
-        for(inputLoopCount = 0; inputLoopCount < arrayLength; inputLoopCount++){
+        for(inputLoopCount = INITIALIZE_NUMBER; inputLoopCount < arrayLength; inputLoopCount++){
             //入力する要素番号を表示するための出力
             System.out.printf(ARRAY_INDEX_STRING, inputLoopCount);
             //入力された値を要素に保持する
@@ -136,7 +149,7 @@ public class En16_4_ReverseArraySecondTester {
             int arrayLength = reverseArrays.length;          //並びを反転する繰り返し処理で使用するための配列の長さの取得
 
             //並びを反転するため配列の半分の長さの間繰り返すための処理
-            for(reverseLoopCount = 0;reverseLoopCount < arrayLength/2; reverseLoopCount++){
+            for(reverseLoopCount = INITIALIZE_NUMBER; reverseLoopCount < arrayLength/2; reverseLoopCount++){
                 //要素の値を入れ替えるためのメソッドの呼び出し
                 swap(reverseArrays, reverseLoopCount, arrayLength - reverseLoopCount - 1);
             }
@@ -146,6 +159,10 @@ public class En16_4_ReverseArraySecondTester {
             throw new RuntimeException(OUTOFBOUNDS_EXCEPTION_MESSAGE + OTHER_EXCEPTION_MESSAGE,e);
         //捕捉した空参照例外に対処するための例外ハンドラ
         }catch(NullPointerException e){
+            //並び反転メソッドで捕捉した例外を通知するための文の表示
+            System.out.println(CATCH_REVERSE_EXCEPTION_MESSAGE);
+            //例外の内容を表示するための出力
+            System.out.println(EXCEPTION_STRING + e);
             //捕捉した例外を別の例外として送出するためのthrow文
             throw new RuntimeException(NULLPOINTER_EXCEPTION_MESSAGE,e);
         }
@@ -161,7 +178,7 @@ public class En16_4_ReverseArraySecondTester {
      * @param baseIndex     入れ替え元の要素の値
      */
     public static void swap(int[] reverseArrays, int indexFirst, int baseIndex){
-        int escapeValue = INITIALIZE_NUMBER;                 //入れ替えのための値退避用変数
+        int escapeValue = INITIALIZE_NUMBER;               //入れ替えのための値退避用変数
 
         //値の入れ替えのための退避用変数への代入
         escapeValue = reverseArrays[indexFirst];
@@ -179,7 +196,7 @@ public class En16_4_ReverseArraySecondTester {
      * @param reverseResultArrays 要素の並びを判定した配列
      */
     public static void showReverseArray(int[] reverseResultArrays){
-        int indexCounter = INITIALIZE_NUMBER;                //表示する配列の添え字のためのカウント変数
+        int indexCounter = INITIALIZE_NUMBER;              //表示する配列の添え字のためのカウント変数
 
         //仮引数の配列の要素を順に表示するための拡張for文
         for(int arrayValue: reverseResultArrays){
@@ -198,7 +215,7 @@ public class En16_4_ReverseArraySecondTester {
      * @return repeatJudge プログラム繰り返しの真偽値
      */
     public static boolean repeatProgram(){
-        int repeatJudge = INITIALIZE_NUMBER;                //入力されたプログラム繰り返し可否判定数値のための変数
+        int repeatJudge = INITIALIZE_NUMBER;               //入力されたプログラム繰り返し可否判定数値のための変数
 
         //プログラムの繰り返し可否の入力をユーザーに促すための文の出力
         System.out.print(REPEAT_PROGRAM_QUESTION_MESSAGE);
